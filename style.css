@@ -1,0 +1,80 @@
+/* Impostazioni di base */
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: "Elza", sans-serif;
+    transition: opacity 1s; /* Transizione per l'animazione */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0;
+}
+
+/* Animazione di fade-out */
+.fade-out {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+/* Cerchio - Posizione originale */
+.circle {
+    width: 70vh;
+    height: 70vh;
+    background-color: white;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 25%; /* Posizione a sinistra */
+    transform: translate(-50%, -50%);
+    box-shadow: 4px 4px 17.5px rgba(0, 0, 0, 0.25);
+    --rotation: 0deg;
+    transform: translate(-135%, -50%) rotate(var(--rotation)); /* Mantiene la posizione a sinistra */
+    transition: transform 0.5s ease-in-out;
+}
+
+.word-container {
+    position: relative;
+    width: 100vw; /* Larghezza dell'area */
+    height: 100vh; /* Altezza dell'area */
+    display: flex;
+
+}
+
+.word {
+    position: absolute;
+    transform-origin: center;
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out; /* Transizione per ingrandimento e opacità */
+    opacity: 0.5;
+    transform: scale(1);
+    font-size: 1.2rem; /* Più piccolo */
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.word.active {
+    opacity: 1;
+    transform: scale(1.4); /* Lieve ingrandimento */
+    font-size: 1.6rem; /* Più grande per la parola centrale */
+}
+
+
+
+/* Transizioni di opacità */
+.fade-out {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+/* Animazione di opacità per l'immagine */
+.background {
+    transition: opacity 5s ease-in-out;
+    opacity: 1;
+}
+
+/* Aggiungi una transizione per il corpo della pagina */
+body {
+    transition: opacity 0.5s ease;
+}
+
+
+
+
