@@ -1,80 +1,183 @@
 /* Impostazioni di base */
-body, html {
-    height: 100%;
-    margin: 0;
-    font-family: "Elza", sans-serif;
-    transition: opacity 1s; /* Transizione per l'animazione */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #f0f0f0;
+body,
+html {
+  height: 100%;
+  margin: 0;
+  font-family: "Elza", sans-serif;
+  transition: opacity 1s; /* Transizione per l'animazione */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f0f0f0;
 }
 
-/* Animazione di fade-out */
-.fade-out {
-    opacity: 0;
-    transition: opacity 0.5s ease;
-}
 
 /* Cerchio - Posizione originale */
 .circle {
-    width: 70vh;
-    height: 70vh;
-    background-color: white;
-    border-radius: 50%;
-    position: absolute;
-    top: 50%;
-    left: 25%; /* Posizione a sinistra */
-    transform: translate(-50%, -50%);
-    box-shadow: 4px 4px 17.5px rgba(0, 0, 0, 0.25);
-    --rotation: 0deg;
-    transform: translate(-135%, -50%) rotate(var(--rotation)); /* Mantiene la posizione a sinistra */
-    transition: transform 0.5s ease-in-out;
+  width: 70vh;
+  height: 70vh;
+  background-color: white;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 25%; /* Posizione a sinistra */
+  transform: translate(-50%, -50%);
+  box-shadow: 4px 4px 17.5px rgba(0, 0, 0, 0.25);
+  --rotation: 0deg;
+  transform: translate(-135%, -50%) rotate(var(--rotation)); /* Mantiene la posizione a sinistra */
+  transition: transform 0.5s ease-in-out;
 }
 
 .word-container {
-    position: relative;
-    width: 100vw; /* Larghezza dell'area */
-    height: 100vh; /* Altezza dell'area */
-    display: flex;
-
+  position: relative;
+  width: 50vw; /* Larghezza dell'area */
+  height: 100vh; /* Altezza dell'area */
+  display: flex;
+  margin-left: -75vh;
 }
 
 .word {
-    position: absolute;
-    transform-origin: center;
-    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out; /* Transizione per ingrandimento e opacità */
-    opacity: 0.5;
-    transform: scale(1);
-    font-size: 1.2rem; /* Più piccolo */
-    transition: transform 0.3s ease, opacity 0.3s ease;
+  position: absolute;
+  transform-origin: center;
+  transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out; /* Transizione per ingrandimento e opacità */
+  opacity: 0.5;
+  transform: scale(1);
+  font-size: 1.2rem; /* Più piccolo */
+  transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
 .word.active {
-    opacity: 1;
-    transform: scale(1.4); /* Lieve ingrandimento */
-    font-size: 1.6rem; /* Più grande per la parola centrale */
+  opacity: 1;
+  transform: scale(1.4); /* Lieve ingrandimento */
+  font-size: 1.6rem; /* Più grande per la parola centrale */
 }
 
 
 
-/* Transizioni di opacità */
-.fade-out {
-    opacity: 0;
-    transition: opacity 0.5s ease;
-}
+
 
 /* Animazione di opacità per l'immagine */
 .background {
-    transition: opacity 5s ease-in-out;
-    opacity: 1;
-}
-
-/* Aggiungi una transizione per il corpo della pagina */
-body {
-    transition: opacity 0.5s ease;
+    transition: opacity 1s ease-in-out; /* La durata della transizione è 1s */
+    opacity: 1; /* Imposta l'opacità iniziale a 100% */
 }
 
 
+/* Classe per nascondere la pagina con dissolvenza */
+.fade-out {
+    opacity: 0;
+}
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Contenitore principale per consequences */
+.consequences {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 40%; /* Adatta in base alle necessità */
+    margin-left: auto; /* Per spingere a destra */
+    padding: 20px;
+    border-radius: 10px;
+  }
+  
+  /* Reactions Section */
+  .reactions {
+    margin-bottom: 20px;
+  }
+  
+  .reactions h2 {
+    font-size: 1.5rem;
+    margin-bottom: 2vh;
+    color: black;
+
+  }
+  
+  .reaction-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    flex-direction: column;
+}
+  
+  .reaction-item span {
+    font-size: 1rem;
+    color: black;
+  }
+  
+  .progress-bar {
+    width: 80%;
+    height: 10px;
+    background-color: #e0e0e0;
+    border-radius: 5px;
+    overflow: hidden;
+    position: relative;
+    margin: 0 10px;
+  }
+  
+  .progress {
+    height: 100%;
+    background-color: #a4d08b; /* Verde per Media Impact */
+    border-radius: 5px;
+  }
+  
+  /* Shock specific progress color */
+  .reaction-item:nth-child(2) .progress {
+    background-color: #d89bd0; /* Viola per Shock */
+  }
+  
+  /* Price Section */
+  .price {
+    margin-top: 20px;
+  }
+  
+  .price h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: black;
+  }
+  
+  .price-detail,
+  .price-total {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  
+  .price-detail span,
+  .price-total span {
+    font-size: 1rem;
+    color: black;
+  }
+  
+  .price-total {
+    font-weight: bold;
+  }
+  
+  #data {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    gap: 15vh;
+  }

@@ -1,19 +1,3 @@
-// Animazione dell'opacità
-const backgroundImage = document.querySelector('.background');
-
-function toggleOpacity() {
-    backgroundImage.style.transition = 'opacity 1s'; // Impostiamo la transizione
-    if (backgroundImage.style.opacity == 0.75) {
-        backgroundImage.style.opacity = 1;
-    } else {
-        backgroundImage.style.opacity = 0.75;
-    }
-}
-
-// Impostiamo l'animazione per ogni 5 secondi
-setInterval(toggleOpacity, 5000);
-
-
 // Funzione per aggiungere un effetto fade-out e navigare
 function navigateWithAnimation(targetPage) {
     // Aggiungi la classe fade-out per fare l'animazione
@@ -25,23 +9,60 @@ function navigateWithAnimation(targetPage) {
     }, 500); // Tempo dell'animazione
 }
 
-// Gestione della pressione dei tasti freccia
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'ArrowDown') {
-        if (window.location.pathname === '/index.html') {
-            navigateWithAnimation('/pagina2.html');
-        } else if (window.location.pathname === '/pagina2.html') {
-            navigateWithAnimation('/pagina3.html');
-        }
-    } else if (e.key === 'ArrowUp') {
-        if (window.location.pathname === '/pagina2.html') {
-            navigateWithAnimation('/index.html');
-        } else if (window.location.pathname === '/pagina3.html') {
-            navigateWithAnimation('/pagina2.html');
-        }
+// Aggiungi un listener per i tasti freccia
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'ArrowDown') {
+        // Cambia pagina alla successiva con animazione
+        navigateToNextPage();
+    } else if (event.key === 'ArrowUp') {
+        // Cambia pagina alla precedente con animazione
+        navigateToPreviousPage();
     }
 });
 
+// Funzione per navigare alla pagina successiva
+function navigateToNextPage() {
+    // Applica l'animazione di uscita
+    document.body.classList.add('fade-out');
+    
+    // Dopo 1 secondo (durata dell'animazione), cambia pagina
+    setTimeout(() => {
+        const currentPage = window.location.pathname;
+        let nextPage = '';
+        
+        if (currentPage === '/index.html') {
+            nextPage = 'pagina2.html';
+        } else if (currentPage === '/pagina2.html') {
+            nextPage = 'pagina3.html';
+        } else if (currentPage === '/pagina3.html') {
+            nextPage = 'index.html'; // Torna alla prima pagina
+        }
+        
+        window.location.href = nextPage;
+    }, 1000); // 1000ms = durata dell'animazione
+}
+
+// Funzione per navigare alla pagina precedente
+function navigateToPreviousPage() {
+    // Applica l'animazione di uscita
+    document.body.classList.add('fade-out');
+    
+    // Dopo 1 secondo (durata dell'animazione), cambia pagina
+    setTimeout(() => {
+        const currentPage = window.location.pathname;
+        let previousPage = '';
+        
+        if (currentPage === '/index.html') {
+            previousPage = 'pagina3.html'; // Torna all'ultima pagina
+        } else if (currentPage === '/pagina2.html') {
+            previousPage = 'index.html';
+        } else if (currentPage === '/pagina3.html') {
+            previousPage = 'pagina2.html';
+        }
+        
+        window.location.href = previousPage;
+    }, 1000); // 1000ms = durata dell'animazione
+}
 
 
 
