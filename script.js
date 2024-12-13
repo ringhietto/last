@@ -1,82 +1,62 @@
-// Funzione per aggiungere un effetto fade-out e navigare
-function navigateWithAnimation(targetPage) {
-    // Aggiungi la classe fade-out per fare l'animazione
-    document.body.classList.add('fade-out');
-    
-    // Dopo 500ms (tempo della transizione), cambia la pagina
-    setTimeout(() => {
-        window.location.href = targetPage;
-    }, 500); // Tempo dell'animazione
-}
-
-// Aggiungi un listener per i tasti freccia
-document.addEventListener('keydown', function(event) {
-    if (event.key === 'ArrowDown') {
-        // Cambia pagina alla successiva con animazione
-        navigateToNextPage();
-    } else if (event.key === 'ArrowUp') {
-        // Cambia pagina alla precedente con animazione
-        navigateToPreviousPage();
-    }
-});
-
-// Funzione per navigare alla pagina successiva
-function navigateToNextPage() {
-    // Applica l'animazione di uscita
-    document.body.classList.add('fade-out');
-    
-    // Dopo 1 secondo (durata dell'animazione), cambia pagina
-    setTimeout(() => {
-        const currentPage = window.location.pathname;
-        let nextPage = '';
-        
-        if (currentPage === '/index.html') {
-            nextPage = 'pagina2.html';
-        } else if (currentPage === '/pagina2.html') {
-            nextPage = 'pagina3.html';
-        } else if (currentPage === '/pagina3.html') {
-            nextPage = 'index.html'; // Torna alla prima pagina
-        }
-        
-        window.location.href = nextPage;
-    }, 1000); // 1000ms = durata dell'animazione
-}
-
-// Funzione per navigare alla pagina precedente
-function navigateToPreviousPage() {
-    // Applica l'animazione di uscita
-    document.body.classList.add('fade-out');
-    
-    // Dopo 1 secondo (durata dell'animazione), cambia pagina
-    setTimeout(() => {
-        const currentPage = window.location.pathname;
-        let previousPage = '';
-        
-        if (currentPage === '/index.html') {
-            previousPage = 'pagina3.html'; // Torna all'ultima pagina
-        } else if (currentPage === '/pagina2.html') {
-            previousPage = 'index.html';
-        } else if (currentPage === '/pagina3.html') {
-            previousPage = 'pagina2.html';
-        }
-        
-        window.location.href = previousPage;
-    }, 1000); // 1000ms = durata dell'animazione
-}
-
-
-
-
-
-
-
-
-// Riferimenti agli elementi
+let serialPort;
+let reader;
 const words = document.querySelectorAll('.word');
 const radius = 300; // Raggio della semicirconferenza
 const centerX = 70; // Sposta il centro più a sinistra
 const centerY = 450; // Sposta il centro più in alto
 let currentIndex = 2; // La terza parola ("Overdose") è al centro inizialmente
+
+document.getElementById('connectButton').addEventListener('click', connectArduino);
+
+async function connectArduino() {
+    try {
+        // Richiede l'accesso alla porta seriale
+        serialPort = await navigator.serial.requestPort();
+        await serialPort.open({ baudRate: 9600 });
+
+        const textDecoder = new TextDecoderStream();
+        const readableStreamClosed = serialPort.readable.pipeTo(textDecoder.writable);
+        reader = textDecoder.readable.getReader();
+
+        console.log('Connesso ad Arduino!');
+        readArduinoData();
+    } catch (error) {
+        console.error('Errore nella connessione:', error);
+    }
+}
+
+async function readArduinoData() {
+    try {
+        while (true) {
+            const { value, done } = await reader.read();
+            if (done) {
+                console.log('Connessione chiusa.');
+                break;
+            }
+
+            // Interpreta i dati ricevuti da Arduino
+            const potValue = parseInt(value.trim()); // Supponiamo che il potenziometro "Val_Selezione" sia il valore ricevuto
+            console.log(`Val_Selezione: ${potValue}`);
+
+            // Verifica che il valore sia compreso tra 1 e 5
+            if (potValue >= 1 && potValue <= 5) {
+                // Aggiorna i tipi di morte in base al valore del potenziometro
+                updateDeathTypes(potValue);
+            } else {
+                console.error('Valore del potenziometro fuori intervallo:', potValue);
+            }
+        }
+    } catch (error) {
+        console.error('Errore durante la lettura:', error);
+    }
+}
+
+// Funzione per aggiornare i tipi di morte
+function updateDeathTypes(selection) {
+    console.log('Aggiornamento tipi di morte con selezione:', selection);
+    currentIndex = selection - 1; // Aggiorna l'indice corrente in base alla selezione
+    updatePositions(); // Aggiorna la posizione delle parole
+}
 
 // Funzione per calcolare e posizionare le parole
 function updatePositions() {
@@ -106,25 +86,6 @@ function updatePositions() {
         }
     });
 }
-
-// Funzione per scorrere le parole
-function scrollWords(direction) {
-    if (direction === 'next') {
-        currentIndex = (currentIndex + 1) % words.length; // Scorre avanti
-    } else if (direction === 'prev') {
-        currentIndex = (currentIndex - 1 + words.length) % words.length; // Scorre indietro
-    }
-    updatePositions(); // Aggiorna la posizione delle parole
-}
-
-// Ascolta i tasti W e E per scorrere
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'w') {
-        scrollWords('prev');
-    } else if (e.key === 'e') {
-        scrollWords('next');
-    }
-});
 
 // Inizializza la posizione iniziale
 updatePositions();
