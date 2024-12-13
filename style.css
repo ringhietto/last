@@ -11,23 +11,25 @@ html {
   background-color: #f0f0f0;
 }
 
-
 /* Cerchio - Posizione originale */
 .circle {
-  width: 70vh;
-  height: 70vh;
+  width: 600px; /* Dimensione fissa */
+  height: 600px; /* Dimensione fissa */
   background-color: white;
-  border-radius: 50%;
+  background: linear-gradient(315deg, white 26%, #E1E1E1 100%);
+  border-radius: 9999px;
+  filter: blur(2px);
   position: absolute;
   top: 50%;
-  left: 25%; /* Posizione a sinistra */
+  left: 30%; /* Posizione a sinistra */
   transform: translate(-50%, -50%);
-  box-shadow: 4px 4px 17.5px rgba(0, 0, 0, 0.25);
+  box-shadow: 2px 2px 2px;
   --rotation: 0deg;
   transform: translate(-135%, -50%) rotate(var(--rotation)); /* Mantiene la posizione a sinistra */
   transition: transform 0.5s ease-in-out;
 }
 
+/* Contenitore delle parole */
 .word-container {
   position: relative;
   width: 50vw; /* Larghezza dell'area */
@@ -51,45 +53,16 @@ html {
   font-size: 1.6rem; /* Più grande per la parola centrale */
 }
 
-
-
-
-
 /* Animazione di opacità per l'immagine */
 .background {
     transition: opacity 1s ease-in-out; /* La durata della transizione è 1s */
     opacity: 1; /* Imposta l'opacità iniziale a 100% */
 }
 
-
 /* Classe per nascondere la pagina con dissolvenza */
 .fade-out {
     opacity: 0;
 }
-
-
-
-
-
-
-
-
-
-
-.page3 {
-    gap: 30vh;
-}
-
-
-
-
-
-
-
-
-
-
-
 
 /* Contenitore principale per consequences */
 .consequences {
@@ -99,25 +72,23 @@ html {
     width: 40%; /* Adatta in base alle necessità */
     padding: 20px;
     border-radius: 10px;
-  }
-  
-  /* Reactions Section */
-  .reactions {
+}
+
+/* Reactions Section */
+.reactions {
     margin-bottom: 20px;
     display: flex;
     flex-direction: column;
     gap: 20px; /* Spazio uniforme tra gli elementi */
-    
 }
-  
-  .reactions h2 {
+
+.reactions h2 {
     font-size: 1.5rem;
     margin-bottom: 2vh;
     color: black;
+}
 
-  }
-  
-  .reaction-item {
+.reaction-item {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -125,13 +96,12 @@ html {
     gap: 2vh; /* Aggiunge spazio uniforme tra il testo, la barra e la percentuale */
 }
 
-  
-  .reaction-item span {
+.reaction-item span {
     font-size: 1rem;
     color: black;
-  }
-  
-  .progress-bar {
+}
+
+.progress-bar {
     width: 80%;
     height: 10px;
     background-color: #e0e0e0;
@@ -139,61 +109,50 @@ html {
     overflow: hidden;
     position: relative;
     margin: 0 10px;
-  }
-  
-  .progress {
+}
+
+.progress {
     height: 100%;
     background-color: #a4d08b; /* Verde per Media Impact */
     border-radius: 5px;
-  }
-  
-  /* Shock specific progress color */
-  .reaction-item:nth-child(2) .progress {
+}
+
+/* Shock specific progress color */
+.reaction-item:nth-child(2) .progress {
     background-color: #d89bd0; /* Viola per Shock */
-  }
-  
-  /* Price Section */
-  .price {
+}
+
+/* Price Section */
+.price {
     margin-top: 20px;
-  }
-  
-  .price h2 {
+}
+
+.price h2 {
     font-size: 1.5rem;
     margin-bottom: 10px;
     color: black;
-  }
-  
-  .price-detail,
-  .price-total {
+}
+
+.price-detail,
+.price-total {
     display: flex;
     justify-content: space-between;
     margin-bottom: 10px;
-  }
-  
-  .price-detail span,
-  .price-total span {
+}
+
+.price-detail span,
+.price-total span {
     font-size: 1rem;
     color: black;
-  }
-  
-  .price-total {
+}
+
+.price-total {
     font-weight: bold;
-  }
-  
-  #data {
+}
+
+#data {
     display: flex;
     justify-content: space-between;
     margin-bottom: 10px;
     gap: 15vh;
-  }
-
-
-
-
-
-
-
-
-
-
-  
+}
