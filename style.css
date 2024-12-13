@@ -33,7 +33,6 @@ html {
   width: 50vw; /* Larghezza dell'area */
   height: 100vh; /* Altezza dell'area */
   display: flex;
-  margin-left: -75vh;
 }
 
 .word {
@@ -77,7 +76,9 @@ html {
 
 
 
-
+.page3 {
+    gap: 30vh;
+}
 
 
 
@@ -96,7 +97,6 @@ html {
     flex-direction: column;
     justify-content: space-between;
     width: 40%; /* Adatta in base alle necessità */
-    margin-left: auto; /* Per spingere a destra */
     padding: 20px;
     border-radius: 10px;
   }
@@ -104,7 +104,11 @@ html {
   /* Reactions Section */
   .reactions {
     margin-bottom: 20px;
-  }
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Spazio uniforme tra gli elementi */
+    
+}
   
   .reactions h2 {
     font-size: 1.5rem;
@@ -117,9 +121,10 @@ html {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 10px;
-    flex-direction: column;
+    flex-direction: column; /* Dispone gli elementi verticalmente */
+    gap: 2vh; /* Aggiunge spazio uniforme tra il testo, la barra e la percentuale */
 }
+
   
   .reaction-item span {
     font-size: 1rem;
@@ -181,3 +186,14 @@ html {
     margin-bottom: 10px;
     gap: 15vh;
   }
+
+
+
+
+
+
+
+
+
+
+  

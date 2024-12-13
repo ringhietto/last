@@ -7,9 +7,17 @@
     <link rel="icon" type="image/svg+xml" href="asset/LT.png">
     <link rel="stylesheet" href="style.css"> <!-- Collega il file CSS -->
     <link rel="stylesheet" href="https://use.typekit.net/qbb0zyi.css">
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
+    <script src="arduino.js" defer></script>
 </head>
 <body>
-    <img class="background" src="asset/Marchio.svg" alt="Marchio">
+    <img class="background" src="asset/Marchio.svg" alt="Marchio" id="connectButton">
+    
+    <script>
+        // Verifica se la connessione è già stata fatta nella sessione
+        if (sessionStorage.getItem('serialConnected') !== 'true') {
+            document.getElementById('connectButton').addEventListener('click', connectToArduino);
+        }
+    </script>
 </body>
 </html>
