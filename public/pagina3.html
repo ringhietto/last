@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Overdose</title>
+    <title>Pagina 3</title>
     <link rel="icon" type="image/svg+xml" href="asset/LT.png">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://use.typekit.net/qbb0zyi.css">
@@ -14,8 +14,25 @@
 
     <script src="script.js" defer></script>
     <script src="arduino.js" defer></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const ws = new WebSocket('ws://localhost:3000');
+            ws.onmessage = (event) => {
+                const data = JSON.parse(event.data);
+                if (data.type === 'valSelezione') {
+                    // Aggiorna la visualizzazione dei tipi di morte in base al valore ricevuto
+                    const valSelezione = data.value;
+                    console.log('Valore selezione ricevuto:', valSelezione);
+                    // Aggiorna la visualizzazione in base al valore di valSelezione
+                    // Ad esempio, puoi aggiornare il contenuto di un elemento HTML
+                    document.getElementById('tipoMorte').textContent = `Tipo di morte: ${valSelezione}`;
+                }
+            };
+        });
+    </script>
 </head>
 <body class="page3">
+    <div id="tipoMorte">Tipo di morte: </div>
     <div class="choice">
         <!-- Cerchio -->
         <div class="circle"></div>

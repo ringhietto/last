@@ -85,6 +85,16 @@ document.addEventListener('DOMContentLoaded', () => {
                                 window.location.href = 'pagina2.html';
                             }
                         }
+
+                        // Check if the message contains "Val Analogico Manopola 1"
+                        if (message.startsWith("Val Analogico Manopola 1: ")) {
+                            const valSelezione = parseInt(message.split(": ")[1]);
+                            // Invia il valore alla pagina 3 tramite WebSocket
+                            const ws = new WebSocket('ws://localhost:3000');
+                            ws.onopen = () => {
+                                ws.send(JSON.stringify({ type: 'valSelezione', value: valSelezione }));
+                            };
+                        }
                     }
                 }
 
@@ -92,6 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 writer.releaseLock();
             } catch (error) {
                 console.error('Error accessing the serial port:', error);
+                alert('Error accessing the serial port: ' + error.message);
             }
         });
     } else {

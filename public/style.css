@@ -9,10 +9,12 @@ html {
   justify-content: center;
   align-items: center;
   background-color: #f0f0f0;
+  padding: 0;
+  width: 100%;
+  overflow: hidden;
 }
 
-/* Video che occupa l'intera viewport */
-.video {
+#myVideo {
     width: 100vw; /* Larghezza 100% della viewport */
     height: 100vh; /* Altezza 100% della viewport */
     object-fit: cover; /* Ritaglia il video per riempire l'area */
