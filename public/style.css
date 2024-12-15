@@ -173,13 +173,20 @@ html {
 
 /* Contenitore delle parole */
 .word-container {
-  position: relative;
+  position: absolute;
   width: 50vw; /* Larghezza dell'area */
   height: 100vh; /* Altezza dell'area */
   display: flex;
   font-family: "acumin-pro", sans-serif;
   font-weight: 500; /* Medium */
 }
+
+/* position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center; */
 
 .width-50vw {
     width: 50vw; /* Larghezza dell'area */
@@ -195,7 +202,9 @@ html {
   font-size: 1.2rem; /* Dimensione fissa */
   font-weight: 500;
   transition: transform 0.3s ease, opacity 0.3s ease;
+  
 }
+
 
 .word.active {
   opacity: 1;
@@ -217,10 +226,9 @@ html {
 .consequences {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    gap: 20px; /* Spazio uniforme tra gli elementi */
     width: 40%; /* Adatta in base alle necessità */
-    padding: 20px;
-    border-radius: 10px;
+
 }
 
 /* Reactions Section */
