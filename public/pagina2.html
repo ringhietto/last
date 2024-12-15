@@ -1,23 +1,32 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="it" class="stroke">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Intro</title>
+    <title>Video sponsor</title>
     <link rel="icon" type="image/svg+xml" href="asset/LT.png">
     <link rel="stylesheet" href="style.css"> <!-- Collega il file CSS -->
     <link rel="stylesheet" href="https://use.typekit.net/qbb0zyi.css">
     <script src="script.js" defer></script>
+    <script src="movingpages.js" defer></script>
     <script src="arduino.js" defer></script>
 </head>
 <body>
-    <img class="background" src="asset/Marchio.svg" alt="Marchio" id="connectButton">
-    
+
+  <video class="video" autoplay muted>
+    <source src="asset/polimi.mp4" type="video/mp4">
+    Il tuo browser non supporta il tag video.
+</video>
+    </div>
+
     <script>
         // Verifica se la connessione è già stata fatta nella sessione
         if (sessionStorage.getItem('serialConnected') !== 'true') {
-            document.getElementById('connectButton').addEventListener('click', connectToArduino);
+            console.log('Arduino non connesso. Tornare a index.html per connettere.');
+        } else {
+            console.log('Arduino già connesso.');
         }
     </script>
+
 </body>
 </html>

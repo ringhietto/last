@@ -11,17 +11,24 @@ html {
   background-color: #f0f0f0;
 }
 
+/* Video che occupa l'intera viewport */
+.video {
+    width: 100vw; /* Larghezza 100% della viewport */
+    height: 100vh; /* Altezza 100% della viewport */
+    object-fit: cover; /* Ritaglia il video per riempire l'area */
+}
+
 /* Cerchio - Posizione originale */
 .circle {
-  width: 600px; /* Dimensione fissa */
-  height: 600px; /* Dimensione fissa */
+  width: 800px; /* Dimensione fissa */
+  height: 800px; /* Dimensione fissa */
   background-color: white;
   background: linear-gradient(315deg, white 26%, #E1E1E1 100%);
   border-radius: 9999px;
   filter: blur(2px);
   position: absolute;
   top: 50%;
-  left: 30%; /* Posizione a sinistra */
+  left: 35%; /* Posizione a sinistra */
   transform: translate(-50%, -50%);
   box-shadow: 2px 2px 2px;
   --rotation: 0deg;
@@ -42,15 +49,13 @@ html {
   transform-origin: center;
   transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out; /* Transizione per ingrandimento e opacità */
   opacity: 0.5;
-  transform: scale(1);
-  font-size: 1.2rem; /* Più piccolo */
+  font-size: 1.2rem; /* Dimensione fissa */
   transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
 .word.active {
   opacity: 1;
-  transform: scale(1.4); /* Lieve ingrandimento */
-  font-size: 1.6rem; /* Più grande per la parola centrale */
+  font-size: 1.6rem; /* Dimensione fissa per la parola centrale */
 }
 
 /* Animazione di opacità per l'immagine */

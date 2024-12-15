@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intro</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="arduino.js" defer></script>
+</head>
+<body>
+    <img class="background" src="asset/Marchio.svg" alt="Marchio" id="connectButton">
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const backgroundDiv = document.getElementById('connectButton');
+
+            backgroundDiv.addEventListener('click', async () => {
+                try {
+                    const port = await navigator.serial.requestPort();
+                    await port.open({ baudRate: 9600 });
+
+                    const reader = port.readable.getReader();
+                    const writer = port.writable.getWriter();
+
+                    // Send a command to Arduino
+                    await writer.write(new TextEncoder().encode("Start_State: "));
+
+                    // Read data from Arduino
+                    while (true) {
+                        const { value, done } = await reader.read();
+                        if (done) {
+                            break;
+                        }
+                        const decodedValue = new TextDecoder().decode(value).trim();
+                        console.log('Received:', decodedValue);
+
+                        // Check if the message contains "Start_State: 1"
+                        if (decodedValue.startsWith("Start_State: ")) {
+                            const state = parseInt(decodedValue.split(": ")[1]);
+                            if (state === 1) {
+                                window.location.href = 'pagina2.html';
+                            }
+                        }
+                    }
+
+                    reader.releaseLock();
+                    writer.releaseLock();
+                } catch (error) {
+                    console.error('Error accessing the serial port:', error);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

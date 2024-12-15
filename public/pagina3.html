@@ -7,7 +7,11 @@
     <link rel="icon" type="image/svg+xml" href="asset/LT.png">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://use.typekit.net/qbb0zyi.css">
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.1/gsap.min.js"></script>
+
+    <script src="movingpages.js" defer></script>
+
     <script src="script.js" defer></script>
     <script src="arduino.js" defer></script>
 </head>
@@ -18,55 +22,58 @@
         
         <!-- Tipi di morte -->
         <div class="word-container">
-            <div class="word">Murder</div>
-            <div class="word">Illness</div>
-            <div class="word">Overdose</div>
-            <div class="word">Suicide</div>
-            <div class="word active">Accident</div>
+            <div class="word">MURDER</div>
+            <div class="word">ILLNESS</div>
+            <div class="word">OVERDOSE</div>
+            <div class="word">SUICIDE</div>
+            <div class="word active">ACCIDENT</div>
         </div>
     </div>
     <div class="consequences">
         <!-- Sezione Reactions -->
         <div class="reactions">
-            <h2 id="connectButton">REACTIONS</h2>
+            <h2 id="connectButton">ESTIMATED REACTIONS</h2>
+            <div class="generation">
+                <h4>Your overdose will be seen as a fitting conclusion to a life of indulgence and rebellion. Fans will honor you with artistic tributes, films, music, and art celebrating the beauty and chaos of your existence.</h4>
+        
+            </div>
             <div id="data">
             <div class="reaction-item">
+                <div class="media-impact-data">
                 <span>Media Impact</span>
+                <span>66%</span>
+            </div>
                 <div class="progress-bar">
                     <div class="progress" style="width: 66%;"></div>
                 </div>
-                <span>66%</span>
+                
             </div>
             <div class="reaction-item">
+                <div class="media-impact-data">
                 <span>Shock</span>
+                <span>65%</span>
+            </div>
                 <div class="progress-bar">
                     <div class="progress" style="width: 61%;"></div>
                 </div>
-                <span>61%</span>
             </div>
         </div>
     </div>
 
-    <div class="generation">
-        <h4>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, </h4>
+    <script>
+        // Verifica se la connessione è già stata fatta nella sessione
+        if (sessionStorage.getItem('serialConnected') !== 'true') {
+            console.log('Arduino non connesso. Tornare a index.html per connettere.');
+        } else {
+            console.log('Arduino già connesso.');
+        }
+    </script>
 
-    </div>
+   
     
         <!-- Sezione Price -->
         <div class="price">
             <h2>Price</h2>
-            <div class="price-detail">
-                <span>Place</span>
-                <span>Private</span>
-            </div>
-            <div class="price-detail">
-                <span>Mode</span>
-                <span>Overdose</span>
-            </div>
-            <div class="price-detail">
-                <span>Main reaction</span>
-                <span>Pain</span>
-            </div>
             <div class="price-total">
                 <span>TOT</span>
                 <span>1.500.000 $</span>
