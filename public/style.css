@@ -1,9 +1,141 @@
+/* Importa le font */
+@import url('https://use.typekit.net/qbb0zyi.css');
+
+/* Applica la font a tutto il contenuto della pagina */
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+/* Varianti della famiglia di font "Acumin Pro" */
+.font-light {
+    font-family: "acumin-pro", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+}
+
+.font-regular {
+    font-family: "acumin-pro", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.font-medium {
+    font-family: "acumin-pro", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+}
+
+.font-semibold {
+    font-family: "acumin-pro", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+}
+
+.font-bold {
+    font-family: "acumin-pro", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+}
+
+.font-thin {
+    font-weight: 100;
+    font-style: normal;
+}
+
+.font-thin-italic {
+    font-weight: 100;
+    font-style: italic;
+}
+
+.font-extra-light {
+    font-weight: 200;
+    font-style: normal;
+}
+
+.font-extra-light-italic {
+    font-weight: 200;
+    font-style: italic;
+}
+
+.font-light-italic {
+    font-weight: 300;
+    font-style: italic;
+}
+
+.font-italic {
+    font-weight: 400;
+    font-style: italic;
+}
+
+.font-medium-italic {
+    font-weight: 500;
+    font-style: italic;
+}
+
+.font-semibold-italic {
+    font-weight: 600;
+    font-style: italic;
+}
+
+.font-bold-italic {
+    font-weight: 700;
+    font-style: italic;
+}
+
+.font-black {
+    font-weight: 800;
+    font-style: normal;
+}
+
+.font-black-italic {
+    font-weight: 800;
+    font-style: italic;
+}
+
+.font-ultra-black {
+    font-weight: 900;
+    font-style: normal;
+}
+
+.font-ultra-black-italic {
+    font-weight: 900;
+    font-style: italic;
+}
+
+/* Varianti della famiglia di font "Elza" */
+.font-elza-light {
+    font-family: "elza", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+}
+
+.font-elza-regular {
+    font-family: "elza", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.font-elza-medium {
+    font-family: "elza", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+}
+
+.font-elza-bold {
+    font-family: "elza", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+}
+
 /* Impostazioni di base */
 body,
 html {
   height: 100%;
   margin: 0;
-  font-family: "Elza", sans-serif;
   transition: opacity 1s; /* Transizione per l'animazione */
   display: flex;
   justify-content: center;
@@ -12,6 +144,7 @@ html {
   padding: 0;
   width: 100%;
   overflow: hidden;
+  font-family: "acumin-pro", sans-serif; /* Font predefinita */
 }
 
 #myVideo {
@@ -44,6 +177,14 @@ html {
   width: 50vw; /* Larghezza dell'area */
   height: 100vh; /* Altezza dell'area */
   display: flex;
+  font-family: "acumin-pro", sans-serif;
+  font-weight: 500; /* Medium */
+}
+
+.width-50vw {
+    width: 50vw; /* Larghezza dell'area */
+    height: 100vh; /* Altezza dell'area */
+    display: flex;
 }
 
 .word {
@@ -52,6 +193,7 @@ html {
   transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out; /* Transizione per ingrandimento e opacità */
   opacity: 0.5;
   font-size: 1.2rem; /* Dimensione fissa */
+  font-weight: 500;
   transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
@@ -101,6 +243,8 @@ html {
     justify-content: space-between;
     flex-direction: column; /* Dispone gli elementi verticalmente */
     gap: 2vh; /* Aggiunge spazio uniforme tra il testo, la barra e la percentuale */
+    font-family: "acumin-pro", sans-serif;
+    font-weight: 300; /* Light */
 }
 
 .reaction-item span {
@@ -162,4 +306,24 @@ html {
     justify-content: space-between;
     margin-bottom: 10px;
     gap: 15vh;
+}
+
+.title {
+    font-family: "elza", sans-serif;
+    font-weight: 700; /* Bold */
+}
+
+.generation {
+    font-family: "acumin-pro", sans-serif;
+    font-weight: 300; /* Light */
+}
+
+.price-title {
+    font-family: "acumin-pro", sans-serif;
+    font-weight: 600; /* Semibold */
+}
+
+.price-dollar {
+    font-family: "acumin-pro", sans-serif;
+    font-weight: 700; /* Bold */
 }
