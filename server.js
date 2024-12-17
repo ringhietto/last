@@ -26,7 +26,7 @@ parser.on('data', function (data) {
   
   wss.clients.forEach(function each(client) {
     if (client.readyState === client.OPEN) {
-      client.send(JSON.stringify(data));
+      client.send(data);
     }
   });
 });
