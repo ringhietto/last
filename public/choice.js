@@ -2,8 +2,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const words = document.querySelectorAll('.word');
     const circle = document.querySelector('.circle');
     const radius = 450; // Raggio della semicirconferenza ridotto
-    const xOffset = -530; // Offset orizzontale per spostare le parole a destra (valore positivo) o a sinistra (valore negativo)
-    const yOffset = -480; // Offset orizzontale per spostare le parole a destra (valore positivo) o a sinistra (valore negativo)
+    const xOffset = -530; // Offset orizzontale per spostare le parole a destra o a sinistra
+    const yOffset = -480; // Offset verticale per spostare le parole su o giù
     let centerX, centerY;
     let currentIndex = 2; // La terza parola ("Overdose") è al centro inizialmente
     let encoderCounter = 0; // Contatore per il debouncing
@@ -72,14 +72,15 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log(event.data);
         const encoderValue = parseInt(event.data.split(' ')[2]); // Estrai il valore dell'encoder
         if (!isNaN(encoderValue)) {
-            encoderCounter += encoderValue - currentIndex; // Accumula i cambiamenti dell'encoder
+            // Aggiungi o sottrai al contatore dell'encoder
+            encoderCounter += encoderValue - currentIndex; 
             if (Math.abs(encoderCounter) >= debounceThreshold) {
                 if (encoderCounter > 0) {
                     rotateWords('left');
                 } else if (encoderCounter < 0) {
                     rotateWords('right');
                 }
-                encoderCounter = 0; // Resetta il contatore
+                encoderCounter = 0; // Resetta il contatore dopo l'aggiornamento
             }
             currentIndex = encoderValue % words.length; // Aggiorna l'indice corrente
         }
