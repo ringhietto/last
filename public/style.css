@@ -173,9 +173,10 @@ html {
 
 /* Contenitore delle parole */
 .word-container {
-  position: absolute;
-  width: 50vw; /* Larghezza dell'area */
-  height: 100vh; /* Altezza dell'area */
+    position: relative;
+  /* position: absolute;
+  width: 50vw; 
+  height: 100vh;  */
   display: flex;
   font-family: "acumin-pro", sans-serif;
   font-weight: 500; /* Medium */
@@ -208,7 +209,7 @@ html {
 
 .word.active {
   opacity: 1;
-  font-size: 1.6rem; /* Dimensione fissa per la parola centrale */
+  font-size: 2rem; /* Dimensione fissa per la parola centrale */
 }
 
 /* Animazione di opacità per l'immagine */

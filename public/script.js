@@ -76,12 +76,16 @@ document.addEventListener('DOMContentLoaded', () => {
   
     positionWords();
     window.addEventListener('resize', positionWords); // Riposiziona le parole al ridimensionamento della finestra
-  
-    // Aggiungiamo un'animazione per il cerchio
+    
     gsap.to(circle, {
-      rotation: 360,
-      duration: 10,
-      repeat: -1,
-      ease: 'linear'
-    });
+      rotation: "+=360", // Incrementa la rotazione continuamente
+      duration: 5,      // Durata della rotazione completa
+      repeat: -1,        // Ripetizione infinita
+      ease: "linear",    // Movimento costante senza accelerazioni
+      modifiers: {
+          rotation: gsap.utils.wrap(0, 360) // Mantiene il valore della rotazione sempre tra 0 e 360
+      }
+  });
+  
+    
   });
