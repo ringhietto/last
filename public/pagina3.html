@@ -14,22 +14,7 @@
 
     <script src="script.js" defer></script>
     <script src="arduino.js" defer></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const ws = new WebSocket('ws://localhost:3000');
-            ws.onmessage = (event) => {
-                const data = JSON.parse(event.data);
-                if (data.type === 'valSelezione') {
-                    // Aggiorna la visualizzazione dei tipi di morte in base al valore ricevuto
-                    const valSelezione = data.value;
-                    console.log('Valore selezione ricevuto:', valSelezione);
-                    // Aggiorna la visualizzazione in base al valore di valSelezione
-                    // Ad esempio, puoi aggiornare il contenuto di un elemento HTML
-                    document.getElementById('tipoMorte').textContent = `Tipo di morte: ${valSelezione}`;
-                }
-            };
-        });
-    </script>
+    
 </head>
 <body class="page3">
     <div class="choice">
@@ -75,18 +60,7 @@
             </div>
         </div>
     </div>
-
-    <script>
-        // Verifica se la connessione è già stata fatta nella sessione
-        if (sessionStorage.getItem('serialConnected') !== 'true') {
-            console.log('Arduino non connesso. Tornare a index.html per connettere.');
-        } else {
-            console.log('Arduino già connesso.');
-        }
-    </script>
-
-   
-    
+       
         <!-- Sezione Price -->
         <div class="price">
             <h2 class="price-title">PRICE</h2>

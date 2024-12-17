@@ -1,7 +1,7 @@
 
 
 socket.onopen = () => {
-    console.log('WebSocket connected');
+    console.log('WebSocket connected per cambiare pagina');
 };
 
 socket.onmessage = (event) => {
