@@ -15,7 +15,7 @@
     <script src="arduino.js" defer></script>
     <script src="choice.js" defer></script>
     <script src="simulate.js" defer></script>
-    <script src="generation/generation.js" defer></script>
+    <script src="generation.js" defer></script>
     
 </head>
 
@@ -31,12 +31,13 @@
         
         <!-- Tipi di morte -->
         <div class="word-container">
-            <div class="word">MURDER</div>
-            <div class="word">ILLNESS</div>
-            <div class="word">OVERDOSE</div>
-            <div class="word">SUICIDE</div>
-            <div class="word active">ACCIDENT</div>
+            <div class="word" id="word1">MURDER</div>
+            <div class="word" id="word2">ILLNESS</div>
+            <div class="word" id="word3">OVERDOSE</div>
+            <div class="word" id="word4">SUICIDE</div>
+            <div class="word active" id="word5">ACCIDENT</div>
         </div>
+        
     </div>
     
     <div class="consequences">
@@ -44,7 +45,7 @@
         <div class="reactions">
             <h2 class="title" id="connectButton">ESTIMATED REACTIONS</h2>
             <div class="generation">
-                <h4>Your overdose will be seen as a fitting conclusion to a life of indulgence and rebellion. Fans will honor you with artistic tributes, films, music, and art celebrating the beauty and chaos of your existence.</h4>
+                <h4></h4>
         
             </div>
             <div id="data">
