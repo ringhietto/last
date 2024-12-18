@@ -10,20 +10,17 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.1/gsap.min.js"></script>
 
-    <script src="movingpages.js" defer></script>
 
     <script src="script.js" defer></script>
     <script src="arduino.js" defer></script>
     <script src="choice.js" defer></script>
     <script src="simulate.js" defer></script>
+    <script src="generation/generation.js" defer></script>
     
 </head>
 
 <div id="videoContainer" style="display: none;">
-    <video id="videoPopup" width="600" controls>
-        <source src="your-video-file.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
+    
 </div> <!-- Contenitore per il video -->
 
 
@@ -82,23 +79,6 @@
         </div>
     </div>
 </div>
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        var videoContainer = document.getElementById('videoContainer');
-        var videoPopup = document.getElementById('videoPopup');
 
-        videoPopup.addEventListener('ended', function() {
-            videoContainer.style.display = 'none';
-        });
-
-        // Funzione per mostrare il video
-        function showVideo() {
-            videoContainer.style.display = 'block';
-            videoPopup.play();
-        }
-
-        // Aggiungi qui il codice per chiamare showVideo() quando necessario
-    });
-</script>
 </body>
 </html>
