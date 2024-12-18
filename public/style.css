@@ -336,3 +336,24 @@ html {
     font-family: "acumin-pro", sans-serif;
     font-weight: 700; /* Bold */
 }
+
+
+
+
+#videoContainer {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1000; /* Assicurati che il video sia sopra gli altri contenuti */
+}
+
+.other-element,
+.circle,
+.consequences {
+    display: block; /* Default display */
+}
+
+body {
+    overflow: hidden; /* Impedisce lo scorrimento durante la riproduzione del video */
+}
