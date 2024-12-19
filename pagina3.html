@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagina 3</title>
+    <link rel="icon" type="image/svg+xml" href="asset/LT.png">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://use.typekit.net/qbb0zyi.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.1/gsap.min.js"></script>
+
+
+    <script src="script.js" defer></script>
+    <script src="arduino.js" defer></script>
+    <script src="choice.js" defer></script>
+    <script src="simulate.js" defer></script>
+    <script src="generation/generation.js" defer></script>
+    
+</head>
+
+<div id="videoContainer" style="display: none;">
+    
+</div> <!-- Contenitore per il video -->
+
+
+<body class="page3">
+    <div class="choice">
+        <!-- Cerchio -->
+        <div class="circle"></div>
+        
+        <!-- Tipi di morte -->
+        <div class="word-container">
+            <div class="word">MURDER</div>
+            <div class="word">ILLNESS</div>
+            <div class="word">OVERDOSE</div>
+            <div class="word">SUICIDE</div>
+            <div class="word active">ACCIDENT</div>
+        </div>
+    </div>
+    
+    <div class="consequences">
+        <!-- Sezione Reactions -->
+        <div class="reactions">
+            <h2 class="title" id="connectButton">ESTIMATED REACTIONS</h2>
+            <div class="generation">
+                <h4>Your overdose will be seen as a fitting conclusion to a life of indulgence and rebellion. Fans will honor you with artistic tributes, films, music, and art celebrating the beauty and chaos of your existence.</h4>
+        
+            </div>
+            <div id="data">
+            <div class="reaction-item">
+                <div class="media-impact-data">
+                <span>Media Impact</span>
+                <span>66%</span>
+            </div>
+                <div class="progress-bar">
+                    <div class="progress" style="width: 66%;"></div>
+                </div>
+                
+            </div>
+            <div class="reaction-item">
+                <div class="media-impact-data">
+                <span>Shock</span>
+                <span>65%</span>
+            </div>
+                <div class="progress-bar">
+                    <div class="progress" style="width: 61%;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+       
+        <!-- Sezione Price -->
+        <div class="price">
+            <h2 class="price-title">PRICE</h2>
+            <div>
+                <span class="price-dollar">1.500.000 $</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

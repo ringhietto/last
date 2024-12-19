@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anime</title>
+
+    <!-- custom css link -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- boxicons cdn -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+
+</head>
+
+<body>
+
+    <img src="img/Dishes.png" class="dishes" id="dishes">
+    <img src="img/maindish.png" class="maindish">
+    <img src="img/rectangle.png" class="rectangle">
+
+    <div class="btns">
+        <i class='bx bx-left-arrow-alt' id="backward"></i>
+        <i class='bx bx-right-arrow-alt' id="forward"></i>
+    </div>
+
+
+    <script>
+        const backward = document.getElementById('backward');
+        const forward = document.getElementById('forward');
+        const dishes = document.getElementById('dishes');
+        let rotation = 0;
+
+        forward.addEventListener("click", ()=> {
+
+            rotation +=30;
+            dishes.style.transition = '.5s';
+            dishes.style.transform = `rotate(${rotation}deg)`;
+
+        });
+        
+
+        backward.addEventListener("click", ()=> {
+
+            rotation -=30;
+            dishes.style.transition = '.5s';
+            dishes.style.transform = `rotate(${rotation}deg)`;
+
+        });
+        
+
+
+    </script>
+
+</body>
+
+</html>
