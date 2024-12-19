@@ -357,3 +357,61 @@ html {
 body {
     overflow: hidden; /* Impedisce lo scorrimento durante la riproduzione del video */
 }
+
+<<<<<<< HEAD
+=======
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* GENERAZIONE PAROLE REAZIONI */
+
+/* Animazione per il fade-in */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.fade-in {
+    animation: fadeIn 2s ease-in-out;
+}
+
+>>>>>>> parent of 650e66c (Sistemando css generazione frase)
+/* Animazione per il tipo di scrittura */
+@keyframes typing {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
+}
+
+.typing {
+    display: inline-block;
+<<<<<<< HEAD
+    white-space: normal; /* Permette il wrapping del testo */
+    overflow: hidden;
+    width: 100%; /* Imposta la larghezza al 100% del contenitore */
+    animation: typing 4s steps(100) 1s forwards; /* Cambia 100 con il numero di lettere della frase */
+    word-wrap: break-word; /* Permette il wrapping delle parole */
+=======
+    white-space: nowrap;
+    overflow: hidden;
+    width: 0;
+    animation: typing 1s steps(50) 1s forwards; /* Cambia 30 con il numero di lettere della frase */
+>>>>>>> parent of 650e66c (Sistemando css generazione frase)
+}

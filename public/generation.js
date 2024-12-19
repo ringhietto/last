@@ -82,5 +82,3 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('resize', updateCenter);
 });
 
-
-
