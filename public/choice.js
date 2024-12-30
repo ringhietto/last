@@ -1,13 +1,12 @@
 document.addEventListener('DOMContentLoaded', () => {
     const words = document.querySelectorAll('.word');
     const circle = document.querySelector('.circle');
-    const radius = 450; // Raggio della semicirconferenza ridotto
-    const xOffset = -530; // Offset orizzontale per spostare le parole a destra o a sinistra
-    const yOffset = -480; // Offset verticale per spostare le parole su o giù
+    const radius = 400; // Raggio della semicirconferenza ridotto
+    const xOffset = -600; // Offset orizzontale per centrare le parole
+    const yOffset = -1450; // Offset verticale per posizionare le parole sopra il cerchio
     let centerX, centerY;
     let currentIndex = 2; // La terza parola ("Overdose") è al centro inizialmente
-    let encoderCounter = 0; // Contatore per il debouncing
-    const debounceThreshold = 5; // Soglia per il debouncing
+    let lastEncoderValue = 0; // Valore dell'encoder precedente
 
     function updateCenter() {
         const circleRect = circle.getBoundingClientRect();
@@ -21,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         words.forEach((word, index) => {
             const relativeIndex = (index - currentIndex + words.length) % words.length;
-            const angle = angleStep * relativeIndex - 90;
+            const angle = angleStep * relativeIndex - 180; // Angolo per rotazione orizzontale
 
             const x = centerX + radius * Math.cos((angle * Math.PI) / 180) + xOffset;
             const y = centerY + radius * Math.sin((angle * Math.PI) / 180) + yOffset;
@@ -33,10 +32,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (relativeIndex === 2) {
                 word.classList.add('active');
-                word.style.fontSize = '2em';
+                word.style.fontSize = '3em';
+                word.style.transform = `translate(${x}px, ${y}px) scale(1.2)`; // Aggiungi scala per centratura
+                loadPhrases(word.textContent.toLowerCase()); // Carica le frasi in base alla parola attiva
             } else {
                 word.classList.remove('active');
-                word.style.fontSize = '1em';
+                word.style.fontSize = '2em';
             }
         });
     }
@@ -63,20 +64,12 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log(event.data);
         const encoderValue = parseInt(event.data.split(' ')[2]);
         if (!isNaN(encoderValue)) {
-            if (encoderValue > 0) {
-                encoderCounter++;
-            } else {
-                encoderCounter--;
+            if (encoderValue > lastEncoderValue) {
+                rotateWords('left'); // Incremento -> antiorario
+            } else if (encoderValue < lastEncoderValue) {
+                rotateWords('right'); // Decremento -> orario
             }
-
-            if (Math.abs(encoderCounter) >= debounceThreshold) {
-                if (encoderCounter > 0) {
-                    rotateWords('left');
-                } else if (encoderCounter < 0) {
-                    rotateWords('right');
-                }
-                encoderCounter = 0;
-            }
+            lastEncoderValue = encoderValue; // Aggiorna il valore dell'encoder
         }
     };
 

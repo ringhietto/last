@@ -1,6 +1,6 @@
 const words = document.querySelectorAll('.word');
 const circle = document.querySelector('.circle');
-const radius = 450; // Raggio della semicirconferenza ridotto
+const radius = 400; // Raggio della semicirconferenza ridotto
 const xOffset = -530; // Offset orizzontale per spostare le parole a destra (valore positivo) o a sinistra (valore negativo)
 const yOffset = -480; // Offset orizzontale per spostare le parole a destra (valore positivo) o a sinistra (valore negativo)
 let centerX, centerY;

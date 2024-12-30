@@ -155,31 +155,28 @@ html {
 
 /* Cerchio - Posizione originale */
 .circle {
-  width: 800px; /* Dimensione fissa */
-  height: 800px; /* Dimensione fissa */
+  width: 2500px; /* Dimensione fissa */
+  height: 2500px; /* Dimensione fissa */
   background-color: white;
   background: linear-gradient(315deg, white 26%, #E1E1E1 100%);
+  box-shadow: 0px 0px 129.10000610351562px rgba(0, 0, 0, 0.20); 
   border-radius: 9999px;
   filter: blur(2px);
   position: absolute;
-  top: 50%;
-  left: 35%; /* Posizione a sinistra */
-  transform: translate(-50%, -50%);
-  box-shadow: 2px 2px 2px;
+  top: 70%;
+  /*left: 35%; Posizione a sinistra */
+  transform: translate(-35%, 3%);
   --rotation: 0deg;
-  transform: translate(-135%, -50%) rotate(var(--rotation)); /* Mantiene la posizione a sinistra */
+  /* transform: translate(-135%, -50%) rotate(var(--rotation)); Mantiene la posizione a sinistra */
   transition: transform 0.5s ease-in-out;
 }
 
 /* Contenitore delle parole */
 .word-container {
     position: relative;
-  /* position: absolute;
-  width: 50vw; 
-  height: 100vh;  */
-  display: flex;
-  font-family: "acumin-pro", sans-serif;
-  font-weight: 500; /* Medium */
+    display: flex;
+    font-family: "acumin-pro", sans-serif;
+    font-weight: 500; /* Medium */
 }
 
 /* position: absolute;
@@ -234,97 +231,16 @@ html {
 
 /* Reactions Section */
 .reactions {
-    margin-bottom: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px; /* Spazio uniforme tra gli elementi */
+    gap: 300px; /* Spazio uniforme tra gli elementi */
 }
 
-.reactions h2 {
-    font-size: 1.5rem;
-    margin-bottom: 2vh;
-    color: black;
-}
 
-.reaction-item {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-direction: column; /* Dispone gli elementi verticalmente */
-    gap: 2vh; /* Aggiunge spazio uniforme tra il testo, la barra e la percentuale */
-    font-family: "acumin-pro", sans-serif;
-    font-weight: 300; /* Light */
-}
 
-.reaction-item span {
-    font-size: 1rem;
-    color: black;
-}
 
-.progress-bar {
-    width: 80%;
-    height: 10px;
-    background-color: #e0e0e0;
-    border-radius: 5px;
-    overflow: hidden;
-    position: relative;
-    margin: 0 10px;
-}
-
-.progress {
-    height: 100%;
-    background-color: #a4d08b; /* Verde per Media Impact */
-    border-radius: 5px;
-}
-
-/* Shock specific progress color */
-.reaction-item:nth-child(2) .progress {
-    background-color: #d89bd0; /* Viola per Shock */
-}
-
-/* Price Section */
-.price {
-    margin-top: 20px;
-}
-
-.price h2 {
-    font-size: 1.5rem;
-    margin-bottom: 10px;
-    color: black;
-}
-
-.price-detail,
-.price-total {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 10px;
-}
-
-.price-detail span,
-.price-total span {
-    font-size: 1rem;
-    color: black;
-}
-
-.price-total {
-    font-weight: bold;
-}
-
-#data {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 10px;
-    gap: 15vh;
-}
-
-.title {
-    font-family: "elza", sans-serif;
-    font-weight: 700; /* Bold */
-}
 
 .generation {
     font-family: "acumin-pro", sans-serif;
-    font-weight: 300; /* Light */
+    font-weight: 700; /* Bold */
 }
 
 .price-title {
@@ -348,11 +264,7 @@ html {
     z-index: 1000; /* Assicurati che il video sia sopra gli altri contenuti */
 }
 
-.other-element,
-.circle,
-.consequences {
-    display: block; /* Default display */
-}
+
 
 body {
     overflow: hidden; /* Impedisce lo scorrimento durante la riproduzione del video */
@@ -360,7 +272,12 @@ body {
 
 
 
-
+.second {
+    text-align: center;
+    display: flex;
+    gap: 7vw;
+    position: absolute;
+}
 
 
 
