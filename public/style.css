@@ -17,119 +17,13 @@ body {
     font-style: normal;
 }
 
-.font-regular {
-    font-family: "acumin-pro", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-}
-
-.font-medium {
-    font-family: "acumin-pro", sans-serif;
-    font-weight: 500;
-    font-style: normal;
-}
-
-.font-semibold {
-    font-family: "acumin-pro", sans-serif;
-    font-weight: 600;
-    font-style: normal;
-}
-
 .font-bold {
     font-family: "acumin-pro", sans-serif;
     font-weight: 700;
     font-style: normal;
 }
 
-.font-thin {
-    font-weight: 100;
-    font-style: normal;
-}
 
-.font-thin-italic {
-    font-weight: 100;
-    font-style: italic;
-}
-
-.font-extra-light {
-    font-weight: 200;
-    font-style: normal;
-}
-
-.font-extra-light-italic {
-    font-weight: 200;
-    font-style: italic;
-}
-
-.font-light-italic {
-    font-weight: 300;
-    font-style: italic;
-}
-
-.font-italic {
-    font-weight: 400;
-    font-style: italic;
-}
-
-.font-medium-italic {
-    font-weight: 500;
-    font-style: italic;
-}
-
-.font-semibold-italic {
-    font-weight: 600;
-    font-style: italic;
-}
-
-.font-bold-italic {
-    font-weight: 700;
-    font-style: italic;
-}
-
-.font-black {
-    font-weight: 800;
-    font-style: normal;
-}
-
-.font-black-italic {
-    font-weight: 800;
-    font-style: italic;
-}
-
-.font-ultra-black {
-    font-weight: 900;
-    font-style: normal;
-}
-
-.font-ultra-black-italic {
-    font-weight: 900;
-    font-style: italic;
-}
-
-/* Varianti della famiglia di font "Elza" */
-.font-elza-light {
-    font-family: "elza", sans-serif;
-    font-weight: 300;
-    font-style: normal;
-}
-
-.font-elza-regular {
-    font-family: "elza", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-}
-
-.font-elza-medium {
-    font-family: "elza", sans-serif;
-    font-weight: 500;
-    font-style: normal;
-}
-
-.font-elza-bold {
-    font-family: "elza", sans-serif;
-    font-weight: 700;
-    font-style: normal;
-}
 
 /* Impostazioni di base */
 body,
@@ -144,14 +38,49 @@ html {
   padding: 0;
   width: 100%;
   overflow: hidden;
-  font-family: "acumin-pro", sans-serif; /* Font predefinita */
+
+  font-family: "acumin-pro", sans-serif;
+  
 }
+
+/* Animazione di opacità per l'immagine */
+.background {
+    transition: opacity 1s ease-in-out; /* La durata della transizione è 1s */
+    opacity: 1; /* Imposta l'opacità iniziale a 100% */
+}
+
+/*
+██████╗  █████╗  ██████╗ ██╗███╗   ██╗ █████╗     ██████╗ 
+██╔══██╗██╔══██╗██╔════╝ ██║████╗  ██║██╔══██╗    ╚════██╗
+██████╔╝███████║██║  ███╗██║██╔██╗ ██║███████║     █████╔╝
+██╔═══╝ ██╔══██║██║   ██║██║██║╚██╗██║██╔══██║    ██╔═══╝ 
+██║     ██║  ██║╚██████╔╝██║██║ ╚████║██║  ██║    ███████╗
+╚═╝     ╚═╝  ╚═╝ ╚═════╝ ╚═╝╚═╝  ╚═══╝╚═╝  ╚═╝    ╚══════╝                                                       
+*/
 
 #myVideo {
     width: 100vw; /* Larghezza 100% della viewport */
     height: 100vh; /* Altezza 100% della viewport */
     object-fit: cover; /* Ritaglia il video per riempire l'area */
 }
+
+/*
+██████╗  █████╗  ██████╗ ██╗███╗   ██╗ █████╗     ██████╗ 
+██╔══██╗██╔══██╗██╔════╝ ██║████╗  ██║██╔══██╗    ╚════██╗
+██████╔╝███████║██║  ███╗██║██╔██╗ ██║███████║     █████╔╝
+██╔═══╝ ██╔══██║██║   ██║██║██║╚██╗██║██╔══██║     ╚═══██╗
+██║     ██║  ██║╚██████╔╝██║██║ ╚████║██║  ██║    ██████╔╝
+╚═╝     ╚═╝  ╚═╝ ╚═════╝ ╚═╝╚═╝  ╚═══╝╚═╝  ╚═╝    ╚═════╝                                                      
+*/
+
+#videoContainer {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1000; /* Assicurati che il video sia sopra gli altri contenuti */
+}
+
 
 /* Cerchio - Posizione originale */
 .circle {
@@ -165,7 +94,7 @@ html {
   position: absolute;
   top: 70%;
   /*left: 35%; Posizione a sinistra */
-  transform: translate(-35%, 3%);
+  transform: translate(-36.2%, 3%);
   --rotation: 0deg;
   /* transform: translate(-135%, -50%) rotate(var(--rotation)); Mantiene la posizione a sinistra */
   transition: transform 0.5s ease-in-out;
@@ -176,15 +105,10 @@ html {
     position: relative;
     display: flex;
     font-family: "acumin-pro", sans-serif;
-    font-weight: 500; /* Medium */
+    font-weight: 700; /* bold */
+    font-style: normal;
 }
 
-/* position: absolute;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center; */
 
 .width-50vw {
     width: 50vw; /* Larghezza dell'area */
@@ -203,16 +127,9 @@ html {
   
 }
 
-
 .word.active {
   opacity: 1;
   font-size: 2rem; /* Dimensione fissa per la parola centrale */
-}
-
-/* Animazione di opacità per l'immagine */
-.background {
-    transition: opacity 1s ease-in-out; /* La durata della transizione è 1s */
-    opacity: 1; /* Imposta l'opacità iniziale a 100% */
 }
 
 /* Classe per nascondere la pagina con dissolvenza */
@@ -222,66 +139,94 @@ html {
 
 /* Contenitore principale per consequences */
 .consequences {
-    display: flex;
+    height: 30vw;
+    width: 40%;
+
+    display: inline-flex;
     flex-direction: column;
-    gap: 20px; /* Spazio uniforme tra gli elementi */
-    width: 40%; /* Adatta in base alle necessità */
-
-}
-
-/* Reactions Section */
-.reactions {
-    gap: 300px; /* Spazio uniforme tra gli elementi */
+    justify-content: center;
+    align-items: center;
+    
 }
 
 
 
-
-
-.generation {
-    font-family: "acumin-pro", sans-serif;
-    font-weight: 700; /* Bold */
+.first {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 40vw;
 }
 
-.price-title {
-    font-family: "acumin-pro", sans-serif;
-    font-weight: 600; /* Semibold */
-}
-
-.price-dollar {
-    font-family: "acumin-pro", sans-serif;
-    font-weight: 700; /* Bold */
-}
-
-
-
-
-#videoContainer {
-    display: none;
+.consequence {
+    /* margin-bottom: 0vw; */
+    font-weight: 700; /* bold */
+    font-style: normal;
     position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 1000; /* Assicurati che il video sia sopra gli altri contenuti */
 }
 
-
-
-body {
-    overflow: hidden; /* Impedisce lo scorrimento durante la riproduzione del video */
+.just-like h4 {
+    font-weight: 300;
+    font-style: normal;
+    position: absolute;
 }
-
-
 
 .second {
-    text-align: center;
     display: flex;
-    gap: 7vw;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    
+    text-align: center;
     position: absolute;
+
+    gap: 15vw;
+
+    margin-bottom: 15vw;
 }
 
+.reaction p {
+    font-weight: 300;
+    font-style: normal;
 
+    margin-bottom: -0.5vw;
+}
 
+.reaction h4 {
+    font-weight: 700; /* bold */
+    font-style: normal;
 
+    margin-bottom: -1.3vw;
+}
+
+.symbol p {
+    font-weight: 300;
+    font-style: normal;
+
+    margin-bottom: -0.5vw;
+}
+
+.symbol h4 {
+    font-weight: 700; /* bold */
+    font-style: normal;
+
+    margin-bottom: -1.3vw;
+}
+
+.tributes p {
+    font-weight: 300;
+    font-style: normal;
+
+    margin-bottom: -0.5vw;
+}
+
+.tributes h4 {
+    font-weight: 700; /* bold */
+    font-style: normal;
+
+    margin-bottom: -1.3vw;
+}
 
 
 
@@ -290,18 +235,17 @@ body {
 
 /* GENERAZIONE PAROLE REAZIONI */
 
-/* Animazione per il fade-in */
-@keyframes fadeIn {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
+.fade-in {
+    animation: fadeIn 2s forwards;
 }
 
-.fade-in {
-    animation: fadeIn 2s ease-in-out;
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
 /* Animazione per il tipo di scrittura */

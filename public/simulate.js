@@ -49,7 +49,7 @@ function playVideoAndHideOthers(videoSrc) {
 
 // Esegui la funzione con il video scelto
 socket.onmessage = (event) => {
-    if (event.data.includes("Video pressed!")) {
+    if (event.data.includes("Start pressed!")) {
         const activeWord = document.querySelector('.word.active').textContent;
         let videoSrc = '';
 

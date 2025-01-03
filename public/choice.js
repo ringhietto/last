@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const words = document.querySelectorAll('.word');
     const circle = document.querySelector('.circle');
     const radius = 400; // Raggio della semicirconferenza ridotto
-    const xOffset = -600; // Offset orizzontale per centrare le parole
+    const xOffset = -630; // Offset orizzontale per centrare le parole
     const yOffset = -1450; // Offset verticale per posizionare le parole sopra il cerchio
     let centerX, centerY;
     let currentIndex = 2; // La terza parola ("Overdose") è al centro inizialmente
@@ -33,8 +33,8 @@ document.addEventListener('DOMContentLoaded', () => {
             if (relativeIndex === 2) {
                 word.classList.add('active');
                 word.style.fontSize = '3em';
-                word.style.transform = `translate(${x}px, ${y}px) scale(1.2)`; // Aggiungi scala per centratura
-                loadPhrases(word.textContent.toLowerCase()); // Carica le frasi in base alla parola attiva
+                loadVip(word.textContent.toLowerCase()); // Chiama la funzione loadVip
+                loadPhrases(word.textContent.toLowerCase()); // Chiama la funzione loadPhrases
             } else {
                 word.classList.remove('active');
                 word.style.fontSize = '2em';
@@ -44,15 +44,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function rotateWords(direction) {
         if (direction === 'left') {
-            currentIndex = (currentIndex + 1) % words.length;
-        } else if (direction === 'right') {
             currentIndex = (currentIndex - 1 + words.length) % words.length;
+        } else if (direction === 'right') {
+            currentIndex = (currentIndex + 1) % words.length;
         }
         updatePositions();
     }
 
+    // Inizializza la posizione iniziale
     updateCenter();
-    window.addEventListener('resize', updateCenter);
+
+    document.addEventListener('DOMContentLoaded', () => {
+        updateCenter(); // Assicurati che la posizione venga aggiornata dopo il caricamento
+        window.addEventListener('resize', updateCenter); // Riposiziona le parole al ridimensionamento della finestra
+    });
 
     const socket = new WebSocket("ws://127.0.0.1:8001");
 
@@ -64,12 +69,11 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log(event.data);
         const encoderValue = parseInt(event.data.split(' ')[2]);
         if (!isNaN(encoderValue)) {
-            if (encoderValue > lastEncoderValue) {
-                rotateWords('left'); // Incremento -> antiorario
-            } else if (encoderValue < lastEncoderValue) {
-                rotateWords('right'); // Decremento -> orario
+            if (encoderValue > 0) {
+                rotateWords('right');
+            } else if (encoderValue < 0) {
+                rotateWords('left');
             }
-            lastEncoderValue = encoderValue; // Aggiorna il valore dell'encoder
         }
     };
 
@@ -80,4 +84,11 @@ document.addEventListener('DOMContentLoaded', () => {
     socket.onclose = () => {
         console.log('WebSocket connection closed');
     };
+
+    gsap.to(circle, {
+        rotation: "+=360", // Incrementa la rotazione continuamente
+        duration: 20,
+        repeat: -1,
+        ease: "linear"
+    });
 });
