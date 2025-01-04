@@ -56,10 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Inizializza la posizione iniziale
   updateCenter();
 
-  document.addEventListener("DOMContentLoaded", () => {
-    updateCenter(); // Assicurati che la posizione venga aggiornata dopo il caricamento
-    window.addEventListener("resize", updateCenter); // Riposiziona le parole al ridimensionamento della finestra
-  });
+  window.addEventListener("resize", updateCenter); // Riposiziona le parole al ridimensionamento della finestra
 
   const socket = new WebSocket("ws://127.0.0.1:8001");
 
@@ -68,15 +65,15 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   socket.onmessage = (event) => {
-    if (event.data.includes("Start pressed!")) {
-      const encoderValue = parseInt(event.data.split(" ")[2]);
-      if (!isNaN(encoderValue)) {
-        if (encoderValue > 0) {
-          rotateWords("right");
-        } else if (encoderValue < 0) {
-          rotateWords("left");
-        }
+    console.log(event.data);
+    const encoderValue = parseInt(event.data.split(" ")[2]);
+    if (!isNaN(encoderValue)) {
+      if (encoderValue > lastEncoderValue) {
+        rotateWords("right");
+      } else if (encoderValue < lastEncoderValue) {
+        rotateWords("left");
       }
+      lastEncoderValue = encoderValue;
     }
   };
 
@@ -87,11 +84,4 @@ document.addEventListener("DOMContentLoaded", () => {
   socket.onclose = () => {
     console.log("WebSocket connection closed");
   };
-
-  gsap.to(circle, {
-    rotation: "+=360", // Incrementa la rotazione continuamente
-    duration: 20,
-    repeat: -1,
-    ease: "linear",
-  });
 });

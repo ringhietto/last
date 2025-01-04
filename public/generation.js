@@ -22,29 +22,29 @@ function loadPhrases(deathType) {
 }
 
 function loadVip(vipType) {
-  const vipPhrases = {
-    accident: "Just like John Lennon",
-    murder: "Just like Elvis Presley",
-    overdose: "Just like Kurt Cobain",
-    suicide: "Just like Robin Williams",
-    illness: "Just like Steve Jobs",
-  };
-
   const generationContainer = document.querySelector(".just-like h4");
-  const phrase = vipPhrases[vipType.toLowerCase()];
 
-  if (phrase) {
-    // Rimuoviamo l'eventuale classe di animazione precedente
-    generationContainer.classList.remove("fade-in");
+  fetch(`vip/${vipType.toLowerCase()}.json`)
+    .then(response => response.json())
+    .then(data => {
+      const phrase = data.phrase;
 
-    // Nascondiamo il testo
-    generationContainer.style.opacity = "0";
+      if (phrase) {
+        // Rimuoviamo l'eventuale classe di animazione precedente
+        generationContainer.classList.remove("fade-in");
 
-    // Aspettiamo 3 secondi prima di mostrare la nuova frase
-    setTimeout(() => {
-      // Impostiamo il testo e aggiungiamo la classe fade-in
-      generationContainer.textContent = phrase;
-      generationContainer.classList.add("fade-in");
-    }, 3500);
-  }
+        // Nascondiamo il testo
+        generationContainer.style.opacity = "0";
+
+        // Utilizziamo requestAnimationFrame per garantire la precisione dell'animazione
+        requestAnimationFrame(() => {
+          // Impostiamo il testo
+          generationContainer.textContent = phrase;
+
+          // Aggiungiamo la classe fade-in per la transizione
+          generationContainer.classList.add("fade-in");
+        });
+      }
+    })
+    .catch(error => console.error('Errore nel caricare il JSON:', error));
 }

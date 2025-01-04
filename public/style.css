@@ -171,12 +171,16 @@ html {
     font-style: normal;
     margin-top: 5vw;
     /* position: absolute; */
+    opacity: 0; /* Imposta l'opacità iniziale a 0% */
 }
 
 /* GENERAZIONE PAROLE REAZIONI */
 
 .fade-in {
-    animation: fadeIn 1s forwards;
+    animation: fadeIn 3s forwards;
+    opacity: 1;
+    transition: opacity 3s ease-in-out 3s; /* Durata della dissolvenza di 3 secondi con un ritardo di 3 secondi */
+    animation-delay: 1.5s; /* Ritardo di 3 secondi prima di iniziare la transizione */
 }
 
 @keyframes fadeIn {

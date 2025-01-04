@@ -1,99 +1,40 @@
-// Seleziona gli elementi
-const videoContainer = document.getElementById("videoContainer");
-const otherElements = document.querySelectorAll(
-  ".other-element, .circle, .consequences"
-); // Gli altri elementi da nascondere
-let isVideoPlaying = false; // Variabile per tracciare se il video è in esecuzione
-let pressStartTime = 0;
+// simulate.js
 
-// Gestione dei tempi per il press
-const minPressTime = 500; // 500ms (mezzo secondo)
-const maxPressTime = 1000; // 1000ms (un secondo)
+// Funzione per avviare il video
+function startVideo() {
+  console.log("Video started!");
+  // Aggiungi qui il codice per avviare il video
+  // Ad esempio, se stai usando un elemento video HTML:
+  // document.getElementById('myVideo').play();
+}
 
-// Funzione per avviare il video e nascondere altri contenuti
-function playVideoAndHideOthers(videoSrc) {
-  // Controlla se un video è già in esecuzione
-  if (isVideoPlaying) return; // Non fare nulla se il video è già in esecuzione
+// Funzione per gestire il pulsante Start
+function handleStartPress(pressCount) {
+  if (pressCount === 1) {
+    // Short press: avvia il video
+    startVideo();
+  } else if (pressCount === 2) {
+    // Double press: ricarica la pagina
+    window.location.href = "pagina3.html"; // Ricarica la pagina
+  }
+}
 
-  isVideoPlaying = true; // Imposta che il video è in esecuzione
+// Funzione per ascoltare i dati dal monitor seriale
+function listenForSerialData() {
+  // Supponendo che tu stia usando una libreria per la comunicazione seriale
+  const serial = new p5.SerialPort(); // Usa p5.js per la comunicazione seriale
+  serial.list(); // Elenca le porte seriali disponibili
+  serial.open("COM3"); // Sostituisci con la tua porta seriale
 
-  // Nascondi gli altri elementi
-  otherElements.forEach((element) => {
-    element.style.display = "none";
-  });
-
-  // Mostra il contenitore del video
-  videoContainer.style.display = "block";
-
-  // Imposta il video da riprodurre
-  videoContainer.innerHTML = `<video id="videoPlayer" autoplay muted>
-                                    <source src="${videoSrc}" type="video/mp4">
-                                    Il tuo browser non supporta il tag video.
-                                 </video>`;
-
-  const video = document.getElementById("videoPlayer");
-
-  // Applica lo stesso stile CSS al video
-  video.style.width = "100vw"; // Larghezza 100% della viewport
-  video.style.height = "100vh"; // Altezza 100% della viewport
-  video.style.objectFit = "cover"; // Ritaglia il video per riempire l'area
-
-  // Quando il video finisce, ripristina la pagina
-  video.addEventListener("ended", () => {
-    // Nascondi il video
-    videoContainer.style.display = "none";
-
-    // Mostra di nuovo gli altri elementi
-    otherElements.forEach((element) => {
-      element.style.display = "block";
-    });
-
-    // Rimuovi eventuali modifiche al contesto della pagina (es. selezione)
-    // Puoi anche conservare lo stato dell'elemento selezionato, se necessario
-    isVideoPlaying = false; // Imposta che il video non è più in esecuzione
+  // Aggiungi un listener per i dati in arrivo
+  serial.on("data", function () {
+    const data = serial.readLine(); // Leggi la linea di dati
+    if (data) {
+      const pressCount = parseInt(data); // Assicurati che il dato sia un numero
+      handleStartPress(pressCount); // Gestisci la pressione
+    }
   });
 }
 
-// Esegui la funzione con il video scelto
-socket.onmessage = (event) => {
-  if (event.data === "Start pressed!") {
-    if (pressStartTime === 0) {
-      pressStartTime = new Date().getTime();
-    } else {
-      const pressDuration = new Date().getTime() - pressStartTime;
-      console.log(`Pressione: ${pressDuration}ms`); // Solo questo log
-
-      if (pressDuration >= minPressTime && pressDuration <= maxPressTime) {
-        const activeWord = document.querySelector(".word.active").textContent;
-        let videoSrc = "";
-
-        switch (activeWord) {
-          case "MURDER":
-            videoSrc = "/public/asset/videos/murder.mp4";
-            break;
-          case "ILLNESS":
-            videoSrc = "/public/asset/videos/illness.mp4";
-            break;
-          case "OVERDOSE":
-            videoSrc = "/public/asset/videos/overdose.mp4";
-            break;
-          case "SUICIDE":
-            videoSrc = "/public/asset/videos/suicide.mp4";
-            break;
-          case "ACCIDENT":
-            videoSrc = "/public/asset/videos/accident.mp4";
-            break;
-        }
-
-        if (videoSrc) {
-          playVideoAndHideOthers(videoSrc);
-        }
-      }
-
-      // Reset completo dopo ogni pressione
-      setTimeout(() => {
-        pressStartTime = 0;
-      }, 1500); // Reset dopo 1.5 secondi
-    }
-  }
-};
+// Inizializza la comunicazione seriale
+listenForSerialData();
