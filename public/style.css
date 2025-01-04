@@ -156,7 +156,7 @@ html {
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 40vw;
+    margin-bottom: 45vw;
 }
 
 .consequence {
@@ -169,7 +169,41 @@ html {
 .just-like h4 {
     font-weight: 300;
     font-style: normal;
-    position: absolute;
+    margin-top: 5vw;
+    /* position: absolute; */
+}
+
+/* GENERAZIONE PAROLE REAZIONI */
+
+.fade-in {
+    animation: fadeIn 1s forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Animazione per il tipo di scrittura */
+@keyframes typing {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
+}
+
+.typing {
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 0;
+    animation: typing 0.3s steps(50) 1s forwards; /* Cambia 30 con il numero di lettere della frase */
 }
 
 .second {
@@ -181,9 +215,9 @@ html {
     text-align: center;
     position: absolute;
 
-    gap: 15vw;
+    gap: 20vw;
 
-    margin-bottom: 15vw;
+    margin-bottom: 17vw;
 }
 
 .reaction p {
@@ -233,35 +267,3 @@ html {
 
 
 
-/* GENERAZIONE PAROLE REAZIONI */
-
-.fade-in {
-    animation: fadeIn 2s forwards;
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
-/* Animazione per il tipo di scrittura */
-@keyframes typing {
-    from {
-        width: 0;
-    }
-    to {
-        width: 100%;
-    }
-}
-
-.typing {
-    display: inline-block;
-    white-space: nowrap;
-    overflow: hidden;
-    width: 0;
-    animation: typing 1s steps(50) 1s forwards; /* Cambia 30 con il numero di lettere della frase */
-}

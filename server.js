@@ -2,7 +2,7 @@ import { WebSocketServer } from 'ws';
 import { SerialPort, ReadlineParser } from 'serialport';
 
 const WS_PORT = 8001;
-const SERIAL_PORT = '/dev/cu.usbmodem1101';
+const SERIAL_PORT = '/dev/cu.usbmodem2101';
 const BAUD_RATE = 9600;
 
 const wss = new WebSocketServer({ port: WS_PORT });
