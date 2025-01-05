@@ -110,9 +110,8 @@
 //     }
 // });
 
-
 const socket = new WebSocket("ws://127.0.0.1:8001");
-        console.log('Websocket connected per creare la connessione');
-        socket.onmessage = (event) => {
-            console.log(event.data);
-        }
+console.log("Websocket connected per creare la connessione");
+socket.onmessage = (event) => {
+  console.log(event.data);
+};

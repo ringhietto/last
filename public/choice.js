@@ -65,7 +65,6 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   socket.onmessage = (event) => {
-    console.log(event.data);
     const encoderValue = parseInt(event.data.split(" ")[2]);
     if (!isNaN(encoderValue)) {
       if (encoderValue > lastEncoderValue) {

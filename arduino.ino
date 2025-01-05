@@ -1,3 +1,4 @@
+
 #include <Encoder.h>
 
 // Pin dell'encoder
@@ -19,8 +20,8 @@ bool Start_State, Video_State, Buy_State;
 unsigned long lastPressTime = 0;
 unsigned long pressDuration = 0;
 int pressCount = 0;
-const unsigned long shortPressTime = 500;      // Durata massima per un "short press" (in millisecondi)
-const unsigned long doublePressInterval = 300; // Intervallo massimo tra due pressioni per un "double press" (in millisecondi)
+const unsigned long shortPressTime = 1500;      // Durata massima per un "short press" (in millisecondi)
+const unsigned long doublePressInterval = 500; // Intervallo massimo tra due pressioni per un "double press" (in millisecondi)
 
 void setup()
 {
