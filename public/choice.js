@@ -1,11 +1,11 @@
 document.addEventListener("DOMContentLoaded", () => {
   const words = document.querySelectorAll(".word");
   const circle = document.querySelector(".circle");
-  const radius = 400; // Raggio della semicirconferenza ridotto
-  const xOffset = -630; // Offset orizzontale per centrare le parole
-  const yOffset = -1550; // Offset verticale per posizionare le parole sopra il cerchio
+  const radius = 100; // Raggio della semicirconferenza ridotto
+  const xOffset = -950; // Offset orizzontale per centrare le parole
+  const yOffset = -650; // Offset verticale per posizionare le parole sopra il cerchio
   let centerX, centerY;
-  let currentIndex = 2; // La terza parola ("Overdose") è al centro inizialmente
+  let currentIndex = 8; // La terza parola ("Overdose") è al centro inizialmente
   let lastEncoderValue = 0; // Valore dell'encoder precedente
 
   function updateCenter() {
@@ -16,7 +16,8 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function updatePositions() {
-    const angleStep = 180 / (words.length - 1);
+    const angleStep = 360 / words.length; // Cambiato per coprire l'intero cerchio
+    const radius = 750; // Mantieni il raggio per allontanare le parole
 
     words.forEach((word, index) => {
       const relativeIndex =
@@ -32,14 +33,14 @@ document.addEventListener("DOMContentLoaded", () => {
       word.style.transform = `translate(${x}px, ${y}px)`;
       word.style.opacity = opacity;
 
-      if (relativeIndex === 2) {
+      if (relativeIndex === 5) {
         word.classList.add("active");
-        word.style.fontSize = "3em";
+        word.style.fontSize = "2.5em";
         loadVip(word.textContent.toLowerCase()); // Chiama la funzione loadVip
         loadPhrases(word.textContent.toLowerCase()); // Chiama la funzione loadPhrases
       } else {
         word.classList.remove("active");
-        word.style.fontSize = "2em";
+        word.style.fontSize = "1em";
       }
     });
   }
@@ -84,3 +85,15 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log("WebSocket connection closed");
   };
 });
+
+
+
+function animateRotation() {
+  if (currentIndex !== targetIndex) {
+    currentIndex =
+      (currentIndex + (targetIndex > currentIndex ? 1 : -1) + words.length) %
+      words.length;
+    updatePositions();
+    requestAnimationFrame(animateRotation);
+  }
+}

@@ -50,3 +50,22 @@ async function listenForSerialData() {
     console.error("Errore durante la comunicazione seriale:", error);
   }
 }
+
+document
+  .getElementById("videoContainer")
+  .addEventListener("click", function () {
+    var video = document.getElementById("accidentVideo");
+    var thumbnail = document.getElementById("videoThumbnail");
+    if (video.style.display === "none") {
+      thumbnail.style.display = "none"; // Nascondi l'immagine
+      video.style.display = "block"; // Mostra il video
+      video.play(); // Avvia il video
+    }
+  });
+
+document.getElementById("accidentVideo").addEventListener("ended", function () {
+  var thumbnail = document.getElementById("videoThumbnail");
+  this.style.display = "none"; // Nascondi il video
+  thumbnail.style.display = "block"; // Mostra l'immagine
+});
+

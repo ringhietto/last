@@ -73,90 +73,30 @@ html {
 ╚═╝     ╚═╝  ╚═╝ ╚═════╝ ╚═╝╚═╝  ╚═══╝╚═╝  ╚═╝    ╚═════╝                                                      
 */
 
-#videoContainer {
-    display: none;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 1000; /* Assicurati che il video sia sopra gli altri contenuti */
-}
 
-
-/* Cerchio - Posizione originale */
-.circle {
-  width: 2500px; /* Dimensione fissa */
-  height: 2500px; /* Dimensione fissa */
-  background-color: white;
-  background: linear-gradient(315deg, white 26%, #E1E1E1 100%);
-  box-shadow: 0px 0px 129.10000610351562px rgba(0, 0, 0, 0.20); 
-  border-radius: 9999px;
-  filter: blur(2px);
-  position: absolute;
-  top: 70%;
-  /*left: 35%; Posizione a sinistra */
-  transform: translate(-36.2%, 3%);
-  --rotation: 0deg;
-  /* transform: translate(-135%, -50%) rotate(var(--rotation)); Mantiene la posizione a sinistra */
-  transition: transform 0.5s ease-in-out;
-}
-
-/* Contenitore delle parole */
-.word-container {
-    position: relative;
+/* Contenitore principale per consequences */
+.consequences {
+    margin-bottom: 20px; /* Aggiungi un margine inferiore per separare dal videoContainer */
     display: flex;
-    font-family: "acumin-pro", sans-serif;
-    font-weight: 700; /* bold */
-    font-style: normal;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative; /* Assicurati che non sia assoluto */
+    margin-top: 15vw;
 }
 
-
-.width-50vw {
-    width: 50vw; /* Larghezza dell'area */
-    height: 100vh; /* Altezza dell'area */
-    display: flex;
-}
-
-.word {
-  position: absolute;
-  transform-origin: center;
-  transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out; /* Transizione per ingrandimento e opacità */
-  opacity: 0.5;
-  font-size: 1.2rem; /* Dimensione fissa */
-  font-weight: 500;
-  transition: transform 0.3s ease, opacity 0.3s ease;
-  
-}
-
-.word.active {
-  opacity: 1;
-  font-size: 2rem; /* Dimensione fissa per la parola centrale */
-}
 
 /* Classe per nascondere la pagina con dissolvenza */
 .fade-out {
     opacity: 0;
 }
 
-/* Contenitore principale per consequences */
-.consequences {
-    height: 30vw;
-    width: 40%;
-
-    display: inline-flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    
-}
-
-
-
 .first {
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 45vw;
+    margin-bottom: 50vw;
 }
 
 .consequence {
@@ -210,7 +150,96 @@ html {
     animation: typing 0.3s steps(50) 1s forwards; /* Cambia 30 con il numero di lettere della frase */
 }
 
-.second {
+.page3 {
+    position: relative; /* Assicura che il contenitore genitore sia posizionato */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+#videoContainer {
+    position: absolute; /* Posiziona assolutamente rispetto a .page3 */
+    top: 50%; /* Centra verticalmente */
+    left: 50%; /* Centra orizzontalmente */
+    transform: translate(-50%, -50%); /* Usa transform per centrare */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    cursor: pointer;
+    height: auto;
+
+    
+}
+
+#videoContainer img,
+#accidentVideo {
+    max-width: 50vw;
+    height: auto;
+    object-fit: cover;
+    margin-bottom: 10vw;
+}
+
+
+/* Contenitore delle parole */
+.word-container {
+    position: relative;
+    display: flex;
+    font-family: "acumin-pro", sans-serif;
+    font-weight: 700; /* bold */
+    font-style: normal;
+}
+
+
+.width-50vw {
+    width: 50vw; /* Larghezza dell'area */
+    height: 100vh; /* Altezza dell'area */
+    display: flex;
+}
+
+.word {
+    position: absolute;
+    transform-origin: center;
+    transition: transform 0.4s ease-out;
+    opacity: 0.5;
+    font-size: 1.5rem; /* Dimensione fissa per le parole non attive (24px) */
+    font-weight: 400; /* Regular */
+    margin: 0;
+}
+
+.word.active {
+    opacity: 1;
+    font-size: 3rem; /* Dimensione per la parola attiva (48px) */
+    font-weight: 700; /* Bold */
+}
+
+/* Cerchio - Posizione originale */
+.circle {
+    width: 3000px; /* Dimensione fissa */
+    height: 3000px; /* Dimensione fissa */
+    background-color: white;
+    background: linear-gradient(315deg, white 26%, #E1E1E1 100%);
+    box-shadow: 0px 0px 129.10000610351562px rgba(0, 0, 0, 0.20); 
+    border-radius: 9999px;
+    filter: blur(2px);
+    position: absolute;
+    top: 70%;
+    /*left: 35%; Posizione a sinistra */
+    transform: translate(-50%, 6%);
+    --rotation: 0deg;
+    /* transform: translate(-135%, -50%) rotate(var(--rotation)); Mantiene la posizione a sinistra */
+    transition: transform 0.5s ease-in-out;
+  }
+  
+
+
+
+
+  /* 
+  .second {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -231,8 +260,9 @@ html {
     margin-bottom: -0.5vw;
 }
 
+
 .reaction h4 {
-    font-weight: 700; /* bold */
+    font-weight: 700;  /* bold 
     font-style: normal;
 
     margin-bottom: -1.3vw;
@@ -244,14 +274,13 @@ html {
 
     margin-bottom: -0.5vw;
 }
-
+    
 .symbol h4 {
-    font-weight: 700; /* bold */
+    font-weight: 700;
     font-style: normal;
 
     margin-bottom: -1.3vw;
 }
-
 .tributes p {
     font-weight: 300;
     font-style: normal;
@@ -260,14 +289,9 @@ html {
 }
 
 .tributes h4 {
-    font-weight: 700; /* bold */
+    font-weight: 700; 
     font-style: normal;
 
     margin-bottom: -1.3vw;
 }
-
-
-
-
-
-
+ */

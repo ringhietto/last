@@ -27,9 +27,9 @@
 
 </head>
 
-<div id="videoContainer" style="display: none;">
+<!-- <div id="videoContainer" style="display: none;">
     
-</div> <!-- Contenitore per il video -->
+</div> Contenitore per il video -->
 
 
 <body class="page3">
@@ -41,9 +41,24 @@
         <div class="word-container">
             <div class="word" id="word1">MURDER</div>
             <div class="word" id="word2">ILLNESS</div>
-            <div class="word" id="word3">OVERDOSE</div>
-            <div class="word" id="word4">SUICIDE</div>
-            <div class="word active" id="word5">ACCIDENT</div>
+            <div class="word" id="word3" >OVERDOSE</div>
+            <div class="word active" id="word4" data-active="true">SUICIDE</div>
+            <div class="word" id="word5">ACCIDENT</div>
+            <div class="word" id="word6">MURDER</div>
+            <div class="word" id="word7">ILLNESS</div>
+            <div class="word" id="word8">OVERDOSE</div>
+            <div class="word" id="word9">SUICIDE</div>
+            <div class="word" id="word10">ACCIDENT</div>
+            <div class="word" id="word11">MURDER</div>
+            <div class="word" id="word12">ILLNESS</div>
+            <div class="word" id="word13">OVERDOSE</div>
+            <div class="word" id="word14">SUICIDE</div>
+            <div class="word" id="word15">ACCIDENT</div>
+            <div class="word" id="word16">MURDER</div>
+            <div class="word" id="word17">ILLNESS</div>
+            <div class="word" id="word18">OVERDOSE</div>
+            <div class="word" id="word19">SUICIDE</div>
+            <div class="word" id="word20">ACCIDENT</div>
         </div>
         
     </div>
@@ -56,6 +71,14 @@
             <div class="just-like">
                 <h4></h4>
             </div>
+        </div>
+
+        <div id="videoContainer" style="cursor: pointer;">
+            <img id="videoThumbnail" src="asset/stopvideo.png" alt="Video Thumbnail">
+            <video id="accidentVideo" style="display: none;">
+                <source src="asset/videos/accident.mp4" type="video/mp4">
+                Il tuo browser non supporta il tag video.
+            </video>
         </div>
             
         <!-- <div class="second">
@@ -79,4 +102,21 @@
 </div>
 
 </body>
+
+<!-- <script>
+    document.getElementById('videoThumbnail').addEventListener('click', function() {
+        var video = document.getElementById('accidentVideo');
+        this.style.display = 'none'; // Nascondi l'immagine
+        video.style.display = 'block'; // Mostra il video
+        video.play(); // Avvia il video
+    });
+
+    document.getElementById('accidentVideo').addEventListener('ended', function() {
+        var thumbnail = document.getElementById('videoThumbnail');
+        this.style.display = 'none'; // Nascondi il video
+        thumbnail.style.display = 'block'; // Mostra l'immagine
+    });
+</script> -->
+
+
 </html>
