@@ -76,15 +76,15 @@ html {
 
 /* Contenitore principale per consequences */
 .consequences {
-    margin-bottom: 20px; /* Aggiungi un margine inferiore per separare dal videoContainer */
-    display: flex;
+    height: 30vw;
+    width: 40%;
+
+    display: inline-flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    position: relative; /* Assicurati che non sia assoluto */
-    margin-top: 15vw;
+    
 }
-
 
 /* Classe per nascondere la pagina con dissolvenza */
 .fade-out {
@@ -188,6 +188,9 @@ html {
 .word-container {
     position: relative;
     display: flex;
+    flex-wrap: wrap; /* Permette di andare a capo se necessario */
+    justify-content: center; /* Allinea le parole al centro orizzontalmente */
+    align-items: center; /* Allinea le parole al centro verticalmente */
     font-family: "acumin-pro", sans-serif;
     font-weight: 700; /* bold */
     font-style: normal;
@@ -218,8 +221,8 @@ html {
 
 /* Cerchio - Posizione originale */
 .circle {
-    width: 3000px; /* Dimensione fissa */
-    height: 3000px; /* Dimensione fissa */
+    width: 2500px; /* Dimensione fissa */
+  height: 2500px; /* Dimensione fissa */
     background-color: white;
     background: linear-gradient(315deg, white 26%, #E1E1E1 100%);
     box-shadow: 0px 0px 129.10000610351562px rgba(0, 0, 0, 0.20); 
@@ -228,7 +231,7 @@ html {
     position: absolute;
     top: 70%;
     /*left: 35%; Posizione a sinistra */
-    transform: translate(-50%, 6%);
+    transform: translate(-50%, 8%);
     --rotation: 0deg;
     /* transform: translate(-135%, -50%) rotate(var(--rotation)); Mantiene la posizione a sinistra */
     transition: transform 0.5s ease-in-out;

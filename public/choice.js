@@ -2,8 +2,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const words = document.querySelectorAll(".word");
   const circle = document.querySelector(".circle");
   const radius = 100; // Raggio della semicirconferenza ridotto
-  const xOffset = -950; // Offset orizzontale per centrare le parole
-  const yOffset = -650; // Offset verticale per posizionare le parole sopra il cerchio
+  const xOffset = -875; // Offset orizzontale per centrare le parole
+  const yOffset = -775; // Offset verticale per posizionare le parole sopra il cerchio
   let centerX, centerY;
   let currentIndex = 8; // La terza parola ("Overdose") è al centro inizialmente
   let lastEncoderValue = 0; // Valore dell'encoder precedente
@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function updatePositions() {
     const angleStep = 360 / words.length; // Cambiato per coprire l'intero cerchio
-    const radius = 750; // Mantieni il raggio per allontanare le parole
+    const radius = 800; // Mantieni il raggio per allontanare le parole
 
     words.forEach((word, index) => {
       const relativeIndex =
