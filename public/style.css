@@ -222,21 +222,28 @@ html {
 /* Cerchio - Posizione originale */
 .circle {
     width: 2500px; /* Dimensione fissa */
-  height: 2500px; /* Dimensione fissa */
-    background-color: white;
+    height: 2500px; /* Dimensione fissa */
+    background-color: white; /* Sfondo bianco del cerchio */
     background: linear-gradient(315deg, white 26%, #E1E1E1 100%);
-    box-shadow: 0px 0px 129.10000610351562px rgba(0, 0, 0, 0.20); 
-    border-radius: 9999px;
-    filter: blur(2px);
+    border-radius: 9999px; /* Rende il cerchio perfetto */
+    filter: blur(2px); /* Sfocatura */
     position: absolute;
     top: 70%;
-    /*left: 35%; Posizione a sinistra */
     transform: translate(-50%, 8%);
-    --rotation: 0deg;
-    /* transform: translate(-135%, -50%) rotate(var(--rotation)); Mantiene la posizione a sinistra */
-    transition: transform 0.5s ease-in-out;
-  }
-  
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3); /* Ombra più sfumata */
+}
+
+.circle::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 2px; /* Larghezza della linea */
+    height: 100%; /* Altezza della linea */
+    background-color: black; /* Colore della linea */
+    transform: translateX(-50%); /* Centra la linea */
+}
+
 
 
 
@@ -298,3 +305,14 @@ html {
     margin-bottom: -1.3vw;
 }
  */
+
+.vertical-guide {
+    position: fixed; /* Posizione fissa per rimanere al centro */
+    top: 0; /* Inizia dalla parte superiore della pagina */
+    left: 50%; /* Posiziona al centro orizzontale */
+    width: 2px; /* Larghezza della guida */
+    height: 100%; /* Altezza della guida */
+    background-color: black; /* Colore della guida */
+    transform: translateX(-50%); /* Centra la guida */
+    z-index: 10; /* Assicurati che sia sopra altri elementi */
+}

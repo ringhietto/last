@@ -2,8 +2,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const words = document.querySelectorAll(".word");
   const circle = document.querySelector(".circle");
   const radius = 100; // Raggio della semicirconferenza ridotto
-  const xOffset = -875; // Offset orizzontale per centrare le parole
-  const yOffset = -775; // Offset verticale per posizionare le parole sopra il cerchio
+  const xOffset = -860; // Offset orizzontale per centrare le parole SINISTRA-DESTRA
+  const yOffset = -620; // Offset verticale per posizionare le parole sopra il cerchio SU-GIU
   let centerX, centerY;
   let currentIndex = 8; // La terza parola ("Overdose") è al centro inizialmente
   let lastEncoderValue = 0; // Valore dell'encoder precedente
@@ -17,15 +17,30 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function updatePositions() {
     const angleStep = 360 / words.length; // Cambiato per coprire l'intero cerchio
-    const radius = 800; // Mantieni il raggio per allontanare le parole
+    const radius = 950; // Imposta il raggio per posizionare le parole vicino al cerchio
+    const activeFontSize = 2.5; // Dimensione della parola attiva in em
+    const normalFontSize = 1; // Dimensione della parola normale in em
+
+    // Modifica i valori di distanza per avvicinare le parole
+    const distanceActive = activeFontSize * 10; // Distanza per la parola attiva
+    const distanceNormal = normalFontSize * 5; // Distanza per le parole normali
 
     words.forEach((word, index) => {
       const relativeIndex =
         (index - currentIndex + words.length) % words.length;
       const angle = angleStep * relativeIndex - 180; // Angolo per rotazione orizzontale
 
-      const x = centerX + radius * Math.cos((angle * Math.PI) / 180) + xOffset;
-      const y = centerY + radius * Math.sin((angle * Math.PI) / 180) + yOffset;
+      // Calcola la distanza in base alla dimensione del font
+      const distance = relativeIndex === 5 ? distanceActive : distanceNormal;
+
+      const x =
+        centerX +
+        (radius + distance) * Math.cos((angle * Math.PI) / 180) +
+        xOffset; // Aggiungi distanza
+      const y =
+        centerY +
+        (radius + distance) * Math.sin((angle * Math.PI) / 180) +
+        yOffset; // Aggiungi distanza
 
       const opacity =
         relativeIndex === 0 || relativeIndex === words.length - 1 ? 0 : 1;
@@ -35,12 +50,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (relativeIndex === 5) {
         word.classList.add("active");
-        word.style.fontSize = "2.5em";
+        gsap.to(word, { fontSize: "2.5em", duration: 0.5 }); // Animazione per la parola attiva
         loadVip(word.textContent.toLowerCase()); // Chiama la funzione loadVip
         loadPhrases(word.textContent.toLowerCase()); // Chiama la funzione loadPhrases
       } else {
         word.classList.remove("active");
-        word.style.fontSize = "1em";
+        gsap.to(word, { fontSize: "1.5em", duration: 0.5 }); // Animazione per la parola non attiva
       }
     });
   }
@@ -85,8 +100,6 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log("WebSocket connection closed");
   };
 });
-
-
 
 function animateRotation() {
   if (currentIndex !== targetIndex) {
