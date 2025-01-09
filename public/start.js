@@ -9,6 +9,8 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log("Message from server:", event.data);
     if (event.data.includes("Short press detected!")) {
       startVideo();
+    } else if (event.data.includes("Double press detected!")) {
+      window.location.href = "pagina4.html";
     }
   };
 
