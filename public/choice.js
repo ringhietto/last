@@ -1,9 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
   const words = document.querySelectorAll(".word");
   const circle = document.querySelector(".circle");
-  const radius = 100; // Raggio della semicirconferenza ridotto
   const xOffset = -860; // Offset orizzontale per centrare le parole SINISTRA-DESTRA
-  const yOffset = -620; // Offset verticale per posizionare le parole sopra il cerchio SU-GIU
+  const yOffset = -435; // Offset verticale per posizionare le parole sopra il cerchio SU-GIU
   let centerX, centerY;
   let currentIndex = 8; // La terza parola ("Overdose") è al centro inizialmente
   let lastEncoderValue = 0; // Valore dell'encoder precedente
@@ -17,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function updatePositions() {
     const angleStep = 360 / words.length; // Cambiato per coprire l'intero cerchio
-    const radius = 950; // Imposta il raggio per posizionare le parole vicino al cerchio
+    const radius = 1000; // Imposta il raggio per posizionare le parole vicino al cerchio
     const activeFontSize = 2.5; // Dimensione della parola attiva in em
     const normalFontSize = 1; // Dimensione della parola normale in em
 
@@ -53,6 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
         gsap.to(word, { fontSize: "2.5em", duration: 0.5 }); // Animazione per la parola attiva
         loadVip(word.textContent.toLowerCase()); // Chiama la funzione loadVip
         loadPhrases(word.textContent.toLowerCase()); // Chiama la funzione loadPhrases
+        updateMedia(word.textContent.toLowerCase()); // Aggiorna l'immagine e il video
       } else {
         word.classList.remove("active");
         gsap.to(word, { fontSize: "1.5em", duration: 0.5 }); // Animazione per la parola non attiva
@@ -109,4 +109,17 @@ function animateRotation() {
     updatePositions();
     requestAnimationFrame(animateRotation);
   }
+}
+
+function updateMedia(word) {
+  const videoContainer = document.getElementById("videoContainer");
+  const thumbnail = document.getElementById("videoThumbnail");
+  const videoElement = document.getElementById("accidentVideo");
+
+  // Aggiorna l'immagine di anteprima
+  thumbnail.src = `asset/stopvideo/${word}.png`;
+
+  // Aggiorna il video
+  videoElement.querySelector("source").src = `asset/videos/${word}.mp4`;
+  videoElement.load(); // Ricarica il video per applicare la nuova sorgente
 }

@@ -23,8 +23,6 @@ body {
     font-style: normal;
 }
 
-
-
 /* Impostazioni di base */
 body,
 html {
@@ -40,7 +38,6 @@ html {
   overflow: hidden;
 
   font-family: "acumin-pro", sans-serif;
-  
 }
 
 /* Animazione di opacità per l'immagine */
@@ -73,6 +70,15 @@ html {
 ╚═╝     ╚═╝  ╚═╝ ╚═════╝ ╚═╝╚═╝  ╚═══╝╚═╝  ╚═╝    ╚═════╝                                                      
 */
 
+.page3 {
+    position: relative; /* Assicura che il contenitore genitore sia posizionato */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
 
 /* Contenitore principale per consequences */
 .consequences {
@@ -96,7 +102,7 @@ html {
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 50vw;
+    margin-bottom: 33vw;
 }
 
 .consequence {
@@ -150,29 +156,19 @@ html {
     animation: typing 0.3s steps(50) 1s forwards; /* Cambia 30 con il numero di lettere della frase */
 }
 
-.page3 {
-    position: relative; /* Assicura che il contenitore genitore sia posizionato */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    padding: 20px;
-}
+
 
 #videoContainer {
     position: absolute; /* Posiziona assolutamente rispetto a .page3 */
     top: 50%; /* Centra verticalmente */
     left: 50%; /* Centra orizzontalmente */
-    transform: translate(-50%, -50%); /* Usa transform per centrare */
+    transform: translate(-50%, -50%); /* Usa transform per centrare */ 
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
     cursor: pointer;
     height: auto;
-
-    
 }
 
 #videoContainer img,
@@ -180,9 +176,47 @@ html {
     max-width: 50vw;
     height: auto;
     object-fit: cover;
-    margin-bottom: 10vw;
+    margin-bottom: 7.5vw;
 }
 
+.instructions {
+    position: relative;
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+
+    margin-bottom: 12.5vw;
+}
+
+.press{
+    text-align: right;
+    color: #969696;
+    font-size: 18px;
+    font-family: Acumin Pro;
+    font-weight: 300;
+    line-height: 16px;
+    word-wrap: break-word;
+    margin-right: 0.5vw;
+}
+
+.dot {
+    width: 9px;
+    height: 9px;
+    background: #969696;
+    border-radius: 9999px;
+    margin-top: 0.1vw;
+}
+
+.to-simulate {
+    text-align: right;
+    color: #969696;
+    font-size: 18px;
+    font-family: Acumin Pro;
+    font-weight: 300;
+    line-height: 16px;
+    word-wrap: break-word;
+    margin-left: 0.5vw;
+}   
 
 /* Contenitore delle parole */
 .word-container {
@@ -221,15 +255,15 @@ html {
 
 /* Cerchio - Posizione originale */
 .circle {
-    width: 2500px; /* Dimensione fissa */
-    height: 2500px; /* Dimensione fissa */
+    width: 1700px; /* Dimensione fissa */
+    height: 2250px; /* Dimensione fissa */
     background-color: white; /* Sfondo bianco del cerchio */
     background: linear-gradient(315deg, white 26%, #E1E1E1 100%);
     border-radius: 9999px; /* Rende il cerchio perfetto */
     filter: blur(2px); /* Sfocatura */
     position: absolute;
     top: 70%;
-    transform: translate(-50%, 8%);
+    transform: translate(-50%, 7%);
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3); /* Ombra più sfumata */
 }
 
@@ -315,4 +349,41 @@ html {
     background-color: black; /* Colore della guida */
     transform: translateX(-50%); /* Centra la guida */
     z-index: 10; /* Assicurati che sia sopra altri elementi */
+}
+
+.just-like {
+    animation: fadeIn 1s forwards;
+}
+
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.instructions,
+.choice,
+.circle {
+    opacity: 0; /* Imposta l'opacità iniziale a 0 */
+    transition: opacity 1s ease-in-out; /* Rimuovi la transizione se non necessaria */
+}
+
+@keyframes fadeInOut {
+    0% {
+        opacity: 0.25; /* Inizio al 25% di opacità */
+    }
+    50% {
+        opacity: 1; /* A 100% di opacità */
+    }
+    100% {
+        opacity: 0.25; /* Torna al 25% di opacità */
+    }
+}
+
+.fade-in-out {
+    animation: fadeInOut 2s ease-in-out 0s 2; /* Durata di 2 secondi, ripetuta 2 volte */
 }

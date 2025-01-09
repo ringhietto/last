@@ -1,12 +1,34 @@
-// simulate.js
-
 let port; // Variabile per la porta seriale
 let reader; // Variabile per il lettore
+let lastEncoderValue = 0; // Definisci lastEncoderValue
 
 // Funzione per avviare il video
 function startVideo() {
-  console.log("Video started!");
-  // Aggiungi qui il codice per avviare il video
+  console.log("Avvio del video...");
+  const videoElement = document.getElementById("accidentVideo");
+  const thumbnail = document.getElementById("videoThumbnail"); // Riferimento all'immagine di anteprima
+
+  // Controlla se l'elemento video esiste
+  if (videoElement) {
+    videoElement.style.display = "block"; // Assicurati che il video sia visibile
+    thumbnail.style.display = "none"; // Nascondi l'immagine di anteprima
+    videoElement
+      .play()
+      .then(() => {
+        console.log("Video avviato con successo.");
+      })
+      .catch((error) => {
+        console.error("Errore durante l'avvio del video:", error);
+      });
+
+    // Aggiungi un listener per l'evento 'ended'
+    videoElement.addEventListener("ended", () => {
+      thumbnail.style.display = "block"; // Mostra di nuovo l'immagine di anteprima
+      videoElement.style.display = "none"; // Nascondi il video
+    });
+  } else {
+    console.error("Elemento video non trovato.");
+  }
 }
 
 // Funzione per gestire il pulsante Start
@@ -51,21 +73,29 @@ async function listenForSerialData() {
   }
 }
 
-document
-  .getElementById("videoContainer")
-  .addEventListener("click", function () {
-    var video = document.getElementById("accidentVideo");
-    var thumbnail = document.getElementById("videoThumbnail");
-    if (video.style.display === "none") {
-      thumbnail.style.display = "none"; // Nascondi l'immagine
-      video.style.display = "block"; // Mostra il video
-      video.play(); // Avvia il video
-    }
-  });
+// Funzione per mostrare l'immagine e il video corrispondenti
+function showMediaForWord(word) {
+  const videoContainer = document.querySelector(".video");
+  const thumbnail = document.getElementById("videoThumbnail");
 
-document.getElementById("accidentVideo").addEventListener("ended", function () {
-  var thumbnail = document.getElementById("videoThumbnail");
-  this.style.display = "none"; // Nascondi il video
-  thumbnail.style.display = "block"; // Mostra l'immagine
-});
+  // Nascondi tutti i video e le immagini
+  videoContainer.style.display = "none"; // Nascondi il contenitore video
+  thumbnail.style.display = "none"; // Nascondi l'immagine di anteprima
 
+  // Mostra l'immagine di anteprima corrispondente
+  thumbnail.src = `asset/stopvideo/${word}.png`; // Imposta il percorso dell'immagine
+  thumbnail.style.display = "block"; // Mostra l'immagine di anteprima
+
+  // Mostra il video corrispondente
+  const videoElement = document.getElementById("accidentVideo"); // Assicurati che gli ID siano corretti
+  if (videoElement) {
+    videoElement.querySelector("source").src = `asset/videos/${word}.mp4`;
+    videoElement.load(); // Ricarica il video per applicare la nuova sorgente
+    videoContainer.style.display = "block"; // Mostra il contenitore video
+    videoElement.style.display = "block"; // Mostra il video
+  }
+}
+
+// Aggiungi un evento di clic al contenitore video
+const videoContainer = document.getElementById("videoContainer");
+videoContainer.addEventListener("click", startVideo); // Avvia il video al clic

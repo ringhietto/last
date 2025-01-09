@@ -7,8 +7,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   socket.onmessage = (event) => {
     console.log("Message from server:", event.data);
-    if (event.data.includes("Start pressed!")) {
-      window.location.href = "pagina2.html";
+    if (event.data.includes("Short press detected!")) {
+      startVideo();
     }
   };
 
@@ -21,9 +21,31 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 });
 
-// Funzione per gestire il passaggio alla pagina2.html
-function handleStartPress() {
-  window.location.href = "pagina2.html";
+// Funzione per avviare il video
+function startVideo() {
+  const videoElement = document.getElementById("accidentVideo");
+  const thumbnail = document.getElementById("videoThumbnail");
+
+  if (videoElement) {
+    videoElement.style.display = "block";
+    thumbnail.style.display = "none";
+    videoElement
+      .play()
+      .then(() => {
+        console.log("Video avviato con successo.");
+      })
+      .catch((error) => {
+        console.error("Errore durante l'avvio del video:", error);
+      });
+
+    // Aggiungi un listener per l'evento 'ended'
+    videoElement.addEventListener("ended", () => {
+      thumbnail.style.display = "block";
+      videoElement.style.display = "none";
+    });
+  } else {
+    console.error("Elemento video non trovato.");
+  }
 }
 
 // Aggiungi un listener per il messaggio dal monitor seriale
