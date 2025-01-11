@@ -49,16 +49,3 @@ function startVideo() {
     console.error("Elemento video non trovato.");
   }
 }
-
-// Aggiungi un listener per il messaggio dal monitor seriale
-function listenForSerial() {
-  // Supponendo che tu stia usando una libreria per la comunicazione seriale
-  serial.on("data", function (data) {
-    if (data.includes("Start pressed!")) {
-      handleStartPress();
-    }
-  });
-}
-
-// Inizializza la comunicazione seriale
-listenForSerial();

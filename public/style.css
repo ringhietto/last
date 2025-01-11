@@ -58,7 +58,7 @@ html {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    padding: 20px;
+
 }
 
 .begin-instructions {
@@ -80,6 +80,7 @@ html {
     bottom: 3rem;
     width: 3vw;
     height: auto;
+    /* margin-bottom: 3vw; */
 }
 
 
@@ -160,21 +161,21 @@ html {
 
 /* GENERAZIONE PAROLE REAZIONI */
 
-.fade-in {
+/* .fade-in {
     animation: fadeIn 3s forwards;
     opacity: 1;
-    transition: opacity 3s ease-in-out 3s; /* Durata della dissolvenza di 3 secondi con un ritardo di 3 secondi */
-    animation-delay: 1.5s; /* Ritardo di 3 secondi prima di iniziare la transizione */
-}
+    transition: opacity 3s ease-in-out 3s; 
+    animation-delay: 1.5s; 
+} */
 
-@keyframes fadeIn {
+/* @keyframes fadeIn {
     from {
         opacity: 0;
     }
     to {
         opacity: 1;
     }
-}
+} */
 
 /* Animazione per il tipo di scrittura */
 @keyframes typing {
@@ -500,3 +501,141 @@ html {
     font-size: 3rem;
     font-weight: 700;
 }
+
+
+
+
+
+
+.day-choice {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+}
+
+.day-circle {
+    width: 1700px;
+    height: 2250px;
+    background-color: white;
+    background: linear-gradient(315deg, white 26%, #E1E1E1 100%);
+    border-radius: 9999px;
+    filter: blur(2px);
+    position: absolute;
+    top: 70%;
+    transform: translate(-0%, 7%);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+}
+
+.day-circle::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 2px;
+    height: 100%;
+    background-color: black;
+    transform: translateX(-50%);
+}
+
+.day-container {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    font-family: "acumin-pro", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+}
+
+.day {
+    position: absolute;
+    transform-origin: center;
+    transition: transform 0.4s ease-out;
+    opacity: 0.5;
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin: 0;
+}
+
+.day.active {
+    opacity: 1;
+    font-size: 3rem;
+    font-weight: 700;
+}
+
+
+
+
+
+
+
+
+
+
+.year-choice {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+}
+
+.year-circle {
+    width: 1700px;
+    height: 2250px;
+    background-color: white;
+    background: linear-gradient(315deg, white 26%, #E1E1E1 100%);
+    border-radius: 9999px;
+    filter: blur(2px);
+    position: absolute;
+    top: 70%;
+    transform: translate(-0%, 7%);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+}
+
+.year-circle::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 2px;
+    height: 100%;
+    background-color: black;
+    transform: translateX(-50%);
+}
+
+.year-container {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    font-family: "acumin-pro", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+}
+
+.year {
+    position: absolute;
+    transform-origin: center;
+    transition: transform 0.4s ease-out;
+    opacity: 0.5;
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin: 0;
+}
+
+.year.active {
+    opacity: 1;
+    font-size: 3rem;
+    font-weight: 700;
+}
+
+

@@ -1,15 +1,13 @@
 document.addEventListener("DOMContentLoaded", () => {
   const dates = document.querySelectorAll(".date");
+  const yearContainer = document.querySelector(".year-container");
+  const yearCircle = document.querySelector(".year-circle");
   const circle = document.querySelector(".date-circle");
   const xOffset = -860;
-  const yOffset = -575;
+  const yOffset = -690;
   let centerX, centerY;
-  let currentIndex = 8;
+  let currentIndex = 3;
   let lastEncoderValue = 0;
-  let targetIndex = currentIndex;
-  let isRotating = false;
-  let currentRotation = 0;
-  let targetRotation = 0;
 
   function updateCenter() {
     const circleRect = circle.getBoundingClientRect();
@@ -30,14 +28,9 @@ document.addEventListener("DOMContentLoaded", () => {
     dates.forEach((date, index) => {
       const relativeIndex =
         (index - currentIndex + dates.length) % dates.length;
-      const angle = angleStep * relativeIndex - 180;
+      const angle = angleStep * relativeIndex - 165;
 
-      if (index === 0 || index === 19 || index === 12 || index === 11) {
-        date.style.display = "none";
-        return;
-      } else {
-        date.style.display = "block";
-      }
+      date.style.display = "block";
 
       const distance = relativeIndex === 5 ? distanceActive : distanceNormal;
 
@@ -70,78 +63,16 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function rotateDates(direction) {
-    if (isRotating) return;
-
-    if (currentIndex === 13) {
-      // date14
-      // Può andare solo a destra
-      if (direction === "left") return;
-    } else if (currentIndex === 18) {
-      // date19
-      // Può andare solo a sinistra
-      if (direction === "right") return;
+    if (direction === "left") {
+      currentIndex = (currentIndex - 1 + dates.length) % dates.length;
+    } else if (direction === "right") {
+      currentIndex = (currentIndex + 1) % dates.length;
     }
-    // date15,16,17,18 possono andare in entrambe le direzioni
-    // Non serve una condizione specifica per queste
-
-    isRotating = true;
-    targetIndex =
-      direction === "right"
-        ? (currentIndex + 1) % dates.length
-        : (currentIndex - 1 + dates.length) % dates.length;
-
-    const encoderImage = document.querySelector(".encoder-image");
-    if (encoderImage) {
-      encoderImage.classList.add("rotating");
-
-      setTimeout(() => {
-        encoderImage.classList.remove("rotating");
-      }, 500);
-    }
-
-    if (direction === "right") {
-      targetRotation += 36;
-    } else {
-      targetRotation -= 36;
-    }
-
-    gsap.to(circle, {
-      rotation: targetRotation,
-      duration: 0.5,
-      ease: "power2.out",
-    });
-
-    requestAnimationFrame(animateRotation);
-  }
-
-  function animateRotation() {
-    const rotationDiff = targetIndex - currentIndex;
-
-    if (Math.abs(rotationDiff) < 0.1) {
-      currentIndex = targetIndex;
-      isRotating = false;
-      updatePositions();
-      return;
-    }
-
-    currentIndex += rotationDiff * 0.1;
     updatePositions();
-
-    requestAnimationFrame(animateRotation);
   }
 
   updateCenter();
   window.addEventListener("resize", updateCenter);
-
-  gsap.to(circle, {
-    rotation: "+=360",
-    duration: 5,
-    repeat: -1,
-    ease: "linear",
-    modifiers: {
-      rotation: gsap.utils.wrap(0, 360),
-    },
-  });
 
   const socket = new WebSocket("ws://127.0.0.1:8001");
 
@@ -150,14 +81,23 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   socket.onmessage = (event) => {
-    const encoderValue = parseInt(event.data.split(" ")[2]);
-    if (!isNaN(encoderValue)) {
-      if (encoderValue > lastEncoderValue) {
-        rotateDates("right");
-      } else if (encoderValue < lastEncoderValue) {
-        rotateDates("left");
+    const message = event.data;
+    if (message === "Start pressed!") {
+      document.querySelector(".date-container").style.display = "none";
+      yearContainer.style.display = "block";
+      yearCircle.style.display = "block";
+      yearContainer.classList.add("fade-in");
+      yearCircle.classList.add("fade-in");
+    } else {
+      const encoderValue = parseInt(message.split(" ")[2]);
+      if (!isNaN(encoderValue)) {
+        if (encoderValue > lastEncoderValue) {
+          rotateDates("right");
+        } else if (encoderValue < lastEncoderValue) {
+          rotateDates("left");
+        }
+        lastEncoderValue = encoderValue;
       }
-      lastEncoderValue = encoderValue;
     }
   };
 
