@@ -1,10 +1,10 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const years = document.querySelectorAll(".year");
-  const circle = document.querySelector(".year-circle");
-  const xOffset = -860; // Offset orizzontale per centrare gli anni
-  const yOffset = -575; // Offset verticale per posizionare gli anni
+  const dates = document.querySelectorAll(".date");
+  const circle = document.querySelector(".date-circle");
+  const xOffset = -860;
+  const yOffset = -575;
   let centerX, centerY;
-  let currentIndex = 8; // Anno centrale iniziale
+  let currentIndex = 8;
   let lastEncoderValue = 0;
   let targetIndex = currentIndex;
   let isRotating = false;
@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function updatePositions() {
-    const angleStep = 360 / years.length;
+    const angleStep = 360 / dates.length;
     const radius = 1000;
     const activeFontSize = 2.5;
     const normalFontSize = 1;
@@ -27,10 +27,17 @@ document.addEventListener("DOMContentLoaded", () => {
     const distanceActive = activeFontSize * 10;
     const distanceNormal = normalFontSize * 5;
 
-    years.forEach((year, index) => {
+    dates.forEach((date, index) => {
       const relativeIndex =
-        (index - currentIndex + years.length) % years.length;
+        (index - currentIndex + dates.length) % dates.length;
       const angle = angleStep * relativeIndex - 180;
+
+      if (index === 0 || index === 19 || index === 12 || index === 11) {
+        date.style.display = "none";
+        return;
+      } else {
+        date.style.display = "block";
+      }
 
       const distance = relativeIndex === 5 ? distanceActive : distanceNormal;
 
@@ -44,46 +51,54 @@ document.addEventListener("DOMContentLoaded", () => {
         yOffset;
 
       const opacity =
-        relativeIndex === 0 || relativeIndex === years.length - 1 ? 0 : 1;
+        relativeIndex === 0 || relativeIndex === dates.length - 1 ? 0 : 1;
 
-      year.style.transform = `translate(${x}px, ${y}px)`;
-      year.style.opacity = opacity;
+      date.style.transform = `translate(${x}px, ${y}px)`;
+      date.style.opacity = opacity;
 
       if (relativeIndex === 5) {
-        year.classList.add("active");
-        updateYear(year.textContent);
+        date.classList.add("active");
+        updateDate(date.textContent);
       } else {
-        year.classList.remove("active");
+        date.classList.remove("active");
       }
     });
   }
 
-  function updateYear(year) {
-    // Qui puoi aggiungere la logica per gestire il cambio dell'anno
-    console.log("Anno selezionato:", year);
+  function updateDate(date) {
+    console.log("Data selezionata:", date);
   }
 
-  function rotateYears(direction) {
+  function rotateDates(direction) {
     if (isRotating) return;
+
+    if (currentIndex === 13) {
+      // date14
+      // Può andare solo a destra
+      if (direction === "left") return;
+    } else if (currentIndex === 18) {
+      // date19
+      // Può andare solo a sinistra
+      if (direction === "right") return;
+    }
+    // date15,16,17,18 possono andare in entrambe le direzioni
+    // Non serve una condizione specifica per queste
 
     isRotating = true;
     targetIndex =
       direction === "right"
-        ? (currentIndex + 1) % years.length
-        : (currentIndex - 1 + years.length) % years.length;
+        ? (currentIndex + 1) % dates.length
+        : (currentIndex - 1 + dates.length) % dates.length;
 
-    // Aggiungi l'animazione dell'encoder
     const encoderImage = document.querySelector(".encoder-image");
     if (encoderImage) {
       encoderImage.classList.add("rotating");
 
-      // Rimuovi la classe dopo l'animazione
       setTimeout(() => {
         encoderImage.classList.remove("rotating");
       }, 500);
     }
 
-    // Animazione del cerchio
     if (direction === "right") {
       targetRotation += 36;
     } else {
@@ -115,12 +130,9 @@ document.addEventListener("DOMContentLoaded", () => {
     requestAnimationFrame(animateRotation);
   }
 
-  // Inizializza la posizione iniziale
   updateCenter();
-
   window.addEventListener("resize", updateCenter);
 
-  // Animazione continua del cerchio
   gsap.to(circle, {
     rotation: "+=360",
     duration: 5,
@@ -141,9 +153,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const encoderValue = parseInt(event.data.split(" ")[2]);
     if (!isNaN(encoderValue)) {
       if (encoderValue > lastEncoderValue) {
-        rotateYears("right");
+        rotateDates("right");
       } else if (encoderValue < lastEncoderValue) {
-        rotateYears("left");
+        rotateDates("left");
       }
       lastEncoderValue = encoderValue;
     }
