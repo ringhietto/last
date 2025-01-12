@@ -33,20 +33,12 @@ function loadVip(vipType) {
   // Mostra il video dopo 1 secondo
   setTimeout(() => {
     videoContainer.style.display = "block";
-    gsap.fromTo(
-      videoContainer,
-      { opacity: 0 },
-      { opacity: 1, duration: 1 }
-    );
+    gsap.fromTo(videoContainer, { opacity: 0 }, { opacity: 1, duration: 1 });
   }, 1000);
 
   // Animazione per le istruzioni
   setTimeout(() => {
-    gsap.fromTo(
-      instructions,
-      { opacity: 0 },
-      { opacity: 1, duration: 1 }
-    );
+    gsap.fromTo(instructions, { opacity: 0 }, { opacity: 1, duration: 1 });
   }, 100);
 
   // Animazione per la scelta

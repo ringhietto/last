@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagina 4</title>
+    <link rel="icon" type="image/svg+xml" href="asset/LT.png">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://use.typekit.net/qbb0zyi.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.serialport/1.0.0/p5.serialport.js"></script>
+
+    <script src="script.js" defer></script>
+    <script src="arduino.js" defer></script>
+    <script src="choice/day-choice-30.js" defer></script>
+    <script src="choice/year-choice.js" defer></script>
+    <script src="generation.js" defer></script>
+</head>
+
+<body class="page4">
+    <div class="vertical-guide"></div>
+    
+    <div class="date-name">
+        <div class="section-title">DAY</div>
+        
+        <div class="month-title-container">
+            <span class="month-title">MONTH</span>
+            <span class="month-name" id="month-name"></span>
+
+            <script>
+                // Recupera il mese selezionato da localStorage
+                const selectedMonth = localStorage.getItem("selectedMonth");
+                if (selectedMonth) {
+                    document.querySelector('#month-name').textContent = selectedMonth; // Imposta il mese nel <span>
+                }
+            </script>
+        </div>
+
+        <div class="day-title-container">
+            <span class="day-title"></span>
+            <span class="day-name" id="day-name"></span>
+
+            
+        </div>
+    </div>
+
+    <div class="day-choice">
+        <!-- Cerchio -->
+        <div class="day-circle"></div>
+        
+        <!-- Anni -->
+        <div class="day-container">
+            <div class="day" id="day1">20</div>
+            <div class="day" id="day2">21</div>
+            <div class="day" id="day3">22</div>
+            <div class="day" id="day4">23</div>
+            <div class="day" id="day5">24</div>
+            <div class="day" id="day6">25</div>
+            <div class="day" id="day7">26</div>
+            <div class="day" id="day8">27</div>
+            <div class="day" id="day9">28</div>
+            <div class="day" id="day10">29</div>
+            <div class="day" id="day11">30</div>
+            <div class="day" id="day12">1</div>
+            <div class="day" id="day13">2</div>
+            <div class="day" id="day14">3</div>
+            <div class="day" id="day15">4</div>
+            <div class="day" id="day16">5</div>
+            <div class="day" id="day17">6</div>
+            <div class="day" id="day18">7</div>
+            <div class="day" id="day19">8</div>
+            <div class="day" id="day20">9</div>
+            <div class="day" id="day21">10</div>
+            <div class="day" id="day22">11</div>
+            <div class="day" id="day23">12</div>
+            <div class="day" id="day24">13</div>
+            <div class="day" id="day25">14</div>
+            <div class="day" id="day26">15</div>
+            <div class="day" id="day27">16</div>
+            <div class="day" id="day28">17</div>
+            <div class="day" id="day29">18</div>
+            <div class="day" id="day30">19</div>
+        </div>
+    </div>
+
+    
+</body>
+</html>

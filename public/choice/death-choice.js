@@ -49,13 +49,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (relativeIndex === 5) {
         word.classList.add("active");
-        gsap.to(word, { fontSize: "2.5em", duration: 0.5 }); // Animazione per la parola attiva
+        word.classList.remove("font-regular");
+        word.classList.add("font-DemiBold");
+        gsap.to(word, { fontSize: "2.5em", duration: 0.5 }); // Dimensione per la parola attiva
         loadVip(word.textContent.toLowerCase()); // Chiama la funzione loadVip
         loadPhrases(word.textContent.toLowerCase()); // Chiama la funzione loadPhrases
         updateMedia(word.textContent.toLowerCase()); // Aggiorna l'immagine e il video
       } else {
         word.classList.remove("active");
-        gsap.to(word, { fontSize: "1.5em", duration: 0.5 }); // Animazione per la parola non attiva
+        word.classList.add("font-regular");
+        word.classList.remove("font-DemiBold");
+        gsap.to(word, { fontSize: "1.04em", duration: 0.5 }); // Dimensione per la parola non attiva
       }
     });
   }

@@ -14,7 +14,7 @@
 
     <script src="script.js" defer></script>
     <script src="arduino.js" defer></script>
-    <script src="choice/date-choice.js" defer></script>
+    <script src="choice/month-choice.js" defer></script>
     <script src="choice/year-choice.js" defer></script>
     <script src="generation.js" defer></script>
 </head>
@@ -23,51 +23,39 @@
     <div class="vertical-guide"></div>
 
     <div class="date-name">
-        <div class="month-container">
-<span class="month">
-
-</span>
-        </div>
-
-    </div>
-    <div class="date-choice">
-        
-        
-        <!-- Cerchio -->
-        <div class="date-circle"></div>
-        
-        <!-- Date -->
+        <div class="section-title">YEAR</div>
         <div class="date-container">
-            <div class="date" id="date1">May</div>
-            <div class="date" id="date2">June</div>
-            <div class="date" id="date3">July</div>
-            <div class="date" id="date4">August</div>
-            <div class="date" id="date5">September</div>
-            <div class="date" id="date6">October</div>
-            <div class="date" id="date7">November</div>
-            <div class="date" id="date8">December</div>
-            <div class="date" id="date9">January</div>
-            <div class="date" id="date10">February</div>
-            <div class="date" id="date11">March</div>
-            <div class="date" id="date12">April</div>
-            <div class="date" id="date13">May</div>
-            <div class="date" id="date14">June</div>
-            <div class="date" id="date15">July</div>
-            <div class="date" id="date16">August</div>
-            <div class="date" id="date17">September</div>
-            <div class="date" id="date18">October</div>
-            <div class="date" id="date19">November</div>
-            <div class="date" id="date20">December</div>
-            <div class="date" id="date21">January</div>
-            <div class="date" id="date22">February</div>
-            <div class="date" id="date23">March</div>
-            <div class="date" id="date24">April</div>
+        <div class="month-title-container">
+            <span class="month-title">MONTH</span>
+            <span class="month-name" id="month-name"></span>
+
+            <script>
+                // Recupera il mese selezionato da localStorage
+                const selectedMonth = localStorage.getItem("selectedMonth");
+                if (selectedMonth) {
+                    document.querySelector('#month-name').textContent = selectedMonth; // Imposta il mese nel <span>
+                }
+            </script>
         </div>
 
-<div class="year-circle""></div>
+        <div class="day-title-container">
+            <span class="day-title">DAY</span>
+            <span class="day-name" id="day-name"></span>
 
-        <!-- Aggiungi year-container -->
-        <div class="year-container" style="display: none;">
+            <script>
+                // Recupera il giorno selezionato da localStorage
+                const selectedDay = localStorage.getItem("selectedDay");
+                if (selectedDay) {
+                    document.querySelector('#day-name').textContent = selectedDay; // Imposta il giorno nel <span>
+                }
+            </script>
+        </div>
+    </div>
+    </div>
+    
+    <div class="year-choice">
+        <div class="year-circle"></div>
+        <div class="year-container">
             <div class="year" id="year1">2026</div>
             <div class="year" id="year2">2027</div>
             <div class="year" id="year3">2028</div>
@@ -88,7 +76,6 @@
             <div class="year" id="year18"></div>
             <div class="year" id="year19"></div>
             <div class="year" id="year20">2025</div>
-        </div>
     </div>
 </body>
 </html>

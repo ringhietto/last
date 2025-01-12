@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
   const days = document.querySelectorAll(".day");
-  const circle = document.querySelector(".day-circle");
+  const dayCircle = document.querySelector(".day-circle");
   const xOffset = -860;
   const yOffset = -682;
   let centerX, centerY;
@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let lastEncoderValue = 0;
 
   function updateCenter() {
-    const circleRect = circle.getBoundingClientRect();
+    const circleRect = dayCircle.getBoundingClientRect();
     centerX = circleRect.left + circleRect.width / 2;
     centerY = circleRect.top + circleRect.height / 2;
     updatePositions();
@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const angleStep = 360 / days.length;
     const radius = 1000;
     const activeFontSize = 2.5;
-    const normalFontSize = 1;
+    const normalFontSize = 1.04;
 
     const distanceActive = activeFontSize * 10;
     const distanceNormal = normalFontSize * 5;
@@ -55,18 +55,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function updateDay(day) {
     console.log("Data selezionata:", day);
+    localStorage.setItem("selectedDay", day); // Salva il giorno selezionato
   }
 
   function rotateDays(direction) {
     if (direction === "left") {
-      // Rimuovi i limiti per la rotazione a sinistra
-      // if (currentIndex === 13) return; // Stop at date13
-      // if (currentIndex === 14 && lastEncoderValue < 14) return; // Stop at date14 when coming from lower numbers
       currentIndex = (currentIndex - 1 + days.length) % days.length;
     } else if (direction === "right") {
-      // Rimuovi i limiti per la rotazione a destra
-      // if (currentIndex === 19) return; // Stop at date18
-      // if (currentIndex === 20 && lastEncoderValue > 20) return; // Stop at date19 when coming from higher numbers
       currentIndex = (currentIndex + 1) % days.length;
     }
     updatePositions();

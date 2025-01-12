@@ -10,7 +10,7 @@ body {
     overflow: hidden;
 }
 
-/* Varianti della famiglia di font "Acumin Pro" */
+/* Varianti della famiglia di font "mundial" */
 .font-thin {
     font-family: "mundial", sans-serif;
     font-weight: 200;
@@ -20,36 +20,31 @@ body {
 .font-light {
     font-family: "mundial", sans-serif;
     font-weight: 300;
-    font-style: normal;
 }
 
 .font-regular {
     font-family: "mundial", sans-serif;
-    font-weight: 400;
-    font-style: normal;
+    font-weight: 400; /* Regular */
 }
 
 .font-DemiBold {
     font-family: "mundial", sans-serif;
-    font-weight: 600;
-    font-style: normal;
+    font-weight: 600; /* DemiBold */
 }
 
 /* Impostazioni di base */
 body,
 html {
-  height: 100%;
-  margin: 0;
-  transition: opacity 1s; /* Transizione per l'animazione */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #f0f0f0;
-  padding: 0;
-  width: 100%;
-  overflow: hidden;
-
-  font-family: "acumin-pro", sans-serif;
+    height: 100%;
+    margin: 0;
+    transition: opacity 1s; /* Transizione per l'animazione */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff;
+    padding: 0;
+    width: 100%;
+    overflow: hidden;
 }
 
 .page1 {
@@ -58,7 +53,6 @@ html {
     justify-content: center;
     align-items: center;
     height: 100vh;
-
 }
 
 .begin-instructions {
@@ -80,10 +74,7 @@ html {
     bottom: 3rem;
     width: 3vw;
     height: auto;
-    /* margin-bottom: 3vw; */
 }
-
-
 
 /*
 ██████╗  █████╗  ██████╗ ██╗███╗   ██╗ █████╗     ██████╗ 
@@ -143,12 +134,12 @@ html {
     align-items: center;
 
     margin-bottom: 36vw;
+    
 }
 
 .consequence {
     /* margin-bottom: 0vw; */
-    font-weight: 700; /* bold */
-    font-style: normal;
+
     position: absolute;
 }
 
@@ -193,6 +184,9 @@ html {
     overflow: hidden;
     width: 0;
     animation: typing 0.3s steps(50) 1s forwards; /* Cambia 30 con il numero di lettere della frase */
+    font-family: "mundial", sans-serif;
+    font-weight: 400; /* Regular */
+    font-style: normal;
 }
 
 
@@ -232,7 +226,7 @@ html {
     text-align: right;
     color: #969696;
     font-size: 18px;
-    font-family: Acumin Pro;
+    font-family: "mundial", sans-serif;
     font-weight: 300;
     line-height: 16px;
     word-wrap: break-word;
@@ -244,14 +238,14 @@ html {
     height: 9px;
     background: #969696;
     border-radius: 9999px;
-    margin-top: 0.1vw;
+    margin-top: 0.4vw;
 }
 
 .to-simulate {
     text-align: right;
     color: #969696;
     font-size: 18px;
-    font-family: Acumin Pro;
+    font-family: "mundial", sans-serif;
     font-weight: 300;
     line-height: 16px;
     word-wrap: break-word;
@@ -265,9 +259,6 @@ html {
     flex-wrap: wrap; /* Permette di andare a capo se necessario */
     justify-content: center; /* Allinea le parole al centro orizzontalmente */
     align-items: center; /* Allinea le parole al centro verticalmente */
-    font-family: "acumin-pro", sans-serif;
-    font-weight: 700; /* bold */
-    font-style: normal;
 }
 
 
@@ -282,15 +273,15 @@ html {
     transform-origin: center;
     transition: transform 0.4s ease-out;
     opacity: 0.5;
-    font-size: 1.5rem; /* Dimensione fissa per le parole non attive (24px) */
-    font-weight: 400; /* Regular */
+
+
     margin: 0;
 }
 
 .word.active {
     opacity: 1;
-    font-size: 3rem; /* Dimensione per la parola attiva (48px) */
-    font-weight: 700; /* Bold */
+
+
 }
 
 /* Cerchio - Posizione originale */
@@ -431,6 +422,24 @@ html {
 
 /* page 4 */
 
+/* 
+██████╗  █████╗ ████████╗███████╗
+██╔══██╗██╔══██╗╚══██╔══╝██╔════╝
+██║  ██║███████║   ██║   █████╗  
+██║  ██║██╔══██║   ██║   ██╔══╝  
+██████╔╝██║  ██║   ██║   ███████╗
+╚═════╝ ╚═╝  ╚═╝   ╚═╝   ╚══════╝
+                                  */
+
+                                  /*
+                                  ███╗   ███╗ ██████╗ ███╗   ██╗████████╗██╗  ██╗
+                                  ████╗ ████║██╔═══██╗████╗  ██║╚══██╔══╝██║  ██║
+                                  ██╔████╔██║██║   ██║██╔██╗ ██║   ██║   ███████║
+                                  ██║╚██╔╝██║██║   ██║██║╚██╗██║   ██║   ██╔══██║
+                                  ██║ ╚═╝ ██║╚██████╔╝██║ ╚████║   ██║   ██║  ██║
+                                  ╚═╝     ╚═╝ ╚═════╝ ╚═╝  ╚═══╝   ╚═╝   ╚═╝  ╚═╝
+                                                                                  */
+
 .page4 {
     position: relative;
     display: flex;
@@ -441,7 +450,7 @@ html {
     padding: 20px;
 }
 
-.date-choice {
+.month-choice {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -451,7 +460,7 @@ html {
     height: 100vh;
 }
 
-.date-circle {
+.month-circle {
     width: 1700px;
     height: 2250px;
     background-color: white;
@@ -464,7 +473,7 @@ html {
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
 }
 
-.date-circle::before {
+.month-circle::before {
     content: '';
     position: absolute;
     top: 0;
@@ -475,36 +484,104 @@ html {
     transform: translateX(-50%);
 }
 
-.date-container {
+.month-container {
     position: relative;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    font-family: "acumin-pro", sans-serif;
-    font-weight: 700;
-    font-style: normal;
+
 }
 
-.date {
+.month {
     position: absolute;
     transform-origin: center;
     transition: transform 0.4s ease-out;
     opacity: 0.5;
-    font-size: 1.5rem;
-    font-weight: 400;
+
     margin: 0;
 }
 
-.date.active {
+.month.active {
     opacity: 1;
     font-size: 3rem;
-    font-weight: 700;
+    font-weight: 600;
+
 }
 
 
 
 
+
+.date-name {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: "mundial", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 20px;
+    margin-top: 3rem;
+    
+}
+
+.section-title {
+    font-size: 1.5rem;
+    font-weight: 400;
+
+    margin-bottom: 7rem;
+    
+}
+
+.date-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    gap: 1.5rem;;
+}
+
+.month-title-container,
+.day-title-container {
+    display: flex;
+    justify-content: space-between; /* Spazio tra gli elementi */
+    align-items: center; /* Allinea verticalmente al centro */
+    width: 100%; /* Assicura che occupi tutta la larghezza disponibile */
+    margin-top: 1rem; /* Margine superiore */
+    font-weight: 400; /* Peso del font */
+
+    gap: 8rem;
+}
+
+.month-title,
+.day-title {
+    font-family: "mundial", sans-serif;
+    font-weight: 200;
+    font-size: 15px;
+    text-align: left; /* Allinea il testo a sinistra */
+}
+
+.month-name,
+.day-name {
+    font-family: "mundial", sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+    text-align: right; /* Allinea il testo a destra */
+    flex-grow: 1; /* Permette di occupare lo spazio rimanente */
+    text-align: right; /* Allinea il testo a destra */
+}
+
+
+/* 
+██████╗  █████╗ ██╗   ██╗
+██╔══██╗██╔══██╗╚██╗ ██╔╝
+██║  ██║███████║ ╚████╔╝ 
+██║  ██║██╔══██║  ╚██╔╝  
+██████╔╝██║  ██║   ██║   
+╚═════╝ ╚═╝  ╚═╝   ╚═╝   
+                          */
 
 
 .day-choice {
@@ -547,8 +624,8 @@ html {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    font-family: "acumin-pro", sans-serif;
-    font-weight: 700;
+    font-family: "mundial", sans-serif;
+    font-weight: 400;
     font-style: normal;
 }
 
@@ -557,24 +634,24 @@ html {
     transform-origin: center;
     transition: transform 0.4s ease-out;
     opacity: 0.5;
-    font-size: 1.5rem;
-    font-weight: 400;
     margin: 0;
 }
 
 .day.active {
     opacity: 1;
     font-size: 3rem;
-    font-weight: 700;
+    font-weight: 600;
 }
 
 
-
-
-
-
-
-
+/* 
+██╗   ██╗███████╗ █████╗ ██████╗ 
+╚██╗ ██╔╝██╔════╝██╔══██╗██╔══██╗
+ ╚████╔╝ █████╗  ███████║██████╔╝
+  ╚██╔╝  ██╔══╝  ██╔══██║██╔══██╗
+   ██║   ███████╗██║  ██║██║  ██║
+   ╚═╝   ╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝
+                                  */
 
 
 .year-choice {
@@ -617,8 +694,8 @@ html {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    font-family: "acumin-pro", sans-serif;
-    font-weight: 700;
+    font-family: "mundial", sans-serif;
+    font-weight: 400;
     font-style: normal;
 }
 
@@ -627,15 +704,12 @@ html {
     transform-origin: center;
     transition: transform 0.4s ease-out;
     opacity: 0.5;
-    font-size: 1.5rem;
-    font-weight: 400;
+    
     margin: 0;
 }
 
 .year.active {
     opacity: 1;
     font-size: 3rem;
-    font-weight: 700;
+    font-weight: 600;
 }
-
-

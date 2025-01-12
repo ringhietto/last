@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (event.data.includes("Short press detected!")) {
       startVideo();
     } else if (event.data.includes("Double press detected!")) {
-      window.location.href = "pagina2.html";
+      window.location.href = "2-onboarding.html";
     }
   };
 
