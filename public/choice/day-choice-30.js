@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const days = document.querySelectorAll(".day");
   const dayCircle = document.querySelector(".day-circle");
   const xOffset = -860;
-  const yOffset = -682;
+  const yOffset = -800;
   let centerX, centerY;
   let currentIndex = 7;
   let lastEncoderValue = 0;
@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     days.forEach((day, index) => {
       const relativeIndex = (index - currentIndex + days.length) % days.length;
-      const angle = angleStep * relativeIndex - 148.3;
+      const angle = angleStep * relativeIndex - 150.25;
 
       const distance = relativeIndex === 5 ? distanceActive : distanceNormal;
 
@@ -77,14 +77,22 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   socket.onmessage = (event) => {
-    const encoderValue = parseInt(event.data.split(" ")[2]);
-    if (!isNaN(encoderValue)) {
-      if (encoderValue > lastEncoderValue) {
-        rotateDays("right");
-      } else if (encoderValue < lastEncoderValue) {
-        rotateDays("left");
+    console.log("Dati ricevuti dal WebSocket:", event.data);
+    const message = event.data;
+    console.log("Messaggio ricevuto:", message);
+
+    if (message === "Start pressed!") {
+      window.location.href = "6-year.html";
+    } else {
+      const encoderValue = parseInt(message.split(" ")[2]);
+      if (!isNaN(encoderValue)) {
+        if (encoderValue > lastEncoderValue) {
+          rotateDays("right");
+        } else if (encoderValue < lastEncoderValue) {
+          rotateDays("left");
+        }
+        lastEncoderValue = encoderValue;
       }
-      lastEncoderValue = encoderValue;
     }
   };
 

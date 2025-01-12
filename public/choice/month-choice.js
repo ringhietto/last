@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const yearCircle = document.querySelector(".year-circle");
   const monthCircle = document.querySelector(".month-circle");
   const xOffset = -860;
-  const yOffset = -690;
+  const yOffset = -795;
   let centerX, centerY;
   let currentIndex = 3;
   let lastEncoderValue = 0;

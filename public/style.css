@@ -544,7 +544,8 @@ html {
 }
 
 .month-title-container,
-.day-title-container {
+.day-title-container,
+.year-title-container {
     display: flex;
     justify-content: space-between; /* Spazio tra gli elementi */
     align-items: center; /* Allinea verticalmente al centro */
@@ -556,7 +557,8 @@ html {
 }
 
 .month-title,
-.day-title {
+.day-title,
+.year-title {
     font-family: "mundial", sans-serif;
     font-weight: 200;
     font-size: 15px;
@@ -564,7 +566,8 @@ html {
 }
 
 .month-name,
-.day-name {
+.day-name,
+.year-name {
     font-family: "mundial", sans-serif;
     font-weight: 400;
     font-size: 15px;
@@ -573,6 +576,9 @@ html {
     text-align: right; /* Allinea il testo a destra */
 }
 
+#final-date {
+    margin-bottom: 41.85vw;
+}
 
 /* 
 ██████╗  █████╗ ██╗   ██╗
