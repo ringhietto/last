@@ -46,9 +46,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (relativeIndex === 5) {
         day.classList.add("active");
-        updateDay(day.textContent);
+        day.classList.remove("font-regular");
+        day.classList.add("font-DemiBold");
+        gsap.to(day, { fontSize: "2.5em", duration: 0.5 });
       } else {
         day.classList.remove("active");
+        day.classList.add("font-regular");
+        day.classList.remove("font-DemiBold");
+        gsap.to(day, { fontSize: "1.04em", duration: 0.5 });
       }
     });
   }
@@ -77,9 +82,7 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   socket.onmessage = (event) => {
-    console.log("Dati ricevuti dal WebSocket:", event.data);
     const message = event.data;
-    console.log("Messaggio ricevuto:", message);
 
     if (message === "Start pressed!") {
       window.location.href = "6-year.html"; // Naviga verso 6-year.html
@@ -103,4 +106,12 @@ document.addEventListener("DOMContentLoaded", () => {
   socket.onclose = () => {
     console.log("WebSocket connection closed");
   };
+
+  days.forEach((day) => {
+    day.addEventListener("click", () => {
+      const selectedDay = day.textContent; // Ottieni il giorno selezionato
+      localStorage.setItem("selectedDay", selectedDay); // Salva il giorno in localStorage
+      window.location.href = "6-year.html"; // Naviga verso 6-year.html
+    });
+  });
 });

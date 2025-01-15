@@ -47,9 +47,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (relativeIndex === 5) {
         year.classList.add("active");
+        year.classList.remove("font-regular");
+        year.classList.add("font-DemiBold");
+        gsap.to(year, { fontSize: "2.5em", duration: 0.5 });
         updateYear(year.textContent);
       } else {
         year.classList.remove("active");
+        year.classList.add("font-regular");
+        year.classList.remove("font-DemiBold");
+        gsap.to(year, { fontSize: "1.04em", duration: 0.5 });
       }
     });
   }

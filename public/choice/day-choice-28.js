@@ -46,9 +46,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (relativeIndex === 5) {
         day.classList.add("active");
+        day.classList.remove("font-regular");
+        day.classList.add("font-DemiBold");
+        gsap.to(day, { fontSize: "2.5em", duration: 0.5 });
         updateDay(day.textContent);
       } else {
         day.classList.remove("active");
+        day.classList.add("font-regular");
+        day.classList.remove("font-DemiBold");
+        gsap.to(day, { fontSize: "1.04em", duration: 0.5 });
       }
     });
   }
@@ -77,9 +83,7 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   socket.onmessage = (event) => {
-    console.log("Dati ricevuti dal WebSocket:", event.data);
     const message = event.data;
-    console.log("Messaggio ricevuto:", message);
 
     if (message === "Start pressed!") {
       window.location.href = "6-year.html";

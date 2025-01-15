@@ -14,11 +14,12 @@
 
     <script src="arduino.js" defer></script>
     <script src="choice/day-choice-30.js" defer></script>
+    <script src="choice/death-choice.js" defer></script>
     <script src="generation.js" defer></script>
 </head>
 
 <body class="page4">
-    <div class="vertical-guide"></div>
+    <!-- <div class="vertical-guide"></div> -->
     
     <div class="date-name">
         <div class="section-title">DAY</div>
@@ -83,6 +84,18 @@
         </div>
     </div>
 
-    
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const days = document.querySelectorAll(".day"); // Seleziona tutti gli elementi con la classe "day"
+            
+            days.forEach((day) => {
+                day.addEventListener("click", () => {
+                    const selectedDay = day.textContent; // Ottieni il giorno selezionato
+                    localStorage.setItem("selectedDay", selectedDay); // Salva il giorno in localStorage
+                    window.location.href = "6-year.html"; // Naviga verso 6-year.html
+                });
+            });
+        });
+    </script>
 </body>
 </html>

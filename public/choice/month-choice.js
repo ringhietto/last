@@ -53,11 +53,13 @@ document.addEventListener("DOMContentLoaded", () => {
         month.classList.add("active");
         month.classList.remove("font-regular");
         month.classList.add("font-DemiBold");
+        gsap.to(month, { fontSize: "2.5em", duration: 0.5 });
         updateMonth(month.textContent);
       } else {
         month.classList.remove("active");
         month.classList.add("font-regular");
         month.classList.remove("font-DemiBold");
+        gsap.to(month, { fontSize: "1.04em", duration: 0.5 });
       }
     });
   }
@@ -95,18 +97,23 @@ document.addEventListener("DOMContentLoaded", () => {
         if (activeMonth.id === "month10" || activeMonth.id === "month22") {
           window.location.href = "5-day-28.html";
         } else if (
-          activeMonth.id === "month12" ||
           activeMonth.id === "month2" ||
           activeMonth.id === "month5" ||
           activeMonth.id === "month7" ||
-          activeMonth.id === "month24" ||
+          activeMonth.id === "month12" ||
           activeMonth.id === "month14" ||
           activeMonth.id === "month17" ||
-          activeMonth.id === "month19"
+          activeMonth.id === "month19" ||
+          activeMonth.id === "month24"
         ) {
           window.location.href = "5-day-30.html";
           localStorage.setItem("selectedMonth", selectedMonth);
         } else if (
+          activeMonth.id === "month1" ||
+          activeMonth.id === "month3" ||
+          activeMonth.id === "month4" ||
+          activeMonth.id === "month6" ||
+          activeMonth.id === "month8" ||
           activeMonth.id === "month9" ||
           activeMonth.id === "month11" ||
           activeMonth.id === "month13" ||

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagina 4</title>
+    <link rel="icon" type="image/svg+xml" href="asset/LT.png">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://use.typekit.net/qbb0zyi.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.serialport/1.0.0/p5.serialport.js"></script>
+
+    <!-- <script src="script.js" defer></script> -->
+    <script src="arduino.js" defer></script>
+    <script src="generation.js" defer></script>
+    <script src="choice/death-choice.js" defer></script>
+</head>
+
+<body class="page4">
+    <!-- <div class="vertical-guide"></div> -->
+
+    <div class="date-name" id="final-date">
+        <div class="section-title">DEATH</div>
+        <div class="date-container">
+            <div class="death-title-container">
+                <span class="death-title">MODE</span>
+                <span class="death-name" id="death-name"></span>
+            </div>
+
+            <div class="date-title-container">
+                <span class="date-title">DATE</span>
+                <span class="date-complete">
+                    <span class="date-name-month" id="date-name-month"></span>
+                    <span class="date-name-day" id="date-name-day"></span>
+                    <span class="date-name-year" id="date-name-year"></span>
+                </span>
+            </div>
+
+            <div class="price-title-container">
+                <span class="price-title">PRICE</span>
+                <span class="price-name" id="price-name"></span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Recupera il tipo di morte selezionato da localStorage
+        const selectedDeath = localStorage.getItem("selectedDeath");
+        if (selectedDeath) {
+            document.querySelector('#death-name').textContent = selectedDeath; // Imposta il tipo di morte nel <span>
+        } 
+
+        // Recupera il giorno selezionato da localStorage
+        const selectedDay = localStorage.getItem("selectedDay");
+        if (selectedDay) {
+            document.querySelector('#day-name').textContent = selectedDay; // Imposta il giorno nel <span>
+        }
+
+        // Recupera l'anno selezionato da localStorage
+        const selectedYear = localStorage.getItem("selectedYear");
+        if (selectedYear) {
+            document.querySelector('#year-name').textContent = selectedYear; // Imposta l'anno nel <span>
+        }
+    </script>
+</body>
+</html>
+

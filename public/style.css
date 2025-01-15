@@ -119,6 +119,8 @@ html {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    /* position: absolute; */
     
 }
 
@@ -132,8 +134,11 @@ html {
     justify-content: center;
     flex-direction: column;
     align-items: center;
+    position: relative;
 
-    margin-bottom: 36vw;
+    margin-bottom: 183vw;
+
+
     
 }
 
@@ -142,31 +147,6 @@ html {
 
     position: absolute;
 }
-
-/* .just-like h4 {
-    font-weight: 300;
-    font-style: normal;
-    margin-top: 5vw;
-    opacity: 0;
-} */
-
-/* GENERAZIONE PAROLE REAZIONI */
-
-/* .fade-in {
-    animation: fadeIn 3s forwards;
-    opacity: 1;
-    transition: opacity 3s ease-in-out 3s; 
-    animation-delay: 1.5s; 
-} */
-
-/* @keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-} */
 
 /* Animazione per il tipo di scrittura */
 @keyframes typing {
@@ -199,33 +179,33 @@ html {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
+    width: 77%; /* Assicurati che occupi il 100% della larghezza */
+    height: 77%; /* Assicurati che occupi il 100% dell'altezza */
     cursor: pointer;
-    height: auto;
 }
 
 #videoContainer img,
 #accidentVideo {
-    max-width: 50vw;
-    height: auto;
-    object-fit: cover;
-    margin-bottom: 7.5vw;
+    width: 77%; /* Imposta la larghezza al 100% del contenitore */
+    height: 77%; /* Imposta l'altezza al 100% del contenitore */
+    object-fit: cover; /* Ritaglia il video per riempire l'area */
+    margin-bottom: 7.5vw; /* Mantieni il margine se necessario */
 }
 
 .instructions {
-    position: relative;
+    position: absolute;
     display: flex;
     align-items: stretch;
     justify-content: center;
 
-    margin-bottom: 9vw;
+    margin-bottom: 95vw;
 }
 
 
 .press{
     text-align: right;
     color: #969696;
-    font-size: 18px;
+    font-size: 14px;
     font-family: "mundial", sans-serif;
     font-weight: 300;
     line-height: 16px;
@@ -234,8 +214,8 @@ html {
 }
 
 .dot {
-    width: 9px;
-    height: 9px;
+    width: 5px;
+    height: 5px;
     background: #969696;
     border-radius: 9999px;
     margin-top: 0.4vw;
@@ -244,7 +224,7 @@ html {
 .to-simulate {
     text-align: right;
     color: #969696;
-    font-size: 18px;
+    font-size: 14px;
     font-family: "mundial", sans-serif;
     font-weight: 300;
     line-height: 16px;
@@ -292,95 +272,42 @@ html {
     background: linear-gradient(315deg, white 26%, #E1E1E1 100%);
     border-radius: 9999px; /* Rende il cerchio perfetto */
     filter: blur(2px); /* Sfocatura */
-    position: absolute;
-    top: 70%;
-    transform: translate(-50%, 7%);
+    position: relative;
+    top: 80%;
+
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3); /* Ombra più sfumata */
 }
 
+/* GUIDA VERTICALE */
+/* 
 .circle::before {
     content: '';
     position: absolute;
     top: 0;
     left: 50%;
-    width: 2px; /* Larghezza della linea */
-    height: 100%; /* Altezza della linea */
-    background-color: black; /* Colore della linea */
-    transform: translateX(-50%); /* Centra la linea */
+    width: 2px; 
+    height: 100%; 
+    background-color: black; 
+    transform: translateX(-50%); 
 }
+    */
 
 
+/* GUIDA VERTICALE */
 
-
-
-  /* 
-  .second {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    
-    text-align: center;
-    position: absolute;
-
-    gap: 20vw;
-
-    margin-bottom: 17vw;
-}
-
-.reaction p {
-    font-weight: 300;
-    font-style: normal;
-
-    margin-bottom: -0.5vw;
-}
-
-
-.reaction h4 {
-    font-weight: 700;  /* bold 
-    font-style: normal;
-
-    margin-bottom: -1.3vw;
-}
-
-.symbol p {
-    font-weight: 300;
-    font-style: normal;
-
-    margin-bottom: -0.5vw;
-}
-    
-.symbol h4 {
-    font-weight: 700;
-    font-style: normal;
-
-    margin-bottom: -1.3vw;
-}
-.tributes p {
-    font-weight: 300;
-    font-style: normal;
-
-    margin-bottom: -0.5vw;
-}
-
-.tributes h4 {
-    font-weight: 700; 
-    font-style: normal;
-
-    margin-bottom: -1.3vw;
-}
- */
 
 .vertical-guide {
-    position: fixed; /* Posizione fissa per rimanere al centro */
-    top: 0; /* Inizia dalla parte superiore della pagina */
-    left: 50%; /* Posiziona al centro orizzontale */
-    width: 2px; /* Larghezza della guida */
-    height: 100%; /* Altezza della guida */
-    background-color: black; /* Colore della guida */
-    transform: translateX(-50%); /* Centra la guida */
-    z-index: 10; /* Assicurati che sia sopra altri elementi */
+    position: fixed; 
+    top: 0; 
+    left: 50%; 
+    width: 2px; 
+    height: 100%; 
+    background-color: black; 
+    transform: translateX(-50%);
+    z-index: 10; 
 }
+
+
 
 .just-like {
     animation: fadeIn 1s forwards;
@@ -473,7 +400,10 @@ html {
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
 }
 
-.month-circle::before {
+/* GUIDA VERTICALE */
+
+/* 
+.month-circle::before { 
     content: '';
     position: absolute;
     top: 0;
@@ -482,7 +412,8 @@ html {
     height: 100%;
     background-color: black;
     transform: translateX(-50%);
-}
+} 
+ */
 
 .month-container {
     position: relative;
@@ -530,7 +461,7 @@ html {
     font-size: 1.5rem;
     font-weight: 400;
 
-    margin-bottom: 7rem;
+    margin-bottom: 7.3rem;
     
 }
 
@@ -613,6 +544,9 @@ html {
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
 }
 
+/* GUIDA VERTICALE */
+
+/* 
 .day-circle::before {
     content: '';
     position: absolute;
@@ -623,6 +557,7 @@ html {
     background-color: black;
     transform: translateX(-50%);
 }
+ */
 
 .day-container {
     position: relative;
@@ -683,6 +618,9 @@ html {
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
 }
 
+/* GUIDA VERTICALE */
+
+/* 
 .year-circle::before {
     content: '';
     position: absolute;
@@ -693,6 +631,7 @@ html {
     background-color: black;
     transform: translateX(-50%);
 }
+ */
 
 .year-container {
     position: relative;
@@ -718,4 +657,64 @@ html {
     opacity: 1;
     font-size: 3rem;
     font-weight: 600;
+}
+
+/* Nuove classi aggiunte per la pagina 8-scontrino.html */
+.date-name {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: "mundial", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 20px;
+    margin-top: 3rem;
+}
+
+.section-title {
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin-bottom: 7.3rem;
+}
+
+.date-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.death-title-container,
+.date-title-container,
+.price-title-container {
+    display: flex;
+    justify-content: space-between; /* Spazio tra gli elementi */
+    align-items: center; /* Allinea verticalmente al centro */
+    width: 100%; /* Assicura che occupi tutta la larghezza disponibile */
+    margin-top: 1rem; /* Margine superiore */
+    font-weight: 400; /* Peso del font */
+    gap: 8rem;
+}
+
+.death-title,
+.date-title,
+.price-title {
+    font-family: "mundial", sans-serif;
+    font-weight: 200;
+    font-size: 15px;
+    text-align: left; /* Allinea il testo a sinistra */
+}
+
+.death-name,
+.date-name-month,
+.date-name-day,
+.date-name-year,
+.price-name {
+    font-family: "mundial", sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+    text-align: right; /* Allinea il testo a destra */
+    flex-grow: 1; /* Permette di occupare lo spazio rimanente */
 }

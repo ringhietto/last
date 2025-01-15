@@ -77,9 +77,7 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   socket.onmessage = (event) => {
-    console.log("Dati ricevuti dal WebSocket:", event.data);
     const message = event.data;
-    console.log("Messaggio ricevuto:", message);
 
     if (message === "Start pressed!") {
       window.location.href = "6-year.html";

@@ -30,28 +30,22 @@ function loadVip(vipType) {
   // Assicurati che il video sia nascosto all'inizio
   videoContainer.style.display = "none";
 
-  // Mostra il video dopo 1 secondo
-  setTimeout(() => {
-    videoContainer.style.display = "block";
-    gsap.fromTo(videoContainer, { opacity: 0 }, { opacity: 1, duration: 1 });
-  }, 1000);
+  // Mostra il video senza animazione
+  videoContainer.style.display = "block";
 
   // Animazione per le istruzioni
   setTimeout(() => {
-    gsap.fromTo(instructions, { opacity: 0 }, { opacity: 1, duration: 1 });
+    instructions.style.opacity = "1"; // Imposta l'opacità a 1 senza animazione
   }, 100);
 
   // Animazione per la scelta
   setTimeout(() => {
-    gsap.fromTo(choice, { opacity: 0 }, { opacity: 1, duration: 1 });
+    choice.style.opacity = "1"; // Imposta l'opacità a 1 senza animazione
   }, 1000);
 
   // Animazione per il cerchio
   setTimeout(() => {
-    gsap.fromTo(
-      circle,
-      { opacity: 0, scale: 0 },
-      { opacity: 1, scale: 1, duration: 1 }
-    );
+    circle.style.opacity = "1"; // Imposta l'opacità a 1 senza animazione
+    circle.style.transform = "scale(1)"; // Imposta la scala a 1 senza animazione
   }, 1000);
 }

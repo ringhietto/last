@@ -23,29 +23,29 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 });
 
-// Funzione per avviare il video
-function startVideo() {
-  const videoElement = document.getElementById("accidentVideo");
-  const thumbnail = document.getElementById("videoThumbnail");
+// // Funzione per avviare il video
+// function startVideo() {
+//   const videoElement = document.getElementById("accidentVideo");
+//   const thumbnail = document.getElementById("videoThumbnail");
 
-  if (videoElement) {
-    videoElement.style.display = "block";
-    thumbnail.style.display = "none";
-    videoElement
-      .play()
-      .then(() => {
-        console.log("Video avviato con successo.");
-      })
-      .catch((error) => {
-        console.error("Errore durante l'avvio del video:", error);
-      });
+//   if (videoElement) {
+//     videoElement.style.display = "block";
+//     thumbnail.style.display = "none";
+//     videoElement
+//       .play()
+//       .then(() => {
+//         console.log("Video avviato con successo.");
+//       })
+//       .catch((error) => {
+//         console.error("Errore durante l'avvio del video:", error);
+//       });
 
-    // Aggiungi un listener per l'evento 'ended'
-    videoElement.addEventListener("ended", () => {
-      thumbnail.style.display = "block";
-      videoElement.style.display = "none";
-    });
-  } else {
-    console.error("Elemento video non trovato.");
-  }
-}
+//     // Aggiungi un listener per l'evento 'ended'
+//     videoElement.addEventListener("ended", () => {
+//       thumbnail.style.display = "block";
+//       videoElement.style.display = "none";
+//     });
+//   } else {
+//     console.error("Elemento video non trovato.");
+//   }
+// }

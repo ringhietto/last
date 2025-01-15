@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const words = document.querySelectorAll(".word");
   const circle = document.querySelector(".circle");
   const xOffset = -860; // Offset orizzontale per centrare le parole SINISTRA-DESTRA
-  const yOffset = -435; // Offset verticale per posizionare le parole sopra il cerchio SU-GIU
+  const yOffset = -1650; // Offset verticale per posizionare le parole sopra il cerchio SU-GIU
   let centerX, centerY;
   let currentIndex = 8; // La terza parola ("Overdose") è al centro inizialmente
   let lastEncoderValue = 0; // Valore dell'encoder precedente
@@ -16,9 +16,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function updatePositions() {
     const angleStep = 360 / words.length; // Cambiato per coprire l'intero cerchio
-    const radius = 1000; // Imposta il raggio per posizionare le parole vicino al cerchio
+    const radius = 900; // Imposta il raggio per posizionare le parole vicino al cerchio
     const activeFontSize = 2.5; // Dimensione della parola attiva in em
-    const normalFontSize = 1; // Dimensione della parola normale in em
+    const normalFontSize = 1.04; // Dimensione della parola normale in em
 
     // Modifica i valori di distanza per avvicinare le parole
     const distanceActive = activeFontSize * 10; // Distanza per la parola attiva
@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
     words.forEach((word, index) => {
       const relativeIndex =
         (index - currentIndex + words.length) % words.length;
-      const angle = angleStep * relativeIndex - 180; // Angolo per rotazione orizzontale
+      const angle = angleStep * relativeIndex - 180.32; // Angolo per rotazione orizzontale
 
       // Calcola la distanza in base alla dimensione del font
       const distance = relativeIndex === 5 ? distanceActive : distanceNormal;
@@ -103,6 +103,19 @@ document.addEventListener("DOMContentLoaded", () => {
   socket.onclose = () => {
     console.log("WebSocket connection closed");
   };
+
+  words.forEach((word) => {
+    word.addEventListener("click", () => {
+      const selectedDeath = word.textContent; // Ottieni il tipo di morte selezionato
+      localStorage.setItem("selectedDeath", selectedDeath); // Salva il tipo di morte selezionato
+      console.log("Morte selezionata:", selectedDeath); // Log per confermare la selezione
+    });
+  });
+
+  function updateDeath(death) {
+    console.log("Morte selezionata:", death);
+    localStorage.setItem("selectedDeath", death); // Salva il tipo di morte selezionato
+  }
 });
 
 function animateRotation() {
