@@ -8,6 +8,12 @@ document.addEventListener("DOMContentLoaded", () => {
   let lastEncoderValue = 0; // Valore dell'encoder precedente
 
   function updateCenter() {
+    const circle = document.querySelector(".circle");
+    if (!circle) {
+      console.error("Elemento .circle non trovato nel DOM.");
+      return; // Esci dalla funzione se l'elemento non esiste
+    }
+
     const circleRect = circle.getBoundingClientRect();
     centerX = circleRect.left + circleRect.width / 2;
     centerY = circleRect.top + circleRect.height / 2;
@@ -55,6 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
         loadVip(word.textContent.toLowerCase()); // Chiama la funzione loadVip
         loadPhrases(word.textContent.toLowerCase()); // Chiama la funzione loadPhrases
         updateMedia(word.textContent.toLowerCase()); // Aggiorna l'immagine e il video
+        updateDeath(word.textContent); // Modificato per chiamare updateDeath qui
       } else {
         word.classList.remove("active");
         word.classList.add("font-regular");
@@ -106,9 +113,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   words.forEach((word) => {
     word.addEventListener("click", () => {
-      const selectedDeath = word.textContent; // Ottieni il tipo di morte selezionato
-      localStorage.setItem("selectedDeath", selectedDeath); // Salva il tipo di morte selezionato
-      console.log("Morte selezionata:", selectedDeath); // Log per confermare la selezione
+      const selectedDeath = word.textContent;
+      localStorage.setItem("selectedDeath", selectedDeath);
+      console.log("Morte selezionata:", selectedDeath);
+      window.location.href = "4-month.html"; // Aggiunto per reindirizzare alla pagina "4-month.html"
     });
   });
 

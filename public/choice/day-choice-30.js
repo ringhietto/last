@@ -79,6 +79,7 @@ document.addEventListener("DOMContentLoaded", () => {
   socket.onmessage = (event) => {
     const message = event.data;
 
+    
     if (message === "Start pressed!") {
       window.location.href = "6-year.html";
     } else {

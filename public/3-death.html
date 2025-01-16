@@ -89,25 +89,16 @@
             <div class="to-simulate">to SIMULATE</div>
             
             <script>
-                // Variabile per tenere traccia se le istruzioni sono già state mostrate
-                let instructionsShown = false;
+                const words = document.querySelectorAll('.word');
 
-                // Avvia il caricamento delle istruzioni quando il documento è pronto
-                document.addEventListener('DOMContentLoaded', () => {
-                    const instructions = document.getElementById('instructions');
-                    
-                    if (!instructionsShown) {
-                        // Imposta l'opacità delle istruzioni a 0 inizialmente
-                        instructions.style.opacity = "0";
-
-                        // Mostra le istruzioni un secondo dopo "just-like"
-                        setTimeout(() => {
-                            instructions.classList.add("fade-in-out"); // Aggiungi la classe per l'animazione
-                            instructions.style.opacity = "1"; // Imposta l'opacità a 1
-                        }, 1000); // Ritardo di 1 secondo
-
-                        instructionsShown = true; // Imposta a true dopo la prima visualizzazione
-                    }
+                words.forEach((word) => {
+                    word.addEventListener("click", () => {
+                        const selectedDeath = word.textContent; // Ottieni il tipo di morte selezionato
+                        localStorage.setItem("selectedDeath", selectedDeath); // Salva il tipo di morte selezionato
+                        console.log("Morte selezionata:", selectedDeath); // Log per confermare la selezione
+                        // Puoi anche navigare verso 8-scontrino.html qui se necessario
+                        window.location.href = "8-scontrino.html"; // Naviga verso 8-scontrino.html
+                    });
                 });
             </script>
         </div>

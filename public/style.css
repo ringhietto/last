@@ -457,13 +457,6 @@ html {
     
 }
 
-.section-title {
-    font-size: 1.5rem;
-    font-weight: 400;
-
-    margin-bottom: 7.3rem;
-    
-}
 
 .date-container {
     display: flex;
@@ -695,12 +688,15 @@ html {
     width: 100%; /* Assicura che occupi tutta la larghezza disponibile */
     margin-top: 1rem; /* Margine superiore */
     font-weight: 400; /* Peso del font */
-    gap: 8rem;
+    gap: 6rem;
+}
+
+.price-title-container {
+margin-top: 5vw;
 }
 
 .death-title,
-.date-title,
-.price-title {
+.date-title {
     font-family: "mundial", sans-serif;
     font-weight: 200;
     font-size: 15px;
@@ -710,11 +706,37 @@ html {
 .death-name,
 .date-name-month,
 .date-name-day,
-.date-name-year,
-.price-name {
+.date-name-year {
     font-family: "mundial", sans-serif;
     font-weight: 400;
     font-size: 15px;
     text-align: right; /* Allinea il testo a destra */
     flex-grow: 1; /* Permette di occupare lo spazio rimanente */
+    
+}
+
+.price-title,
+.price-name {
+    font-family: "mundial", sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+    text-align: left; /* Allinea il testo a sinistra */
+}
+
+#final-date-scontrino {
+
+    margin-bottom: 41.85vw;
+    margin-top: 8vw;
+}
+
+.thankyou-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-family: "mundial", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 20px;
 }

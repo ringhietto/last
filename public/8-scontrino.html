@@ -16,12 +16,13 @@
     <script src="arduino.js" defer></script>
     <script src="generation.js" defer></script>
     <script src="choice/death-choice.js" defer></script>
+    <script src="choice/scontrino.js" defer></script>
 </head>
 
 <body class="page4">
     <!-- <div class="vertical-guide"></div> -->
 
-    <div class="date-name" id="final-date">
+    <div class="date-name" id="final-date-scontrino">
         <div class="section-title">DEATH</div>
         <div class="date-container">
             <div class="death-title-container">
@@ -50,19 +51,65 @@
         const selectedDeath = localStorage.getItem("selectedDeath");
         if (selectedDeath) {
             document.querySelector('#death-name').textContent = selectedDeath; // Imposta il tipo di morte nel <span>
-        } 
-
-        // Recupera il giorno selezionato da localStorage
-        const selectedDay = localStorage.getItem("selectedDay");
-        if (selectedDay) {
-            document.querySelector('#day-name').textContent = selectedDay; // Imposta il giorno nel <span>
+        } else {
+            console.log("Nessun tipo di morte selezionato trovato."); // Log per il debug
         }
 
-        // Recupera l'anno selezionato da localStorage
-        const selectedYear = localStorage.getItem("selectedYear");
-        if (selectedYear) {
-            document.querySelector('#year-name').textContent = selectedYear; // Imposta l'anno nel <span>
+
+        // Aggiungi questo script nella pagina 8-scontrino.html
+document.addEventListener("DOMContentLoaded", () => {
+    // Recupera i valori da localStorage
+    const selectedMonth = localStorage.getItem("selectedMonth");
+    const selectedDay = localStorage.getItem("selectedDay");
+    const selectedYear = localStorage.getItem("selectedYear");
+
+    // Seleziona gli elementi span
+    const monthSpan = document.getElementById("date-name-month");
+    const daySpan = document.getElementById("date-name-day");
+    const yearSpan = document.getElementById("date-name-year");
+
+    if (selectedMonth && selectedDay && selectedYear) {
+        // Inserisci i valori negli span
+        monthSpan.textContent = selectedMonth;
+        // Aggiungi una virgola dopo il giorno
+        daySpan.textContent = ` ${selectedDay}, `;
+        yearSpan.textContent = selectedYear;
+    } else {
+        console.log("Dati mancanti per la data completa");
+    }
+});
+    </script>
+
+<script>
+    // Definizione dei prezzi per ogni tipo di morte
+    const deathPrices = {
+        "MURDER": "2,000,000 $",
+        "ILLNESS": "1,200,000 $", 
+        "SUICIDE": "1,600,000 $",
+        "ACCIDENT": "1,800,000 $",
+        "OVERDOSE": "1,400,000 $"
+    };
+    
+    // Funzione per impostare il prezzo in base alla morte selezionata
+    function setDeathPrice() {
+        // Recupera il tipo di morte selezionato
+        const selectedDeath = localStorage.getItem("selectedDeath");
+        
+        // Recupera l'elemento del prezzo
+        const priceElement = document.querySelector('#price-name');
+        
+        // Se c'è una morte selezionata e c'è un prezzo corrispondente
+        if (selectedDeath && deathPrices[selectedDeath]) {
+            priceElement.textContent = deathPrices[selectedDeath];
+            console.log(`Prezzo impostato per ${selectedDeath}: ${deathPrices[selectedDeath]}`);
+        } else {
+            priceElement.textContent = "PRICE NOT AVAILABLE";
+            console.log("Nessuna morte selezionata o prezzo non trovato");
         }
+    }
+    
+    // Esegui la funzione quando il documento è caricato
+    document.addEventListener("DOMContentLoaded", setDeathPrice);
     </script>
 </body>
 </html>
