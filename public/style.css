@@ -268,14 +268,18 @@ html {
 .circle {
     width: 1700px; /* Dimensione fissa */
     height: 2250px; /* Dimensione fissa */
-    background-color: white; /* Sfondo bianco del cerchio */
-    background: linear-gradient(315deg, white 26%, #E1E1E1 100%);
+    
+    
+    border: 1px black solid; /* Aggiunto il bordo */
     border-radius: 9999px; /* Rende il cerchio perfetto */
-    filter: blur(2px); /* Sfocatura */
+    
     position: relative;
     top: 80%;
 
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3); /* Ombra più sfumata */
+    /* background-color: white; */
+    /* filter: blur(2px); */
+    /* background: linear-gradient(315deg, white 26%, #E1E1E1 100%); */
+    /* box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3); */
 }
 
 /* GUIDA VERTICALE */
@@ -388,16 +392,20 @@ html {
 }
 
 .month-circle {
-    width: 1700px;
-    height: 2250px;
-    background-color: white;
-    background: linear-gradient(315deg, white 26%, #E1E1E1 100%);
-    border-radius: 9999px;
-    filter: blur(2px);
+    width: 1700px; /* Dimensione fissa */
+    height: 2250px; /* Dimensione fissa */
+    
+    
+    border: 1px black solid; /* Aggiunto il bordo */
+    border-radius: 9999px; /* Rende il cerchio perfetto */
+    
     position: absolute;
-    top: 70%;
-    transform: translate(-0%, 7%);
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+    top: 80%;
+
+    /* background-color: white; */
+    /* filter: blur(2px); */
+    /* background: linear-gradient(315deg, white 26%, #E1E1E1 100%); */
+    /* box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3); */
 }
 
 /* GUIDA VERTICALE */
@@ -525,16 +533,20 @@ html {
 }
 
 .day-circle {
-    width: 1700px;
-    height: 2250px;
-    background-color: white;
-    background: linear-gradient(315deg, white 26%, #E1E1E1 100%);
-    border-radius: 9999px;
-    filter: blur(2px);
+    width: 1700px; /* Dimensione fissa */
+    height: 2250px; /* Dimensione fissa */
+    
+    
+    border: 1px black solid; /* Aggiunto il bordo */
+    border-radius: 9999px; /* Rende il cerchio perfetto */
+    
     position: absolute;
-    top: 70%;
-    transform: translate(-0%, 7%);
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+    top: 80%;
+
+    /* background-color: white; */
+    /* filter: blur(2px); */
+    /* background: linear-gradient(315deg, white 26%, #E1E1E1 100%); */
+    /* box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3); */
 }
 
 /* GUIDA VERTICALE */
@@ -599,16 +611,20 @@ html {
 }
 
 .year-circle {
-    width: 1700px;
-    height: 2250px;
-    background-color: white;
-    background: linear-gradient(315deg, white 26%, #E1E1E1 100%);
-    border-radius: 9999px;
-    filter: blur(2px);
+    width: 1700px; /* Dimensione fissa */
+    height: 2250px; /* Dimensione fissa */
+    
+    
+    border: 1px black solid; /* Aggiunto il bordo */
+    border-radius: 9999px; /* Rende il cerchio perfetto */
+    
     position: absolute;
-    top: 70%;
-    transform: translate(-0%, 7%);
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+    top: 80%;
+
+    /* background-color: white; */
+    /* filter: blur(2px); */
+    /* background: linear-gradient(315deg, white 26%, #E1E1E1 100%); */
+    /* box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3); */
 }
 
 /* GUIDA VERTICALE */
@@ -739,4 +755,8 @@ margin-top: 5vw;
     font-weight: 400;
     font-style: normal;
     font-size: 20px;
+}
+
+.logo-big {
+    width: 15vw
 }

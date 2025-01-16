@@ -7,9 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   socket.onmessage = (event) => {
     console.log("Message from server:", event.data);
-    if (event.data.includes("Short press detected!")) {
-      startVideo();
-    } else if (event.data.includes("Double press detected!")) {
+    if (event.data.includes("Start pressed!")) {
       window.location.href = "2-onboarding.html";
     }
   };
