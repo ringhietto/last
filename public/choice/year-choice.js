@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   const years = document.querySelectorAll(".year");
   const circle = document.querySelector(".year-circle");
-  const xOffset = -860;
+  const xOffset = -960;
   const yOffset = -820;
   let centerX, centerY;
   let currentIndex = 14;

@@ -1,24 +1,34 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const socket = new WebSocket("ws://127.0.0.1:8001");
+    const body = document.querySelector('.fade-in');
+    body.classList.add('visible'); // Aggiungi la classe per rendere visibile
 
-  socket.onopen = () => {
-    console.log("WebSocket connected");
-  };
+    const socket = new WebSocket("ws://127.0.0.1:8001");
 
-  socket.onmessage = (event) => {
-    console.log("Message from server:", event.data);
-    if (event.data.includes("Start pressed!")) {
-      window.location.href = "2-onboarding.html";
-    }
-  };
+    socket.onopen = () => {
+        console.log("WebSocket connected");
+    };
 
-  socket.onerror = (error) => {
-    console.error("WebSocket Error:", error);
-  };
+    socket.onmessage = (event) => {
+        const message = event.data;
 
-  socket.onclose = () => {
-    console.log("WebSocket connection closed");
-  };
+        if (message === "Start pressed!") {
+            const body = document.body;
+            body.style.transition = "opacity 2s"; // Imposta la transizione per la dissolvenza
+            body.style.opacity = 0; // Inizia la dissolvenza
+
+            setTimeout(() => {
+                window.location.href = "2-onboarding.html"; // Naviga verso 2-onboarding.html
+            }, 2000); // Aspetta 2 secondi prima di navigare
+        }
+    };
+
+    socket.onerror = (error) => {
+        console.error("WebSocket Error:", error);
+    };
+
+    socket.onclose = () => {
+        console.log("WebSocket connection closed");
+    };
 });
 
 // // Funzione per avviare il video

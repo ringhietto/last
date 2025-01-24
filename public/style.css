@@ -67,12 +67,13 @@ html {
     text-align: center;
     margin: 0;
     line-height: 1.2;
+    margin-bottom: 3vw;
 }
 
 .logo {
     position: absolute;
     bottom: 3rem;
-    width: 3vw;
+    width: 1.5vw;
     height: auto;
 }
 
@@ -124,10 +125,6 @@ html {
     
 }
 
-/* Classe per nascondere la pagina con dissolvenza */
-.fade-out {
-    opacity: 0;
-}
 
 .first {
     display: flex;
@@ -136,7 +133,7 @@ html {
     align-items: center;
     position: relative;
 
-    margin-bottom: 183vw;
+    margin-bottom: 185vw;
 
 
     
@@ -171,7 +168,7 @@ html {
 
 
 
-#videoContainer {
+#imageContainer {
     position: absolute; /* Posiziona assolutamente rispetto a .page3 */
     top: 50%; /* Centra verticalmente */
     left: 50%; /* Centra orizzontalmente */
@@ -184,7 +181,7 @@ html {
     cursor: pointer;
 }
 
-#videoContainer img,
+#imageContainer img,
 #accidentVideo {
     width: 77%; /* Imposta la larghezza al 100% del contenitore */
     height: 77%; /* Imposta l'altezza al 100% del contenitore */
@@ -192,16 +189,17 @@ html {
     margin-bottom: 7.5vw; /* Mantieni il margine se necessario */
 }
 
+.buy-.instructions,
 .instructions {
     position: absolute;
     display: flex;
     align-items: stretch;
     justify-content: center;
 
-    margin-bottom: 95vw;
+    margin-bottom: 88vw;
 }
 
-
+.double-press,
 .press{
     text-align: right;
     color: #969696;
@@ -214,13 +212,15 @@ html {
 }
 
 .dot {
-    width: 5px;
-    height: 5px;
+    width: 6px;
+    height: 6px;
     background: #969696;
     border-radius: 9999px;
-    margin-top: 0.4vw;
+    margin-top: 0.3vw;
 }
 
+.to-get-back,
+.to-confirm,
 .to-simulate {
     text-align: right;
     color: #969696;
@@ -327,6 +327,25 @@ html {
     }
 }
 
+.date-instructions {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25vw;
+    margin-top: 20vw;
+}
+
+.back-instructions,
+.confirm-instructions {
+    display: flex;
+}
+
+#recap-date-instructions {
+    margin-top: 30vw;
+}
+
+.buy-.instructions,
 .instructions,
 .choice,
 .circle {
@@ -336,20 +355,21 @@ html {
 
 @keyframes fadeInOut {
     0% {
-        opacity: 0.25; /* Inizio al 25% di opacità */
-    }
-    50% {
-        opacity: 1; /* A 100% di opacità */
+        opacity: 0;
     }
     100% {
-        opacity: 0.25; /* Torna al 25% di opacità */
+        opacity: 1;
     }
 }
 
 .fade-in-out {
-    animation: fadeInOut 2s ease-in-out 0s 2; /* Durata di 2 secondi, ripetuta 2 volte */
+    animation: fadeInOut 2s ease-in-out 0s 1; /* Durata di 2 secondi, ripetuta 1 volta */
 }
 
+.fade-out {
+    transition: opacity 3s ease-out;
+    opacity: 0;
+}
 
 /* page 4 */
 
@@ -509,7 +529,7 @@ html {
 }
 
 #final-date {
-    margin-bottom: 41.85vw;
+    margin-bottom: 37vw;
 }
 
 /* 
@@ -696,7 +716,13 @@ html {
 }
 
 .death-title-container,
-.date-title-container,
+.stage-title-container,
+.age-impact-title-container,
+.media-impact-title-container,
+.transport-title-container,
+.stay-title-container,
+.etherea-title-container,
+.final-price-title-container,
 .price-title-container {
     display: flex;
     justify-content: space-between; /* Spazio tra gli elementi */
@@ -704,7 +730,7 @@ html {
     width: 100%; /* Assicura che occupi tutta la larghezza disponibile */
     margin-top: 1rem; /* Margine superiore */
     font-weight: 400; /* Peso del font */
-    gap: 6rem;
+    gap: 30rem;
 }
 
 .price-title-container {
@@ -712,14 +738,41 @@ margin-top: 5vw;
 }
 
 .death-title,
-.date-title {
+.stage-title,
+.transport-title, 
+.age-impact-title,
+.stay-title,
+.date-title,
+.media-impact-title {
     font-family: "mundial", sans-serif;
     font-weight: 200;
     font-size: 15px;
-    text-align: left; /* Allinea il testo a sinistra */
+    text-align: right; /* Allinea il testo a sinistra */
 }
 
 .death-name,
+.etherea-name {
+    font-family: "mundial", sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+    text-align: left; /* Allinea il testo a destra */
+    flex-grow: 1;
+}
+
+.final-price-name {
+    font-family: "mundial", sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+    text-align: right; /* Allinea il testo a destra */
+    flex-grow: 1;
+}
+
+
+.stage-name,
+.age-impact-name,
+.transport-name,
+.media-impact-name,
+.stay-name,
 .date-name-month,
 .date-name-day,
 .date-name-year {
@@ -741,9 +794,36 @@ margin-top: 5vw;
 
 #final-date-scontrino {
 
-    margin-bottom: 41.85vw;
+    margin-bottom: 37.85vw;
     margin-top: 8vw;
 }
+
+
+.divider {
+    width: 100%;
+    height: 1px;
+    background-color: black;
+    margin: 1rem 0;
+}
+
+.final-total-price {
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .thankyou-container {
     display: flex;
@@ -760,3 +840,117 @@ margin-top: 5vw;
 .logo-big {
     width: 15vw
 }
+
+/* Aggiungi questa classe per l'animazione */
+.fade-in {
+    opacity: 0; /* Inizialmente invisibile */
+    transition: opacity 2s ease-in; /* Transizione di 2 secondi */
+}
+
+.fade-in.visible {
+    opacity: 1; /* Diventa visibile */
+}
+
+.age-name {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-family: "mundial", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+        font-size: 20px;
+        margin-bottom: 15vw;
+
+        margin-top: 5vw;
+        
+    }
+
+
+
+.age-choice {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+}
+
+.age-circle {
+    width: 1700px; /* Dimensione fissa */
+    height: 2250px; /* Dimensione fissa */
+    
+    
+    border: 1px black solid; /* Aggiunto il bordo */
+    border-radius: 9999px; /* Rende il cerchio perfetto */
+    
+    position: absolute;
+    top: 80%;
+
+    /* background-color: white; */
+    /* filter: blur(2px); */
+    /* background: linear-gradient(315deg, white 26%, #E1E1E1 100%); */
+    /* box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3); */
+}
+
+/* GUIDA VERTICALE */
+
+/* 
+.years-old-circle::before { 
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 2px;
+    height: 100%;
+    background-color: black;
+    transform: translateX(-50%);
+} 
+ */
+
+.age-container {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.age {
+    position: absolute;
+    transform-origin: center;
+    transition: transform 0.4s ease-out;
+    opacity: 0.5;
+
+    margin: 0;
+}
+
+.age.active {
+    opacity: 1;
+    font-size: 3rem;
+    font-weight: 600;
+
+}
+
+.fullscreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.fullscreen video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+

@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const message = event.data;
 
     if (message === "Start pressed!") {
-      window.location.href = "8-scontrino.html"; // Naviga verso 8-scontrino.html
+      window.location.href = "7a-etherea.html"; // Naviga verso 8-scontrino.html
     }
   };
 

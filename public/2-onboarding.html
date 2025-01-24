@@ -4,7 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pagina 2</title>
+    <title>Onboarding</title>
+
+    <link rel="icon" type="image/svg+xml" href="asset/LT.png">
     <link rel="stylesheet" href="style.css">
     <script src="arduino.js" defer></script>
 
@@ -12,13 +14,29 @@
         document.addEventListener('DOMContentLoaded', () => {
             const video = document.getElementById('myVideo');
             video.addEventListener('ended', () => {
-                window.location.href = '3-death.html';
+                // Controlla se è la prima visita
+                if (!localStorage.getItem('visitedDeathPage')) {
+                    localStorage.setItem('visitedDeathPage', 'true'); // Imposta il flag
+                    fadeOutAndRedirect(); // Esegui la dissolvenza e reindirizza
+                } else {
+                    window.location.href = '2a-insert.html'; // Naviga direttamente
+                }
             });
         });
+
+        function fadeOutAndRedirect() {
+            const body = document.body;
+            body.style.transition = "opacity 2s"; // Imposta la transizione per la dissolvenza
+            body.style.opacity = 0; // Inizia la dissolvenza
+
+            setTimeout(() => {
+                window.location.href = '3-death.html'; // Reindirizza alla pagina 3-death.html
+            }, 2000); // Aspetta 2 secondi prima di navigare
+        }
     </script>
 </head>
 <body>
-    <video id="myVideo" autoplay muted>
+    <video id="myVideo" autoplay>
         <source src="../public/asset/videos/onboard.mp4" type="video/mp4">
         Il tuo browser non supporta il tag video.
     </video>

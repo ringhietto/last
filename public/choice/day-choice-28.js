@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   const days = document.querySelectorAll(".day");
   const dayCircle = document.querySelector(".day-circle");
-  const xOffset = -860;
+  const xOffset = -960;
   const yOffset = -800;
   let centerX, centerY;
   let currentIndex = 7;

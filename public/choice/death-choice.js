@@ -1,11 +1,17 @@
 document.addEventListener("DOMContentLoaded", () => {
   const words = document.querySelectorAll(".word");
   const circle = document.querySelector(".circle");
-  const xOffset = -860; // Offset orizzontale per centrare le parole SINISTRA-DESTRA
+  const xOffset = -955; // Offset orizzontale per centrare le parole SINISTRA-DESTRA
   const yOffset = -1650; // Offset verticale per posizionare le parole sopra il cerchio SU-GIU
   let centerX, centerY;
   let currentIndex = 8; // La terza parola ("Overdose") è al centro inizialmente
   let lastEncoderValue = 0; // Valore dell'encoder precedente
+  const toSimulateDiv = document.querySelector(".to-simulate");
+  let isInBuyState = false; // Nuovo stato per tracciare se siamo in modalità "BUY"
+
+  // Mantieni la dissolvenza iniziale
+  const thumbnail = document.getElementById("imageThumbnail");
+  gsap.fromTo(thumbnail, { opacity: 0 }, { opacity: 1, duration: 1 });
 
   function updateCenter() {
     const circle = document.querySelector(".circle");
@@ -78,6 +84,10 @@ document.addEventListener("DOMContentLoaded", () => {
       currentIndex = (currentIndex + 1) % words.length;
     }
     updatePositions();
+    if (isInBuyState) {
+      document.querySelector(".to-simulate").innerHTML = "to SIMULATE";
+      isInBuyState = false;
+    }
   }
 
   // Inizializza la posizione iniziale
@@ -101,6 +111,38 @@ document.addEventListener("DOMContentLoaded", () => {
       }
       lastEncoderValue = encoderValue;
     }
+
+    if (event.data.includes("Start pressed!")) {
+      if (isInBuyState) {
+        window.location.href = "3a-date.html";
+        return;
+      }
+
+      const video = document.getElementById("deathVideo");
+      const videoContainer = document.querySelector(".video-container");
+
+      // Imposta il video corretto
+      const currentDeath = getCurrentDeath();
+      video.querySelector("source").src = `asset/videos/${currentDeath}.mov`;
+      video.load();
+
+      // Mostra e riproduci il video
+      videoContainer.classList.add("active");
+      video.play().catch((error) => {
+        console.error("Error playing video:", error);
+      });
+
+      // Quando il video finisce
+      video.addEventListener(
+        "ended",
+        () => {
+          videoContainer.classList.remove("active");
+          document.querySelector(".to-simulate").innerHTML = "to BUY";
+          isInBuyState = true;
+        },
+        { once: true }
+      ); // Assicura che l'evento venga gestito una sola volta
+    }
   };
 
   socket.onerror = (error) => {
@@ -111,19 +153,21 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log("WebSocket connection closed");
   };
 
-  words.forEach((word) => {
-    word.addEventListener("click", () => {
-      const selectedDeath = word.textContent;
-      localStorage.setItem("selectedDeath", selectedDeath);
-      console.log("Morte selezionata:", selectedDeath);
-      window.location.href = "4-month.html"; // Aggiunto per reindirizzare alla pagina "4-month.html"
-    });
-  });
+  // words.forEach((word) => {
+  //   word.addEventListener("click", () => {
+  //     const selectedDeath = word.textContent;
+  //     localStorage.setItem("selectedDeath", selectedDeath);
+  //     console.log("Morte selezionata:", selectedDeath);
+  //     window.location.href = "4-month.html"; // Aggiunto per reindirizzare alla pagina "4-month.html"
+  //   });
+  // });
 
   function updateDeath(death) {
     console.log("Morte selezionata:", death);
     localStorage.setItem("selectedDeath", death); // Salva il tipo di morte selezionato
   }
+
+  updateMedia("suicide"); // Imposta 'suicide' come immagine iniziale
 });
 
 function animateRotation() {
@@ -137,14 +181,35 @@ function animateRotation() {
 }
 
 function updateMedia(word) {
-  const videoContainer = document.getElementById("videoContainer");
-  const thumbnail = document.getElementById("videoThumbnail");
-  const videoElement = document.getElementById("accidentVideo");
+  const videoElements = document.querySelectorAll(".deathVideo");
+  const videoContainer = document.getElementById("imageContainer");
+  const thumbnail = document.getElementById("imageThumbnail");
 
-  // Aggiorna l'immagine di anteprima
+  // Nascondi tutti i video
+  videoElements.forEach((video) => {
+    video.style.display = "none";
+  });
+
+  // Mostra il video corretto
+  const selectedVideo = document.getElementById(`${word}Video`);
+  if (selectedVideo) {
+    selectedVideo.style.display = "block";
+    selectedVideo.load();
+    selectedVideo.play().catch((error) => {
+      console.error(`Error playing video for ${word}:`, error);
+    });
+  } else {
+    console.error(`Video per ${word} non trovato.`);
+  }
+
+  // Aggiorna immediatamente l'immagine di anteprima
   thumbnail.src = `asset/stopvideo/${word}.png`;
+  thumbnail.style.opacity = 1; // Rimuovi il delay e imposta l'opacità immediatamente
+  thumbnail.classList.add("fade-in-out");
+}
 
-  // Aggiorna il video
-  videoElement.querySelector("source").src = `asset/videos/${word}.mp4`;
-  videoElement.load(); // Ricarica il video per applicare la nuova sorgente
+// Funzione helper per ottenere la morte attualmente selezionata
+function getCurrentDeath() {
+  const activeWord = document.querySelector(".word.active");
+  return activeWord ? activeWord.textContent.toLowerCase() : "accident";
 }

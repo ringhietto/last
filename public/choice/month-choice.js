@@ -3,8 +3,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const yearContainer = document.querySelector(".year-container");
   const yearCircle = document.querySelector(".year-circle");
   const monthCircle = document.querySelector(".month-circle");
-  const xOffset = -860;
-  const yOffset = -795;
+  const xOffset = -960;
+  const yOffset = -820;
   let centerX, centerY;
   let currentIndex = 3;
   let lastEncoderValue = 0;
