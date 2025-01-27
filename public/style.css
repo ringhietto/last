@@ -133,7 +133,7 @@ html {
     align-items: center;
     position: relative;
 
-    margin-bottom: 185vw;
+    margin-bottom: 164vw;
 
 
     
@@ -146,27 +146,28 @@ html {
 }
 
 /* Animazione per il tipo di scrittura */
-@keyframes typing {
+/* @keyframes typing {
     from {
         width: 0;
     }
     to {
         width: 100%;
     }
-}
+} */
 
-.typing {
+.consequence h1 {
     display: inline-block;
     white-space: nowrap;
-    overflow: hidden;
-    width: 0;
-    animation: typing 0.3s steps(50) 1s forwards; /* Cambia 30 con il numero di lettere della frase */
     font-family: "mundial", sans-serif;
     font-weight: 400; /* Regular */
     font-style: normal;
+    opacity: 0;
+    transition: opacity 1s ease-in;
 }
 
-
+.consequence h1.fade-in {
+    opacity: 1;
+}
 
 #imageContainer {
     position: absolute; /* Posiziona assolutamente rispetto a .page3 */
@@ -186,7 +187,7 @@ html {
     width: 77%; /* Imposta la larghezza al 100% del contenitore */
     height: 77%; /* Imposta l'altezza al 100% del contenitore */
     object-fit: cover; /* Ritaglia il video per riempire l'area */
-    margin-bottom: 7.5vw; /* Mantieni il margine se necessario */
+    margin-bottom: 5vw; /* Mantieni il margine se necessario */
 }
 
 .buy-.instructions,
@@ -196,7 +197,7 @@ html {
     align-items: stretch;
     justify-content: center;
 
-    margin-bottom: 88vw;
+    margin-bottom: 84vw;
 }
 
 .double-press,
@@ -266,7 +267,7 @@ html {
 
 /* Cerchio - Posizione originale */
 .circle {
-    width: 1700px; /* Dimensione fissa */
+    width: 1900px; /* Dimensione fissa */
     height: 2250px; /* Dimensione fissa */
     
     
@@ -274,7 +275,7 @@ html {
     border-radius: 9999px; /* Rende il cerchio perfetto */
     
     position: relative;
-    top: 80%;
+    top: 81.7%;
 
     /* background-color: white; */
     /* filter: blur(2px); */
@@ -333,7 +334,7 @@ html {
     flex-direction: column;
     align-items: center;
     gap: 0.25vw;
-    margin-top: 20vw;
+    margin-top: 21vw;
 }
 
 .back-instructions,
@@ -400,6 +401,8 @@ html {
     min-height: 100vh;
     padding: 20px;
 }
+
+
 
 .month-choice {
     position: relative;
@@ -481,19 +484,11 @@ html {
     font-weight: 400;
     font-style: normal;
     font-size: 20px;
-    margin-top: 3rem;
+    margin-top: 15vw;
     
 }
 
 
-.date-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    gap: 1.5rem;;
-}
 
 .month-title-container,
 .day-title-container,
@@ -502,7 +497,6 @@ html {
     justify-content: space-between; /* Spazio tra gli elementi */
     align-items: center; /* Allinea verticalmente al centro */
     width: 100%; /* Assicura che occupi tutta la larghezza disponibile */
-    margin-top: 1rem; /* Margine superiore */
     font-weight: 400; /* Peso del font */
 
     gap: 8rem;
@@ -513,7 +507,7 @@ html {
 .year-title {
     font-family: "mundial", sans-serif;
     font-weight: 200;
-    font-size: 15px;
+    font-size: 20px;
     text-align: left; /* Allinea il testo a sinistra */
 }
 
@@ -522,14 +516,13 @@ html {
 .year-name {
     font-family: "mundial", sans-serif;
     font-weight: 400;
-    font-size: 15px;
-    text-align: right; /* Allinea il testo a destra */
+    font-size: 20px;
     flex-grow: 1; /* Permette di occupare lo spazio rimanente */
     text-align: right; /* Allinea il testo a destra */
 }
 
 #final-date {
-    margin-bottom: 37vw;
+    margin-bottom: 29vw;
 }
 
 /* 
@@ -561,7 +554,7 @@ html {
     border-radius: 9999px; /* Rende il cerchio perfetto */
     
     position: absolute;
-    top: 80%;
+    top: 79.5%;
 
     /* background-color: white; */
     /* filter: blur(2px); */
@@ -639,7 +632,7 @@ html {
     border-radius: 9999px; /* Rende il cerchio perfetto */
     
     position: absolute;
-    top: 80%;
+    top: 74.5%;
 
     /* background-color: white; */
     /* filter: blur(2px); */
@@ -702,9 +695,8 @@ html {
 }
 
 .section-title {
-    font-size: 1.5rem;
+    font-size: 35px;
     font-weight: 400;
-    margin-bottom: 7.3rem;
 }
 
 .date-container {
@@ -713,6 +705,7 @@ html {
     justify-content: center;
     align-items: center;
     gap: 1.5rem;
+    margin-top: 7vw;
 }
 
 .death-title-container,
@@ -730,7 +723,7 @@ html {
     width: 100%; /* Assicura che occupi tutta la larghezza disponibile */
     margin-top: 1rem; /* Margine superiore */
     font-weight: 400; /* Peso del font */
-    gap: 30rem;
+    gap: 50rem;
 }
 
 .price-title-container {
@@ -746,7 +739,7 @@ margin-top: 5vw;
 .media-impact-title {
     font-family: "mundial", sans-serif;
     font-weight: 200;
-    font-size: 15px;
+    font-size: 18px;
     text-align: right; /* Allinea il testo a sinistra */
 }
 
@@ -754,7 +747,7 @@ margin-top: 5vw;
 .etherea-name {
     font-family: "mundial", sans-serif;
     font-weight: 400;
-    font-size: 15px;
+    font-size: 25px;
     text-align: left; /* Allinea il testo a destra */
     flex-grow: 1;
 }
@@ -762,7 +755,7 @@ margin-top: 5vw;
 .final-price-name {
     font-family: "mundial", sans-serif;
     font-weight: 400;
-    font-size: 15px;
+    font-size: 25px;
     text-align: right; /* Allinea il testo a destra */
     flex-grow: 1;
 }
@@ -778,7 +771,7 @@ margin-top: 5vw;
 .date-name-year {
     font-family: "mundial", sans-serif;
     font-weight: 400;
-    font-size: 15px;
+    font-size: 18px;
     text-align: right; /* Allinea il testo a destra */
     flex-grow: 1; /* Permette di occupare lo spazio rimanente */
     
@@ -879,7 +872,7 @@ margin-top: 5vw;
 }
 
 .age-circle {
-    width: 1700px; /* Dimensione fissa */
+    width: 2000px; /* Dimensione fissa */
     height: 2250px; /* Dimensione fissa */
     
     
@@ -954,3 +947,113 @@ margin-top: 5vw;
   object-fit: cover;
 }
 
+.consequence h1 {
+  opacity: 0;
+  transition: opacity 1s ease-in;
+}
+
+.consequence h1.fade-in {
+  opacity: 1;
+}
+
+.video-container {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: black;
+    z-index: 9999;
+    opacity: 0;
+    transition: opacity 2s ease-in-out; /* Aumentato a 2s per una transizione più graduale */
+}
+
+.video-container.active {
+    display: block;
+}
+
+.video-container video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 1;
+    transition: opacity 2s ease-out;
+}
+
+.deathVideo {
+    display: none;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+
+
+.horizontal-guide {
+    /* display: none; */
+    position: fixed;
+    top: 63px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: black;
+    z-index: 9999;
+}
+
+.horizontal-guide-2 {
+    /* display: none; */
+    position: fixed;
+    top: 237px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: black;
+    z-index: 9999;
+}
+
+
+.horizontal-guide-3 {
+    /* display: none; */
+    position: fixed;
+    top: 727px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: black;
+    z-index: 9999;
+}
+
+.horizontal-guide-4 {
+    /* display: none; */
+    position: fixed;
+    top: 846px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: black;
+    z-index: 9999;
+}
+
+.horizontal-guide-5 {
+    /* display: none; */
+    position: fixed;
+    top: 907px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: black;
+    z-index: 9999;
+}
+
+.horizontal-guide-6 {
+    /* display: none; */
+    position: fixed;
+    top: 913px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: black;
+    z-index: 9999;
+}

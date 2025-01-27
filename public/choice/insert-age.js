@@ -9,14 +9,14 @@ document.addEventListener("DOMContentLoaded", function() {
     setTimeout(() => {
         // Anima l'ingresso del body con una dissolvenza
         gsap.to(body, { opacity: 1, duration: 1, onComplete: holdElements });
-    }, 500);
+    }, 250);
 
     function holdElements() {
         // Mantieni gli elementi visibili per 3 secondi
         setTimeout(() => {
             // Anima l'uscita del body con una dissolvenza
-            gsap.to(body, { opacity: 0, duration: 2, onComplete: redirectToNextPage });
-        }, 1000);
+            gsap.to(body, { opacity: 0, duration: 1, onComplete: redirectToNextPage });
+        }, 500);
     }
 
     function redirectToNextPage() {

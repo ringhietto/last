@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const days = document.querySelectorAll(".day");
   const dayCircle = document.querySelector(".day-circle");
   const xOffset = -960;
-  const yOffset = -800;
+  const yOffset = -815;
   let centerX, centerY;
   let currentIndex = 7;
   let lastEncoderValue = 0;
@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     days.forEach((day, index) => {
       const relativeIndex = (index - currentIndex + days.length) % days.length;
-      const angle = angleStep * relativeIndex - 148.3;
+      const angle = angleStep * relativeIndex - 148;
 
       const distance = relativeIndex === 5 ? distanceActive : distanceNormal;
 
@@ -45,6 +45,9 @@ document.addEventListener("DOMContentLoaded", () => {
       day.style.opacity = opacity;
 
       if (relativeIndex === 5) {
+        const selectedDay = day.textContent;
+        updateDay(selectedDay);
+
         day.classList.add("active");
         day.classList.remove("font-regular");
         day.classList.add("font-DemiBold");
@@ -59,8 +62,8 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function updateDay(day) {
-    console.log("Data selezionata:", day);
-    localStorage.setItem("selectedDay", day); // Salva il giorno selezionato
+    console.log("Giorno selezionato:", day);
+    localStorage.setItem("selectedDay", day);
   }
 
   function rotateDays(direction) {
@@ -83,19 +86,29 @@ document.addEventListener("DOMContentLoaded", () => {
 
   socket.onmessage = (event) => {
     const message = event.data;
+    const selectedMonth = localStorage.getItem("selectedMonth");
 
-    if (message === "Start pressed!") {
-      window.location.href = "6-year.html"; // Naviga verso 6-year.html
-    } else {
-      const encoderValue = parseInt(message.split(" ")[2]);
-      if (!isNaN(encoderValue)) {
-        if (encoderValue > lastEncoderValue) {
-          rotateDays("right");
-        } else if (encoderValue < lastEncoderValue) {
-          rotateDays("left");
-        }
-        lastEncoderValue = encoderValue;
+    if (message === "Short press detected!") {
+      // Controlla se il mese è gennaio
+      if (selectedMonth === "JANUARY") {
+        window.location.href = "6-year-january.html";
+      } else {
+        window.location.href = "6-year.html";
       }
+    }
+
+    if (message === "Double press detected!") {
+      window.location.href = "4-month.html";
+    }
+
+    const encoderValue = parseInt(message.split(" ")[2]);
+    if (!isNaN(encoderValue)) {
+      if (encoderValue > lastEncoderValue) {
+        rotateDays("right");
+      } else if (encoderValue < lastEncoderValue) {
+        rotateDays("left");
+      }
+      lastEncoderValue = encoderValue;
     }
   };
 

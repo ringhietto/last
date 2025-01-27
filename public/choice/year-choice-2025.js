@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const years = document.querySelectorAll(".year");
   const circle = document.querySelector(".year-circle");
   const xOffset = -960;
-  const yOffset = -880;
+  const yOffset = -910;
   let centerX, centerY;
   let currentIndex = 15;
   let lastEncoderValue = 0;
@@ -77,7 +77,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function rotateYears(direction) {
     if (direction === "left") {
       // Non permettere di andare oltre il 2025
-      if (currentIndex <= 14) return;
+      if (currentIndex <= 15) return;
       currentIndex = (currentIndex - 1 + years.length) % years.length;
     } else if (direction === "right") {
       // Mantiene il limite superiore esistente

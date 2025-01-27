@@ -1,11 +1,11 @@
 document.addEventListener("DOMContentLoaded", () => {
   const words = document.querySelectorAll(".word");
   const circle = document.querySelector(".circle");
-  const xOffset = -955; // Offset orizzontale per centrare le parole SINISTRA-DESTRA
-  const yOffset = -1650; // Offset verticale per posizionare le parole sopra il cerchio SU-GIU
+  const xOffset = -960; // Offset orizzontale per centrare le parole SINISTRA-DESTRA
+  const yOffset = -1295; // Offset verticale per posizionare le parole sopra il cerchio SU-GIU
   let centerX, centerY;
   let currentIndex = 8; // La terza parola ("Overdose") è al centro inizialmente
-  let lastEncoderValue = 0; // Valore dell'encoder precedente
+  let lastEncoderValue = 10000; // Cambiato da 0 a 10000
   const toSimulateDiv = document.querySelector(".to-simulate");
   let isInBuyState = false; // Nuovo stato per tracciare se siamo in modalità "BUY"
 
@@ -27,19 +27,18 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function updatePositions() {
-    const angleStep = 360 / words.length; // Cambiato per coprire l'intero cerchio
-    const radius = 900; // Imposta il raggio per posizionare le parole vicino al cerchio
-    const activeFontSize = 2.5; // Dimensione della parola attiva in em
-    const normalFontSize = 1.04; // Dimensione della parola normale in em
+    const angleStep = 360 / words.length;
+    const radius = 1225; // Cambiato da 900 a 1200 come in age-choice.js
+    const activeFontSize = 2.5;
+    const normalFontSize = 1; // Cambiato da 1.04 a 1 come in age-choice.js
 
-    // Modifica i valori di distanza per avvicinare le parole
-    const distanceActive = activeFontSize * 10; // Distanza per la parola attiva
-    const distanceNormal = normalFontSize * 5; // Distanza per le parole normali
+    const distanceActive = activeFontSize * 10;
+    const distanceNormal = normalFontSize * 5;
 
     words.forEach((word, index) => {
       const relativeIndex =
         (index - currentIndex + words.length) % words.length;
-      const angle = angleStep * relativeIndex - 180.32; // Angolo per rotazione orizzontale
+      const angle = angleStep * relativeIndex - 150; // Angolo per rotazione orizzontale
 
       // Calcola la distanza in base alla dimensione del font
       const distance = relativeIndex === 5 ? distanceActive : distanceNormal;
@@ -63,7 +62,7 @@ document.addEventListener("DOMContentLoaded", () => {
         word.classList.add("active");
         word.classList.remove("font-regular");
         word.classList.add("font-DemiBold");
-        gsap.to(word, { fontSize: "2.5em", duration: 0.5 }); // Dimensione per la parola attiva
+        gsap.to(word, { fontSize: "45px", duration: 0.5 }); // Cambiato da 2.5em a 50px
         loadVip(word.textContent.toLowerCase()); // Chiama la funzione loadVip
         loadPhrases(word.textContent.toLowerCase()); // Chiama la funzione loadPhrases
         updateMedia(word.textContent.toLowerCase()); // Aggiorna l'immagine e il video
@@ -72,7 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
         word.classList.remove("active");
         word.classList.add("font-regular");
         word.classList.remove("font-DemiBold");
-        gsap.to(word, { fontSize: "1.04em", duration: 0.5 }); // Dimensione per la parola non attiva
+        gsap.to(word, { fontSize: "18px", duration: 0.5 }); // Cambiato da 1.04em a 25px
       }
     });
   }
@@ -112,7 +111,7 @@ document.addEventListener("DOMContentLoaded", () => {
       lastEncoderValue = encoderValue;
     }
 
-    if (event.data.includes("Start pressed!")) {
+    if (event.data.includes("Short press detected!")) {
       if (isInBuyState) {
         window.location.href = "3a-date.html";
         return;
@@ -153,15 +152,6 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log("WebSocket connection closed");
   };
 
-  // words.forEach((word) => {
-  //   word.addEventListener("click", () => {
-  //     const selectedDeath = word.textContent;
-  //     localStorage.setItem("selectedDeath", selectedDeath);
-  //     console.log("Morte selezionata:", selectedDeath);
-  //     window.location.href = "4-month.html"; // Aggiunto per reindirizzare alla pagina "4-month.html"
-  //   });
-  // });
-
   function updateDeath(death) {
     console.log("Morte selezionata:", death);
     localStorage.setItem("selectedDeath", death); // Salva il tipo di morte selezionato
@@ -189,18 +179,6 @@ function updateMedia(word) {
   videoElements.forEach((video) => {
     video.style.display = "none";
   });
-
-  // Mostra il video corretto
-  const selectedVideo = document.getElementById(`${word}Video`);
-  if (selectedVideo) {
-    selectedVideo.style.display = "block";
-    selectedVideo.load();
-    selectedVideo.play().catch((error) => {
-      console.error(`Error playing video for ${word}:`, error);
-    });
-  } else {
-    console.error(`Video per ${word} non trovato.`);
-  }
 
   // Aggiorna immediatamente l'immagine di anteprima
   thumbnail.src = `asset/stopvideo/${word}.png`;

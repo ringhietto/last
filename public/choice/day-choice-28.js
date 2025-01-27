@@ -2,10 +2,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const days = document.querySelectorAll(".day");
   const dayCircle = document.querySelector(".day-circle");
   const xOffset = -960;
-  const yOffset = -800;
+  const yOffset = -810;
   let centerX, centerY;
   let currentIndex = 7;
-  let lastEncoderValue = 0;
+  let lastEncoderValue = 10000;
+  let modificaEncValue = 1;
 
   function updateCenter() {
     const circleRect = dayCircle.getBoundingClientRect();
@@ -84,9 +85,31 @@ document.addEventListener("DOMContentLoaded", () => {
 
   socket.onmessage = (event) => {
     const message = event.data;
+    const selectedMonth = localStorage.getItem("selectedMonth");
 
-    if (message === "Start pressed!") {
-      window.location.href = "6-year.html";
+    if (message === "Short press detected!") {
+      if (selectedMonth === "JANUARY") {
+        window.location.href = "6-year-january.html";
+      } else {
+        window.location.href = "6-year.html";
+      }
+      modificaEncValue = 0;
+    } else {
+      if (modificaEncValue === 1) {
+        const encoderValue = parseInt(message.split(" ")[2]);
+        if (!isNaN(encoderValue)) {
+          if (encoderValue > lastEncoderValue) {
+            rotateDays("right");
+          } else if (encoderValue < lastEncoderValue) {
+            rotateDays("left");
+          }
+          lastEncoderValue = encoderValue;
+        }
+      }
+    }
+
+    if (message === "Double press detected!") {
+      window.location.href = "4-month.html";
     } else {
       const encoderValue = parseInt(message.split(" ")[2]);
       if (!isNaN(encoderValue)) {

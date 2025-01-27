@@ -16,8 +16,32 @@ document.addEventListener("DOMContentLoaded", () => {
   socket.onmessage = (event) => {
     const message = event.data;
 
-    if (message === "Start pressed!") {
-      window.location.href = "7a-etherea.html"; // Naviga verso 8-scontrino.html
+    if (message === "Short press detected!") {
+      window.location.href = "7a-etherea.html"; // Cambiato da "8-scontrino.html"
+    }
+
+    if (message === "Double press detected!") {
+      const activeMonth = localStorage.getItem("selectedMonth");
+      if (
+        activeMonth === "JANUARY" ||
+        activeMonth === "MARCH" ||
+        activeMonth === "MAY" ||
+        activeMonth === "JULY" ||
+        activeMonth === "AUGUST" ||
+        activeMonth === "OCTOBER" ||
+        activeMonth === "DECEMBER"
+      ) {
+        window.location.href = "5-day-31.html";
+      } else if (
+        activeMonth === "JUNE" ||
+        activeMonth === "APRIL" ||
+        activeMonth === "SEPTEMBER" ||
+        activeMonth === "NOVEMBER"
+      ) {
+        window.location.href = "5-day-30.html";
+      } else if (activeMonth === "FEBRUARY") {
+        window.location.href = "5-day-28.html";
+      }
     }
   };
 

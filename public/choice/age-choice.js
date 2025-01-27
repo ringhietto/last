@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const years = document.querySelectorAll(".age");
   const circle = document.querySelector(".age-circle");
   const xOffset = -960;
-  const yOffset = -950;
+  const yOffset = -750;
   let centerX, centerY;
   let currentIndex = 30;
   let lastEncoderValue = 0;
@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function updatePositions() {
     const angleStep = 360 / years.length;
-    const radius = 1000;
+    const radius = 1200;
     const activeFontSize = 2.5;
     const normalFontSize = 1;
 
@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
     years.forEach((year, index) => {
       const relativeIndex =
         (index - currentIndex + years.length) % years.length;
-      const angle = angleStep * relativeIndex - 112;
+      const angle = angleStep * relativeIndex - 114.6;
 
       const distance = relativeIndex === 5 ? distanceActive : distanceNormal;
 
@@ -54,13 +54,13 @@ document.addEventListener("DOMContentLoaded", () => {
         year.classList.add("active");
         year.classList.remove("font-regular");
         year.classList.add("font-DemiBold");
-        gsap.to(year, { fontSize: "2.5em", duration: 0.5 });
+        gsap.to(year, { fontSize: "50px", duration: 0.5 });
         updateYear(year.textContent);
       } else {
         year.classList.remove("active");
         year.classList.add("font-regular");
         year.classList.remove("font-DemiBold");
-        gsap.to(year, { fontSize: "1.04em", duration: 0.5 });
+        gsap.to(year, { fontSize: "25px", duration: 0.5 });
       }
     });
   }

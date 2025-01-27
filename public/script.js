@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const yOffset = -480; // Offset orizzontale per spostare le parole a destra (valore positivo) o a sinistra (valore negativo)
   let centerX, centerY;
   let currentIndex = 2; // La terza parola ("Overdose") è al centro inizialmente
+  let lastEncoderValue = 0;
 
   // Funzione per aggiornare il centro della semicirconferenza
   function updateCenter() {
@@ -42,6 +43,22 @@ document.addEventListener("DOMContentLoaded", () => {
         word.classList.remove("active");
       }
     });
+  }
+
+  function rotateWords(direction) {
+    if (direction === "left") {
+      // Quando vai a sinistra
+      if (currentIndex === 0) return; // Ferma al primo elemento
+      if (currentIndex === 1 && lastEncoderValue < 1) return;
+      currentIndex = (currentIndex - 1 + words.length) % words.length;
+    } else if (direction === "right") {
+      // Quando vai a destra
+      if (currentIndex === words.length - 2) return; // Ferma al penultimo elemento
+      if (currentIndex === words.length - 1 && lastEncoderValue > words.length - 1) return;
+      currentIndex = (currentIndex + 1) % words.length;
+    }
+    lastEncoderValue = currentIndex;
+    updatePositions();
   }
 
   // Inizializza la posizione iniziale

@@ -15,7 +15,6 @@
     <!-- <script src="script.js" defer></script> -->
     <script src="arduino.js" defer></script>
     <script src="generation.js" defer></script>
-    <script src="choice/death-choice.js" defer></script>
     <script src="choice/scontrino.js" defer></script>
 </head>
 
@@ -30,17 +29,17 @@
             </div>
             <div class="stage-title-container">
                 <span class="stage-title">DEATH'S STAGING</span>
-                <span class="stage-name" id="stage-name">numero</span>
+                <span class="stage-name" id="stage-name"></span>
             </div>
 
             <div class="age-impact-title-container">
                 <span class="age-impact-title">AGE IMPACT</span>
-                <span class="age-impact-name" id="age-impact-name">numero</span>
+                <span class="age-impact-name" id="age-impact-name"></span>
             </div>
 
             <div class="media-impact-title-container">
                 <span class="media-impact-title">MEDIA IMPACT</span>
-                <span class="media-impact-name" id="media-impact-name">numero</span>
+                <span class="media-impact-name" id="media-impact-name"></span>
             </div>
 
             <div class="etherea-title-container">
@@ -49,18 +48,18 @@
 
             <div class="transport-title-container">
                 <span class="transport-title">TRANSPORT</span>
-                <span class="transport-name" id="transport-name">numero</span>
+                <span class="transport-name" id="transport-name">10.000 $</span>
             </div>
 
             <div class="stay-title-container">
-                <span class="stay-title">N YEAR-STAY</span>
-                <span class="stay-name" id="stay-name">numero</span>
+                <span class="stay-title"><span id="stayYears"></span> YEAR-STAY</span>
+                <span class="stay-name" id="stay-name"></span>
             </div>
 
             <div class="divider"></div>
 
             <div class="final-price-title-container">
-                <span class="final-price-name" id="final-price-name">TOTAL PRICE</span>
+                <span class="final-price-name" id="final-price-name"></span>
             </div>
             
 
@@ -145,6 +144,15 @@ document.addEventListener("DOMContentLoaded", () => {
     // Esegui la funzione quando il documento è caricato
     document.addEventListener("DOMContentLoaded", setDeathPrice);
     </script>
+
+<div class="date-instructions" id="recap-date-instructions">
+    <div class="confirm-instructions">
+        <div class="press">PRESS</div>
+        <div class="dot"></div>
+        <div class="to-confirm">to BUY</div>
+    </div>
+    
+</div>
 </body>
 </html>
 

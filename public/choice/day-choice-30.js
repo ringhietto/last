@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const days = document.querySelectorAll(".day");
   const dayCircle = document.querySelector(".day-circle");
   const xOffset = -960;
-  const yOffset = -800;
+  const yOffset = -910;
   let centerX, centerY;
   let currentIndex = 7;
   let lastEncoderValue = 0;
@@ -78,10 +78,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
   socket.onmessage = (event) => {
     const message = event.data;
+    const selectedMonth = localStorage.getItem("selectedMonth");
 
-    
-    if (message === "Start pressed!") {
-      window.location.href = "6-year.html";
+    if (message === "Short press detected!") {
+      if (selectedMonth === "JANUARY") {
+        window.location.href = "6-year-january.html";
+      } else {
+        window.location.href = "6-year.html";
+      }
+    } else if (message === "Double press detected!") {
+      window.location.href = "4-month.html";
     } else {
       const encoderValue = parseInt(message.split(" ")[2]);
       if (!isNaN(encoderValue)) {

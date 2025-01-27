@@ -13,36 +13,8 @@
     <script src="choice/death-choice.js" defer></script>
     <script src="simulate.js" defer></script>
     <script src="generation.js" defer></script>
+    <script src="moving.js" defer></script>
 
-    <style>
-        .video-container {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background: black;
-            z-index: 9999;
-        }
-
-        .video-container.active {
-            display: block;
-        }
-
-        .video-container video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .deathVideo {
-            display: none;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-    </style>
 </head>
 <body class="page3">
     <div class="choice">
@@ -68,6 +40,17 @@
             <div class="word font-regular" id="word18">OVERDOSE</div>
             <div class="word font-regular" id="word19">SUICIDE</div>
             <div class="word font-regular" id="word20">ACCIDENT</div>
+            <div class="word font-regular" id="word21">MURDER</div>
+            <div class="word font-regular" id="word22">ILLNESS</div>
+            <div class="word font-regular" id="word23">OVERDOSE</div>
+            <div class="word font-regular" id="word24">SUICIDE</div>
+            <div class="word font-regular" id="word25">ACCIDENT</div>
+            <div class="word font-regular" id="word26">MURDER</div>
+            <div class="word font-regular" id="word27">ILLNESS</div>
+            <div class="word font-regular" id="word28">OVERDOSE</div>
+            <div class="word font-regular" id="word29">SUICIDE</div>
+            <div class="word font-regular" id="word30">ACCIDENT</div>
+            
         </div>
     </div>
     
@@ -80,7 +63,7 @@
 
         <div class="video">
             <div id="imageContainer">
-                <img id="imageThumbnail" src="asset/stopvideo/accident.png" alt="Video Thumbnail">
+                <img id="imageThumbnail">
             </div>
         </div>
 

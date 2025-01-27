@@ -1,58 +1,36 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const thankYouContainer = document.querySelector(".thankyou-container");
-  const logo = document.querySelector(".logo-big");
+  const socket = new WebSocket("ws://127.0.0.1:8001");
 
-  // Funzione per gestire la dissolvenza
-  function fadeIn(element, duration) {
-    element.style.opacity = 0;
-    element.style.display = "block";
-    let start = null;
-
-    const step = (timestamp) => {
-      if (!start) start = timestamp;
-      const progress = timestamp - start;
-      element.style.opacity = Math.min(progress / duration, 1);
-
-      if (progress < duration) {
-        requestAnimationFrame(step);
+  // Se siamo nella pagina scontrino
+  if (window.location.pathname.includes("8-scontrino")) {
+    socket.onmessage = (event) => {
+      if (event.data === "Buy pressed!") {
+        window.location.href = "9-thankyou.html";
       }
     };
-
-    requestAnimationFrame(step);
   }
 
-  function fadeOut(element, duration) {
-    element.style.opacity = 1;
-    let start = null;
-
-    const step = (timestamp) => {
-      if (!start) start = timestamp;
-      const progress = timestamp - start;
-      element.style.opacity = Math.max(1 - progress / duration, 0);
-
-      if (progress < duration) {
-        requestAnimationFrame(step);
-      } else {
-        element.style.display = "none"; // Nascondi l'elemento dopo la dissolvenza
+  // Se siamo nella pagina thank you
+  if (window.location.pathname.includes("9-thankyou")) {
+    socket.onmessage = (event) => {
+      if (event.data === "Buy pressed!") {
+        window.location.href = "10-end.html";
       }
     };
-
-    requestAnimationFrame(step);
   }
 
-  // Inizio della dissolvenza per il thank you container
-  fadeIn(thankYouContainer, 2000);
+  // Se siamo nella pagina end con il video
+  if (window.location.pathname.includes("10-end")) {
+    const video = document.getElementById("endVideo");
 
-  setTimeout(() => {
-    fadeOut(thankYouContainer, 2000);
-    setTimeout(() => {
-      fadeIn(logo, 2000);
+    video.addEventListener("ended", () => {
+      const body = document.body;
+      body.style.transition = "opacity 2s";
+      body.style.opacity = 0;
+
       setTimeout(() => {
-        fadeOut(logo, 2000);
-        setTimeout(() => {
-          window.location.href = "1-index.html"; // Reindirizza alla pagina 1-index.html
-        }, 5000); // Aspetta 5 secondi prima di reindirizzare
-      }, 5000); // Aspetta 5 secondi prima di far apparire il logo
-    }, 2000); // Aspetta 2 secondi dopo la dissolvenza del thank you container
-  }, 5000); // Aspetta 5 secondi prima di iniziare la dissolvenza del thank you container
+        window.location.href = "1-index.html";
+      }, 2000);
+    });
+  }
 });

@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const yOffset = -820;
   let centerX, centerY;
   let currentIndex = 3;
-  let lastEncoderValue = 0;
+  let lastEncoderValue = 10000;
 
   function updateCenter() {
     const circleRect = monthCircle.getBoundingClientRect();
@@ -66,6 +66,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function updateMonth(month) {
     console.log("Mese selezionato:", month);
+    localStorage.setItem("selectedMonth", month);
+    localStorage.setItem("isJanuary", month === "JANUARY" ? "true" : "false");
   }
 
   function rotateMonths(direction) {
@@ -88,7 +90,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   socket.onmessage = (event) => {
     const message = event.data;
-    if (message === "Start pressed!") {
+    if (message === "Short press detected!") {
       const activeMonth = Array.from(months).find((month) =>
         month.classList.contains("active")
       );
