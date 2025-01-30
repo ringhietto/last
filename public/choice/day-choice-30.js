@@ -2,10 +2,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const days = document.querySelectorAll(".day");
   const dayCircle = document.querySelector(".day-circle");
   const xOffset = -960;
-  const yOffset = -910;
+  const yOffset = -888;
   let centerX, centerY;
   let currentIndex = 7;
-  let lastEncoderValue = 0;
+  let lastEncoderValue = 10000;
+  let stopEncoder = false;
 
   function updateCenter() {
     const circleRect = dayCircle.getBoundingClientRect();
@@ -83,12 +84,14 @@ document.addEventListener("DOMContentLoaded", () => {
     if (message === "Short press detected!") {
       if (selectedMonth === "JANUARY") {
         window.location.href = "6-year-january.html";
+        stopEncoder = true;
       } else {
         window.location.href = "6-year.html";
+        stopEncoder = true;
       }
     } else if (message === "Double press detected!") {
       window.location.href = "4-month.html";
-    } else {
+    } else if (stopEncoder === false) {
       const encoderValue = parseInt(message.split(" ")[2]);
       if (!isNaN(encoderValue)) {
         if (encoderValue > lastEncoderValue) {

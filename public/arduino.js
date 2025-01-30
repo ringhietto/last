@@ -32,8 +32,6 @@ function startVideo() {
       thumbnail.style.display = "block";
       videoElement.style.display = "none";
     });
-  } else {
-    console.error("Elemento video non trovato.");
   }
 }
 

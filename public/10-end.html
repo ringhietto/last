@@ -5,33 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>End</title>
     <link rel="icon" type="image/svg+xml" href="asset/LT.png">
-    <link rel="stylesheet" href="style.css">
     <script src="arduino.js" defer></script>
     <script src="end.js" defer></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #F9FAFB;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #endVideo {
+            position: fixed;
+            width: 40vw; /* Ridotto al 50% della larghezza viewport */
+            height: 40vh; /* Ridotto al 50% dell'altezza viewport */
+            object-fit: cover;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%); /* Centra perfettamente */
+        }
+    </style>
 </head>
+
 <body>
-    <video id="endVideo" autoplay style="width: 100vw; height: 100vh; object-fit: cover;">
-        <source src="asset/videos/polimi.mp4" type="video/mp4">
+
+    <video id="endVideo" playsinline muted>
+        <source src="asset/videos/logoanimation.mp4" type="video/mp4">
         Il tuo browser non supporta il tag video.
     </video>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const video = document.getElementById('endVideo');
-            video.addEventListener('ended', () => {
-                fadeOutAndRedirect();
-            });
-        });
-
-        function fadeOutAndRedirect() {
-            const body = document.body;
-            body.style.transition = "opacity 2s";
-            body.style.opacity = 0;
-
-            setTimeout(() => {
-                window.location.href = 'index.html';
-            }, 2000);
-        }
-    </script>
 </body>
+
+
 </html> 

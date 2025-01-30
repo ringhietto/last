@@ -2,11 +2,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const days = document.querySelectorAll(".day");
   const dayCircle = document.querySelector(".day-circle");
   const xOffset = -960;
-  const yOffset = -810;
+  const yOffset = -895;
   let centerX, centerY;
   let currentIndex = 7;
   let lastEncoderValue = 10000;
-  let modificaEncValue = 1;
+  let stopEncoder = false;
 
   function updateCenter() {
     const circleRect = dayCircle.getBoundingClientRect();
@@ -90,27 +90,30 @@ document.addEventListener("DOMContentLoaded", () => {
     if (message === "Short press detected!") {
       if (selectedMonth === "JANUARY") {
         window.location.href = "6-year-january.html";
+        stopEncoder = true;
+        print("stop encoder attivato");
+        print(stopEncoder);
       } else {
         window.location.href = "6-year.html";
+        stopEncoder = true;
+        print("stop encoder attivato");
+        print(stopEncoder);
       }
-      modificaEncValue = 0;
-    } else {
-      if (modificaEncValue === 1) {
-        const encoderValue = parseInt(message.split(" ")[2]);
-        if (!isNaN(encoderValue)) {
-          if (encoderValue > lastEncoderValue) {
-            rotateDays("right");
-          } else if (encoderValue < lastEncoderValue) {
-            rotateDays("left");
-          }
-          lastEncoderValue = encoderValue;
+    } else if (stopEncoder === false) {
+      const encoderValue = parseInt(message.split(" ")[2]);
+      if (!isNaN(encoderValue)) {
+        if (encoderValue > lastEncoderValue) {
+          rotateDays("right");
+        } else if (encoderValue < lastEncoderValue) {
+          rotateDays("left");
         }
+        lastEncoderValue = encoderValue;
       }
     }
 
     if (message === "Double press detected!") {
       window.location.href = "4-month.html";
-    } else {
+    } else if (stopEncoder === false) {
       const encoderValue = parseInt(message.split(" ")[2]);
       if (!isNaN(encoderValue)) {
         if (encoderValue > lastEncoderValue) {

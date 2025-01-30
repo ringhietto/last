@@ -12,10 +12,8 @@ socket.onmessage = (event) => {
   }
 
   if (message === "Double press detected!") {
-    window.location.href = "4-month.html"; // Modificato per andare a index
+    window.location.href = "3-death.html"; // Modificato per andare a index
   }
-
-  
 };
 
 // Dataset per le morti
@@ -76,11 +74,11 @@ document.addEventListener("DOMContentLoaded", () => {
   // Funzione per calcolare il costo annuale in base all'età
   function getYearlyCost(age) {
     if (age >= 1 && age <= 30) {
-      return 200000;
+      return 400000;
     } else if (age > 30 && age <= 60) {
-      return 100000;
+      return 200000;
     } else {
-      return 80000;
+      return 160000;
     }
   }
 

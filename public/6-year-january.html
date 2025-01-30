@@ -18,6 +18,7 @@
 
     <script src="generation.js" defer></script>
     <script src="moving.js" defer></script>
+    <script src="fade-in.js" defer></script>
 </head>
 <div class="horizontal-guide"></div>
 <div class="horizontal-guide-2"></div>
@@ -25,12 +26,12 @@
 <div class="horizontal-guide-4"></div>
 <div class="horizontal-guide-5"></div>
 <div class="horizontal-guide-6"></div>
-<body class="page4">
+<body class="page4 fade-in">
     <!-- <div class="vertical-guide"></div> -->
 
-    <div class="date-name">
+    <div class="date-name" id="january-date-name">
         <div class="section-title">YEAR</div>
-        <div class="date-container">
+        <div class="date-container" id="january-date-container">
         <div class="month-title-container">
             <span class="month-title">MONTH</span>
             <span class="month-name" id="month-name"></span>
@@ -59,7 +60,7 @@
     </div>
     </div>
 
-    <div class="date-instructions">
+    <div class="date-instructions" id="january-date-instructions">
         <div class="confirm-instructions">
             <div class="press">PRESS</div>
             <div class="dot"></div>
@@ -73,7 +74,7 @@
     </div>
     
     <div class="year-choice">
-        <div class="year-circle"></div>
+        <div class="year-circle" id="january-year-circle"></div>
         <div class="year-container">
             <div class="year" id="year1">2026</div>
             <div class="year" id="year2">2027</div>

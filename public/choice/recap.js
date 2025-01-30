@@ -21,26 +21,11 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     if (message === "Double press detected!") {
-      const activeMonth = localStorage.getItem("selectedMonth");
-      if (
-        activeMonth === "JANUARY" ||
-        activeMonth === "MARCH" ||
-        activeMonth === "MAY" ||
-        activeMonth === "JULY" ||
-        activeMonth === "AUGUST" ||
-        activeMonth === "OCTOBER" ||
-        activeMonth === "DECEMBER"
-      ) {
-        window.location.href = "5-day-31.html";
-      } else if (
-        activeMonth === "JUNE" ||
-        activeMonth === "APRIL" ||
-        activeMonth === "SEPTEMBER" ||
-        activeMonth === "NOVEMBER"
-      ) {
-        window.location.href = "5-day-30.html";
-      } else if (activeMonth === "FEBRUARY") {
-        window.location.href = "5-day-28.html";
+      const selectedMonth = localStorage.getItem("selectedMonth");
+      if (selectedMonth === "JANUARY") {
+        window.location.href = "6-year-january.html";
+      } else {
+        window.location.href = "6-year.html";
       }
     }
   };

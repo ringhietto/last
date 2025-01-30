@@ -7,10 +7,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const years = document.querySelectorAll(".age");
   const circle = document.querySelector(".age-circle");
   const xOffset = -960;
-  const yOffset = -750;
+  const yOffset = -685;
   let centerX, centerY;
   let currentIndex = 30;
-  let lastEncoderValue = 0;
+  let lastEncoderValue = 10000;
+  let stopEncoder = false;
 
   const yearsName = document.querySelector(".years-name");
   const ageChoice = document.querySelector(".age-choice");
@@ -34,7 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
     years.forEach((year, index) => {
       const relativeIndex =
         (index - currentIndex + years.length) % years.length;
-      const angle = angleStep * relativeIndex - 114.6;
+      const angle = angleStep * relativeIndex - 114.7;
 
       const distance = relativeIndex === 5 ? distanceActive : distanceNormal;
 
@@ -91,12 +92,13 @@ document.addEventListener("DOMContentLoaded", () => {
   socket.onmessage = (event) => {
     const message = event.data;
 
-    if (message.includes("Start pressed!")) {
+    if (message.includes("Short press detected!")) {
       const activeElement = document.querySelector(".age.active");
       if (activeElement) {
         const selectedAge = parseInt(activeElement.textContent);
         localStorage.setItem("selectedAge", selectedAge);
         console.log("Età salvata:", selectedAge);
+        stopEncoder = true;
       } else {
         console.error("Nessun elemento .age.active trovato");
       }
@@ -110,14 +112,16 @@ document.addEventListener("DOMContentLoaded", () => {
       }, 2000);
     }
 
-    const encoderValue = parseInt(message.split(" ")[2]);
-    if (!isNaN(encoderValue)) {
-      if (encoderValue > lastEncoderValue) {
-        rotateYears("right");
-      } else if (encoderValue < lastEncoderValue) {
-        rotateYears("left");
+    if (stopEncoder === false) {
+      const encoderValue = parseInt(message.split(" ")[2]);
+      if (!isNaN(encoderValue)) {
+        if (encoderValue > lastEncoderValue) {
+          rotateYears("right");
+        } else if (encoderValue < lastEncoderValue) {
+          rotateYears("left");
+        }
+        lastEncoderValue = encoderValue;
       }
-      lastEncoderValue = encoderValue;
     }
   };
 

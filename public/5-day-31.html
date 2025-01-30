@@ -17,6 +17,8 @@
 
     <script src="generation.js" defer></script>
     <script src="moving.js" defer></script>
+    <script src="fade-in.js" defer></script>
+
 </head>
 <div class="horizontal-guide"></div>
 <div class="horizontal-guide-2"></div>
@@ -24,10 +26,10 @@
 <div class="horizontal-guide-4"></div>
 <div class="horizontal-guide-5"></div>
 <div class="horizontal-guide-6"></div>
-<body class="page4">
+<body class="page4 fade-in">
     <!-- <div class="vertical-guide"></div> -->
 
-    <div class="date-name">
+    <div class="date-name" id="day-date-name">
         <div class="section-title">DAY</div>
         
         <div class="month-title-container">
@@ -51,7 +53,7 @@
         </div>
     </div>
 
-    <div class="date-instructions">
+    <div class="date-instructions" id="day-date-instructions">
         <div class="confirm-instructions">
             <div class="press">PRESS</div>
             <div class="dot"></div>

@@ -2,10 +2,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const days = document.querySelectorAll(".day");
   const dayCircle = document.querySelector(".day-circle");
   const xOffset = -960;
-  const yOffset = -815;
+  const yOffset = -890;
   let centerX, centerY;
   let currentIndex = 7;
-  let lastEncoderValue = 0;
+  let lastEncoderValue = 10000;
+  let stopEncoder = false;
+
 
   function updateCenter() {
     const circleRect = dayCircle.getBoundingClientRect();
@@ -89,27 +91,28 @@ document.addEventListener("DOMContentLoaded", () => {
     const selectedMonth = localStorage.getItem("selectedMonth");
 
     if (message === "Short press detected!") {
-      // Controlla se il mese è gennaio
       if (selectedMonth === "JANUARY") {
         window.location.href = "6-year-january.html";
+        stopEncoder = true;
       } else {
         window.location.href = "6-year.html";
+        stopEncoder = true;
       }
-    }
-
-    if (message === "Double press detected!") {
+    } else if (message === "Double press detected!") {
       window.location.href = "4-month.html";
+    } else if (stopEncoder === false) {
+      const encoderValue = parseInt(message.split(" ")[2]);
+      if (!isNaN(encoderValue)) {
+        if (encoderValue > lastEncoderValue) {
+          rotateDays("right");
+        } else if (encoderValue < lastEncoderValue) {
+          rotateDays("left");
+        }
+        lastEncoderValue = encoderValue;
+      }
     }
 
-    const encoderValue = parseInt(message.split(" ")[2]);
-    if (!isNaN(encoderValue)) {
-      if (encoderValue > lastEncoderValue) {
-        rotateDays("right");
-      } else if (encoderValue < lastEncoderValue) {
-        rotateDays("left");
-      }
-      lastEncoderValue = encoderValue;
-    }
+    
   };
 
   socket.onerror = (error) => {

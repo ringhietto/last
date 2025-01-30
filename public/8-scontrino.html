@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Scontrino</title>
+    <title>Bill</title>
     <link rel="icon" type="image/svg+xml" href="asset/LT.png">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://use.typekit.net/qbb0zyi.css">
@@ -16,13 +16,14 @@
     <script src="arduino.js" defer></script>
     <script src="generation.js" defer></script>
     <script src="choice/scontrino.js" defer></script>
+    <script src="fade-in.js" defer></script>
 </head>
 
-<body class="page4">
+<body class="page4 fade-in">
     <!-- <div class="vertical-guide"></div> -->
 
     <div class="date-name" id="final-date-scontrino">
-        <div class="section-title">DEATH RECAP</div>
+        <div class="section-title" id="scontrino-section-title">DEATH RECAP</div>
         <div class="date-container">
             <div class="death-title-container">
                 <span class="death-name" id="death-name"></span>
@@ -150,6 +151,11 @@ document.addEventListener("DOMContentLoaded", () => {
         <div class="press">PRESS</div>
         <div class="dot"></div>
         <div class="to-confirm">to BUY</div>
+    </div>
+    <div class="back-instructions">
+        <div class="double-press">DOUBLE PRESS</div>
+        <div class="dot"></div>
+        <div class="to-get-back">to GET BACK to DEATH</div>
     </div>
     
 </div>

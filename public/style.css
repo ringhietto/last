@@ -19,7 +19,7 @@ body {
 
 .font-light {
     font-family: "mundial", sans-serif;
-    font-weight: 300;
+    font-weight: 100;
 }
 
 .font-regular {
@@ -41,7 +41,7 @@ html {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #ffffff;
+    background-color: #F9FAFB;
     padding: 0;
     width: 100%;
     overflow: hidden;
@@ -59,7 +59,6 @@ html {
     display: flex;
     align-items: center;
     justify-content: center;
-    text-align: center;
 }
 
 .begin-instructions h4 {
@@ -200,17 +199,51 @@ html {
     margin-bottom: 84vw;
 }
 
+.headphones {
+    text-align: right;
+    color: #969696;
+    font-size: 14px;
+    font-family: "mundial", sans-serif;
+    font-weight: 200;
+    line-height: 16px;
+    word-wrap: break-word;
+    margin-right: 0.5vw;
+}
+
 .double-press,
 .press{
     text-align: right;
     color: #969696;
     font-size: 14px;
     font-family: "mundial", sans-serif;
-    font-weight: 300;
+    font-weight: 100;
     line-height: 16px;
     word-wrap: break-word;
     margin-right: 0.5vw;
 }
+
+.wear-headphones {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    text-align: right;
+    color: #969696;
+    font-size: 14px;
+    font-family: "mundial", sans-serif;
+    font-weight: 100;
+    line-height: 16px;
+    word-wrap: break-word;
+
+    margin-top: 20vw;
+}
+
+#recap-date-instructions {
+    margin-top: 30vw;
+}
+
+
 
 .dot {
     width: 6px;
@@ -227,7 +260,7 @@ html {
     color: #969696;
     font-size: 14px;
     font-family: "mundial", sans-serif;
-    font-weight: 300;
+    font-weight: 100;
     line-height: 16px;
     word-wrap: break-word;
     margin-left: 0.5vw;
@@ -337,14 +370,13 @@ html {
     margin-top: 21vw;
 }
 
+
+
 .back-instructions,
 .confirm-instructions {
     display: flex;
 }
 
-#recap-date-instructions {
-    margin-top: 30vw;
-}
 
 .buy-.instructions,
 .instructions,
@@ -423,7 +455,7 @@ html {
     border-radius: 9999px; /* Rende il cerchio perfetto */
     
     position: absolute;
-    top: 80%;
+    top: 82.8%;
 
     /* background-color: white; */
     /* filter: blur(2px); */
@@ -475,18 +507,6 @@ html {
 
 
 
-.date-name {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    font-family: "mundial", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-    font-size: 20px;
-    margin-top: 15vw;
-    
-}
 
 
 
@@ -522,7 +542,15 @@ html {
 }
 
 #final-date {
-    margin-bottom: 29vw;
+    margin-bottom: 35vw;
+}
+
+#final-date-container {
+    margin-top: 7vw;
+}
+
+#scontrino-section-title {
+    margin-bottom: 3vw;
 }
 
 /* 
@@ -554,7 +582,7 @@ html {
     border-radius: 9999px; /* Rende il cerchio perfetto */
     
     position: absolute;
-    top: 79.5%;
+    top: 75.7%;
 
     /* background-color: white; */
     /* filter: blur(2px); */
@@ -632,12 +660,16 @@ html {
     border-radius: 9999px; /* Rende il cerchio perfetto */
     
     position: absolute;
-    top: 74.5%;
+    top: 84.5%;
 
     /* background-color: white; */
     /* filter: blur(2px); */
     /* background: linear-gradient(315deg, white 26%, #E1E1E1 100%); */
     /* box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3); */
+}
+
+#january-year-circle {
+    top: 78.5%;
 }
 
 /* GUIDA VERTICALE */
@@ -691,12 +723,53 @@ html {
     font-weight: 400;
     font-style: normal;
     font-size: 20px;
-    margin-top: 3rem;
 }
+
+#january-date-name {
+    margin-top: 2.55vw;
+}
+
+#month-date-name {
+    margin-top: 2.5vw;
+}
+#day-date-name {
+    margin-top: 2.5vw;
+    gap: 7vw;
+}
+
+#january-date-instructions {
+    margin-top: 21vw;
+    position: absolute;
+}
+
+#age-date-instructions {
+    margin-bottom: 1vw;
+}
+
+#month-date-instructions {
+    margin-top: 20vw;
+}
+
+#day-date-instructions {
+    margin-top: 21vw;
+}
+
+#year-date-name {
+    margin-bottom: 47.2vw;
+    margin-top: 9.5vw;
+    position: absolute;
+    gap: 8.2rem;
+}
+
+
 
 .section-title {
     font-size: 35px;
     font-weight: 400;
+}
+
+#age-name-section-title {
+    margin-top: 2.5vw;
 }
 
 .date-container {
@@ -705,7 +778,10 @@ html {
     justify-content: center;
     align-items: center;
     gap: 1.5rem;
-    margin-top: 7vw;
+}
+
+#january-date-container {
+    margin-top: 6.9vw;
 }
 
 .death-title-container,
@@ -787,8 +863,8 @@ margin-top: 5vw;
 
 #final-date-scontrino {
 
-    margin-bottom: 37.85vw;
-    margin-top: 8vw;
+    margin-bottom: 25vw;
+    margin-top: 10vw;
 }
 
 
@@ -805,19 +881,6 @@ margin-top: 5vw;
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 .thankyou-container {
     display: flex;
     flex-direction: column;
@@ -827,17 +890,16 @@ margin-top: 5vw;
     font-family: "mundial", sans-serif;
     font-weight: 400;
     font-style: normal;
-    font-size: 20px;
+    font-size: 2vw;
 }
 
 .logo-big {
     width: 15vw
 }
 
-/* Aggiungi questa classe per l'animazione */
 .fade-in {
-    opacity: 0; /* Inizialmente invisibile */
-    transition: opacity 2s ease-in; /* Transizione di 2 secondi */
+    opacity: 0;
+    transition: opacity 2s ease-in; 
 }
 
 .fade-in.visible {
@@ -880,7 +942,7 @@ margin-top: 5vw;
     border-radius: 9999px; /* Rende il cerchio perfetto */
     
     position: absolute;
-    top: 80%;
+    top: 76%;
 
     /* background-color: white; */
     /* filter: blur(2px); */
@@ -989,10 +1051,18 @@ margin-top: 5vw;
 }
 
 
+.horizontal-guide,
+.horizontal-guide-2,
+.horizontal-guide-3,
+.horizontal-guide-4,
+.horizontal-guide-5,
+.horizontal-guide-6 {
+    display: none;
+}
+
 
 
 .horizontal-guide {
-    /* display: none; */
     position: fixed;
     top: 63px;
     left: 0;
@@ -1003,7 +1073,6 @@ margin-top: 5vw;
 }
 
 .horizontal-guide-2 {
-    /* display: none; */
     position: fixed;
     top: 237px;
     left: 0;
@@ -1015,7 +1084,6 @@ margin-top: 5vw;
 
 
 .horizontal-guide-3 {
-    /* display: none; */
     position: fixed;
     top: 727px;
     left: 0;
@@ -1026,7 +1094,6 @@ margin-top: 5vw;
 }
 
 .horizontal-guide-4 {
-    /* display: none; */
     position: fixed;
     top: 846px;
     left: 0;
@@ -1037,9 +1104,18 @@ margin-top: 5vw;
 }
 
 .horizontal-guide-5 {
-    /* display: none; */
     position: fixed;
-    top: 907px;
+    top: 913px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: red;
+    z-index: 9999;
+}
+
+.horizontal-guide-6 {
+    position: fixed;
+    top: 1050px;
     left: 0;
     width: 100%;
     height: 1px;
@@ -1047,13 +1123,10 @@ margin-top: 5vw;
     z-index: 9999;
 }
 
-.horizontal-guide-6 {
-    /* display: none; */
-    position: fixed;
-    top: 913px;
-    left: 0;
-    width: 100%;
-    height: 1px;
-    background-color: black;
-    z-index: 9999;
+
+
+.circle-blur, .word-container-blur, .first-blur, .image-container-blur, .consequences-blur {
+    filter: blur(100px);
+    transition: filter 0.5s ease-in-out;
 }
+

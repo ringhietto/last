@@ -4,10 +4,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const yearCircle = document.querySelector(".year-circle");
   const monthCircle = document.querySelector(".month-circle");
   const xOffset = -960;
-  const yOffset = -820;
+  const yOffset = -740;
   let centerX, centerY;
   let currentIndex = 3;
   let lastEncoderValue = 10000;
+  let stopEncoder = false;
 
   function updateCenter() {
     const circleRect = monthCircle.getBoundingClientRect();
@@ -94,6 +95,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const activeMonth = Array.from(months).find((month) =>
         month.classList.contains("active")
       );
+      stopEncoder = true;
       if (activeMonth) {
         const selectedMonth = activeMonth.textContent;
         if (activeMonth.id === "month10" || activeMonth.id === "month22") {
@@ -130,7 +132,7 @@ document.addEventListener("DOMContentLoaded", () => {
           localStorage.setItem("selectedMonth", selectedMonth);
         }
       }
-    } else {
+    } else if (stopEncoder === false) {
       const encoderValue = parseInt(message.split(" ")[2]);
       if (!isNaN(encoderValue)) {
         if (encoderValue > lastEncoderValue) {

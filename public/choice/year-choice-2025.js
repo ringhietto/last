@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const years = document.querySelectorAll(".year");
   const circle = document.querySelector(".year-circle");
   const xOffset = -960;
-  const yOffset = -910;
+  const yOffset = -1000;
   let centerX, centerY;
   let currentIndex = 15;
   let lastEncoderValue = 0;
@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function updatePositions() {
     const angleStep = 360 / years.length;
-    const radius = 1000;
+    const radius = 850;
     const activeFontSize = 2.5;
     const normalFontSize = 1;
 

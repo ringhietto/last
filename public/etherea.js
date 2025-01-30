@@ -25,21 +25,21 @@ document.addEventListener("DOMContentLoaded", () => {
   const body = document.querySelector("body");
   gsap.set(body, { opacity: 0 });
 
-  setTimeout(() => {
-    gsap.to(body, {
-      opacity: 1,
-      duration: 1,
-      onComplete: () => {
-        setTimeout(() => {
-          gsap.to(body, {
-            opacity: 0,
-            duration: 2,
-            onComplete: () => {
+  gsap.to(body, {
+    opacity: 1,
+    duration: 1,
+    onComplete: () => {
+      setTimeout(() => {
+        gsap.to(body, {
+          opacity: 0,
+          duration: 2,
+          onComplete: () => {
+            setTimeout(() => {
               window.location.href = "8-scontrino.html";
-            },
-          });
-        }, 3000);
-      },
-    });
-  }, 500);
+            }, 1000);
+          },
+        });
+      }, 1000);
+    },
+  });
 });

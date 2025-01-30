@@ -68,7 +68,7 @@ function pulseInstructions() {
     // Fade out a 0 con ease
     gsap.to(dateInstructions, {
       opacity: 0,
-      duration: 1,
+      duration: 2,
       ease: "ease",
       yoyo: true, // Fa tornare automaticamente al valore iniziale
       repeat: -1, // Ripete all'infinito
@@ -100,7 +100,7 @@ function pulseSimulateInstructions() {
     [press, dot, toSimulate].forEach((el) => {
       gsap.to(el, {
         opacity: 0,
-        duration: 1,
+        duration: 2,
         ease: "ease",
         yoyo: true,
         repeat: -1,
@@ -113,8 +113,41 @@ function pulseSimulateInstructions() {
   setTimeout(pulse, 500);
 }
 
+function pulseHeadphonesMessage() {
+  const headphonesMessage = document.querySelector(".wear-headphones");
+  const headphonesText = document.querySelector(".wear-headphones div");
+  const headphonesIcon = document.querySelector(".wear-headphones img");
+
+  // Verifica che gli elementi esistano
+  if (!headphonesMessage || !headphonesText || !headphonesIcon) return;
+
+  // Imposta l'opacità iniziale a 1 per tutti gli elementi
+  [headphonesText, headphonesIcon].forEach((el) => {
+    el.style.opacity = "1";
+  });
+
+  // Funzione per gestire la pulsazione
+  function pulse() {
+    // Anima tutti gli elementi insieme
+    [headphonesText, headphonesIcon].forEach((el) => {
+      gsap.to(el, {
+        opacity: 0,
+        duration: 2,
+        ease: "ease",
+        yoyo: true,
+        repeat: -1,
+        repeatDelay: 0,
+      });
+    });
+  }
+
+  // Inizia la pulsazione dopo 0.5 secondi
+  setTimeout(pulse, 500);
+}
+
 // Chiama entrambe le funzioni quando il documento è caricato
 document.addEventListener("DOMContentLoaded", () => {
   pulseInstructions();
   pulseSimulateInstructions();
+  pulseHeadphonesMessage();
 });

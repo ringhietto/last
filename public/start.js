@@ -1,34 +1,42 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const body = document.querySelector('.fade-in');
-    body.classList.add('visible'); // Aggiungi la classe per rendere visibile
+  const body = document.body;
+  const fadeElements = document.querySelectorAll(".fade-in");
 
-    const socket = new WebSocket("ws://127.0.0.1:8001");
+  // Dopo un breve delay, inizia la transizione
+  setTimeout(() => {
+    body.style.backgroundColor = "white";
+    fadeElements.forEach((el) => {
+      el.style.opacity = "1";
+    });
+  }, 500);
 
-    socket.onopen = () => {
-        console.log("WebSocket connected");
-    };
+  const socket = new WebSocket("ws://127.0.0.1:8001");
 
-    socket.onmessage = (event) => {
-        const message = event.data;
+  socket.onopen = () => {
+    console.log("WebSocket connected");
+  };
 
-        if (message === "Buy pressed!") {
-            const body = document.body;
-            body.style.transition = "opacity 2s"; // Imposta la transizione per la dissolvenza
-            body.style.opacity = 0; // Inizia la dissolvenza
+  socket.onmessage = (event) => {
+    const message = event.data;
 
-            setTimeout(() => {
-                window.location.href = "2-onboarding.html"; // Naviga verso 2-onboarding.html
-            }, 2000); // Aspetta 2 secondi prima di navigare
-        }
-    };
+    if (message === "Buy pressed!") {
+      const body = document.body;
+      body.style.transition = "opacity 2s"; // Imposta la transizione per la dissolvenza
+      body.style.opacity = 0; // Inizia la dissolvenza
 
-    socket.onerror = (error) => {
-        console.error("WebSocket Error:", error);
-    };
+      setTimeout(() => {
+        window.location.href = "2-onboarding.html"; // Naviga verso 2-onboarding.html
+      }, 2000); // Aspetta 2 secondi prima di navigare
+    }
+  };
 
-    socket.onclose = () => {
-        console.log("WebSocket connection closed");
-    };
+  socket.onerror = (error) => {
+    console.error("WebSocket Error:", error);
+  };
+
+  socket.onclose = () => {
+    console.log("WebSocket connection closed");
+  };
 });
 
 // // Funzione per avviare il video

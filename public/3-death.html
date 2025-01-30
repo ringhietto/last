@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="it">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>3-Death</title>
-    <link rel="icon" type="image/svg+xml" href="asset/LT.png">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://use.typekit.net/qbb0zyi.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Choose your death</title>
+    <link rel="icon" type="image/svg+xml" href="asset/LT.png" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://use.typekit.net/qbb0zyi.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.1/gsap.min.js"></script>
     <script src="script.js" defer></script>
     <script src="arduino.js" defer></script>
@@ -14,72 +14,72 @@
     <script src="simulate.js" defer></script>
     <script src="generation.js" defer></script>
     <script src="moving.js" defer></script>
-
-</head>
-<body class="page3">
+  </head>
+  <body class="page3">
     <div class="choice">
-        <div class="circle"></div>
-        <div class="word-container">
-            <div class="word font-regular" id="word1">MURDER</div>
-            <div class="word font-regular" id="word2">ILLNESS</div>
-            <div class="word font-regular" id="word3">OVERDOSE</div>
-            <div class="word active font-DemiBold" id="word4" data-active="true">SUICIDE</div>
-            <div class="word font-regular" id="word5">ACCIDENT</div>
-            <div class="word font-regular" id="word6">MURDER</div>
-            <div class="word font-regular" id="word7">ILLNESS</div>
-            <div class="word font-regular" id="word8">OVERDOSE</div>
-            <div class="word font-regular" id="word9">SUICIDE</div>
-            <div class="word font-regular" id="word10">ACCIDENT</div>
-            <div class="word font-regular" id="word11">MURDER</div>
-            <div class="word font-regular" id="word12">ILLNESS</div>
-            <div class="word font-regular" id="word13">OVERDOSE</div>
-            <div class="word font-regular" id="word14">SUICIDE</div>
-            <div class="word font-regular" id="word15">ACCIDENT</div>
-            <div class="word font-regular" id="word16">MURDER</div>
-            <div class="word font-regular" id="word17">ILLNESS</div>
-            <div class="word font-regular" id="word18">OVERDOSE</div>
-            <div class="word font-regular" id="word19">SUICIDE</div>
-            <div class="word font-regular" id="word20">ACCIDENT</div>
-            <div class="word font-regular" id="word21">MURDER</div>
-            <div class="word font-regular" id="word22">ILLNESS</div>
-            <div class="word font-regular" id="word23">OVERDOSE</div>
-            <div class="word font-regular" id="word24">SUICIDE</div>
-            <div class="word font-regular" id="word25">ACCIDENT</div>
-            <div class="word font-regular" id="word26">MURDER</div>
-            <div class="word font-regular" id="word27">ILLNESS</div>
-            <div class="word font-regular" id="word28">OVERDOSE</div>
-            <div class="word font-regular" id="word29">SUICIDE</div>
-            <div class="word font-regular" id="word30">ACCIDENT</div>
-            
+      <div class="circle"></div>
+      <div class="word-container">
+        <div class="word font-regular" id="word1">MURDER</div>
+        <div class="word font-regular" id="word2">ILLNESS</div>
+        <div class="word font-regular" id="word3">OVERDOSE</div>
+        <div class="word active font-DemiBold" id="word4" data>
+          SUICIDE
         </div>
+        <div class="word font-regular" id="word5">ACCIDENT</div>
+        <div class="word font-regular" id="word6">MURDER</div>
+        <div class="word font-regular" id="word7">ILLNESS</div>
+        <div class="word font-regular" id="word8">OVERDOSE</div>
+        <div class="word font-regular" id="word9">SUICIDE</div>
+        <div class="word font-regular" id="word10">ACCIDENT</div>
+        <div class="word font-regular" id="word11">MURDER</div>
+        <div class="word font-regular" id="word12">ILLNESS</div>
+        <div class="word font-regular" id="word13">OVERDOSE</div>
+        <div class="word font-regular" id="word14">SUICIDE</div>
+        <div class="word font-regular" id="word15">ACCIDENT</div>
+        <div class="word font-regular" id="word16">MURDER</div>
+        <div class="word font-regular" id="word17">ILLNESS</div>
+        <div class="word font-regular" id="word18">OVERDOSE</div>
+        <div class="word font-regular" id="word19">SUICIDE</div>
+        <div class="word font-regular" id="word20">ACCIDENT</div>
+        <div class="word font-regular" id="word21">MURDER</div>
+        <div class="word font-regular" id="word22">ILLNESS</div>
+        <div class="word font-regular" id="word23">OVERDOSE</div>
+        <div class="word font-regular" id="word24">SUICIDE</div>
+        <div class="word font-regular" id="word25">ACCIDENT</div>
+        <div class="word font-regular" id="word26">MURDER</div>
+        <div class="word font-regular" id="word27">ILLNESS</div>
+        <div class="word font-regular" id="word28">OVERDOSE</div>
+        <div class="word font-regular" id="word29">SUICIDE</div>
+        <div class="word font-regular" id="word30">ACCIDENT</div>
+      </div>
     </div>
-    
+
     <div class="consequences">
-        <div class="first">
-            <div class="consequence">
-                <h1></h1>
-            </div>
+      <div class="first">
+        <div class="consequence">
+          <h1></h1>
         </div>
+      </div>
 
-        <div class="video">
-            <div id="imageContainer">
-                <img id="imageThumbnail">
-            </div>
+      <div class="video">
+        <div id="imageContainer">
+          <img id="imageThumbnail" />
         </div>
+      </div>
 
-        <!-- Nuovo container per il video fullscreen -->
-        <div class="video-container">
-            <video id="deathVideo">
-                <source src="" type="video/mp4">
-                Il tuo browser non supporta il tag video.
-            </video>
-        </div>
+      <!-- Nuovo container per il video fullscreen -->
+      <div class="video-container">
+        <video id="deathVideo">
+          <source src="" type="video/mp4" />
+          Il tuo browser non supporta il tag video.
+        </video>
+      </div>
 
-        <div class="instructions" id="instructions">
-            <div class="press">PRESS</div>
-            <div class="dot"></div>
-            <div class="to-simulate">to SIMULATE</div>
-        </div>
+      <div class="instructions" id="instructions">
+        <div class="press">PRESS</div>
+        <div class="dot"></div>
+        <div class="to-simulate">to SIMULATE</div>
+      </div>
     </div>
-</body>
+  </body>
 </html>

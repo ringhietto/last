@@ -8,18 +8,33 @@
     <link rel="icon" type="image/svg+xml" href="asset/LT.png">
 
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.1/gsap.min.js"></script>
     <script src="arduino.js" defer></script>
     <script src="start.js" defer></script>
+    <script src="generation.js" defer></script>
+    <script src="fade-in.js" defer></script>
+    <style>
+        
+        body {
+            background-color:#F9FAFB;
+            transition: background-color 2s ease-in-out;
+        }
+    
+    </style>
 </head>
-<body class="page1 fade-in">
-    <div class="begin-instructions">
+<body class="page1">
+    <div class="begin-instructions fade-in">
         <h4 class="font-regular">
             OPEN THE TIME CAPSULE <br>
             TO START THE EXPERIENCE
         </h4>
     </div>
-    <img class="logo" src="asset/LT.svg" alt="Marchio">
-
+    <div class="wear-headphones fade-in">
+        <div class="headphones-text">WEAR HEADPHONES</div>
+        <img class="headphones-icon" src="asset/headphones.svg" style="width: 1.5%; margin-top: 2px;">
+    </div>
     
+    <img class="logo fade-in" src="asset/LT.svg" alt="Marchio">
+
 </body>
 </html>

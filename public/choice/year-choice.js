@@ -2,10 +2,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const years = document.querySelectorAll(".year");
   const circle = document.querySelector(".year-circle");
   const xOffset = -960;
-  const yOffset = -880;
+  const yOffset = -795;
   let centerX, centerY;
-  let currentIndex = 15;
-  let lastEncoderValue = 0;
+  let currentIndex = 14;
+  let lastEncoderValue = 10000;
+  let stopEncoder = false;
 
   // Controlla se è stato selezionato gennaio
   const isJanuary = localStorage.getItem("selectedMonth") === "JANUARY";
@@ -25,7 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function updatePositions() {
     const angleStep = 360 / years.length;
-    const radius = 1000;
+    const radius = 900;
     const activeFontSize = 2.5;
     const normalFontSize = 1;
 
@@ -101,6 +102,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (message === "Short press detected!") {
       window.location.href = "7-recap.html";
+      stopEncoder = true;
     }
 
     if (message === "Double press detected!") {
@@ -119,15 +121,16 @@ document.addEventListener("DOMContentLoaded", () => {
         window.location.href = "5-day-31.html";
       }
     }
-
-    const encoderValue = parseInt(message.split(" ")[2]);
-    if (!isNaN(encoderValue)) {
-      if (encoderValue > lastEncoderValue) {
-        rotateYears("right");
-      } else if (encoderValue < lastEncoderValue) {
-        rotateYears("left");
+    if (stopEncoder === false) {
+      const encoderValue = parseInt(message.split(" ")[2]);
+      if (!isNaN(encoderValue)) {
+        if (encoderValue > lastEncoderValue) {
+          rotateYears("right");
+        } else if (encoderValue < lastEncoderValue) {
+          rotateYears("left");
+        }
+        lastEncoderValue = encoderValue;
       }
-      lastEncoderValue = encoderValue;
     }
   };
 

@@ -47,6 +47,23 @@ document.addEventListener("DOMContentLoaded", () => {
   socket.onmessage = (event) => {
     console.log("Message from server:", event.data);
     if (event.data.includes("Short press detected!")) {
+      const circle = document.querySelector(".circle");
+      const wordContainer = document.querySelector(".word-container");
+      const firstDiv = document.querySelector(".first");
+      const imageContainer = document.querySelector("#imageContainer");
+
+      circle.classList.add("circle-blur");
+      wordContainer.classList.add("word-container-blur");
+      firstDiv.classList.add("first-blur");
+      imageContainer.classList.add("image-container-blur");
+
+      setTimeout(() => {
+        circle.classList.remove("circle-blur");
+        wordContainer.classList.remove("word-container-blur");
+        firstDiv.classList.remove("first-blur");
+        imageContainer.classList.remove("image-container-blur");
+      }, 3000);
+
       const currentDeath = getCurrentDeath();
 
       // Se il video è già stato visto, vai direttamente alla pagina di acquisto
@@ -69,9 +86,12 @@ document.addEventListener("DOMContentLoaded", () => {
       videoContainer.style.transition = "opacity 2s ease-in-out";
       videoContainer.style.opacity = "1";
 
-      video.play().catch((error) => {
-        console.error("Error playing video:", error);
-      });
+      // Ritarda l'inizio del video di 3 secondi
+      setTimeout(() => {
+        video.play().catch((error) => {
+          console.error("Error playing video:", error);
+        });
+      }, 3000);
 
       // Aggiungi un listener per il timeupdate per gestire il fade out
       video.ontimeupdate = () => {

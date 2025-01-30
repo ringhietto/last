@@ -18,21 +18,21 @@
                 // Controlla se è la prima visita
                 if (!localStorage.getItem('visitedDeathPage')) {
                     localStorage.setItem('visitedDeathPage', 'true'); // Imposta il flag
-                    fadeOutAndRedirect(); // Esegui la dissolvenza e reindirizza
+                    fadeOutAndRedirect('3-death.html'); // Reindirizza a death page con fade
                 } else {
-                    window.location.href = '2a-insert.html'; // Naviga direttamente
+                    fadeOutAndRedirect('2a-insert.html'); // Reindirizza a insert page con fade
                 }
             });
         });
 
-        function fadeOutAndRedirect() {
+        function fadeOutAndRedirect(destination) {
             const body = document.body;
-            body.style.transition = "opacity 2s"; // Imposta la transizione per la dissolvenza
-            body.style.opacity = 0; // Inizia la dissolvenza
+            body.style.transition = "opacity 2s";
+            body.style.opacity = 0;
 
             setTimeout(() => {
-                window.location.href = '3-death.html'; // Reindirizza alla pagina 3-death.html
-            }, 2000); // Aspetta 2 secondi prima di navigare
+                window.location.href = destination;
+            }, 2000);
         }
     </script>
 </head>

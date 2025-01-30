@@ -4,8 +4,6 @@ document.addEventListener("DOMContentLoaded", () => {
     "2-onboarding.html",
     "2a-insert.html",
     "2b-age.html",
-    "3-death.html",
-    "3a-date.html",
     "4-month.html",
     "5-day-28.html",
     "5-day-30.html",

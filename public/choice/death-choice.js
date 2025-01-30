@@ -7,6 +7,8 @@ document.addEventListener("DOMContentLoaded", () => {
   let currentIndex = 8; // La terza parola ("Overdose") è al centro inizialmente
   let lastEncoderValue = 10000; // Cambiato da 0 a 10000
   const toSimulateDiv = document.querySelector(".to-simulate");
+  let offsetEncoder = 0;
+  let auxBoolEncoder = false;
   let isInBuyState = false; // Nuovo stato per tracciare se siamo in modalità "BUY"
 
   // Mantieni la dissolvenza iniziale
@@ -101,20 +103,23 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   socket.onmessage = (event) => {
-    const encoderValue = parseInt(event.data.split(" ")[2]);
-    if (!isNaN(encoderValue)) {
-      if (encoderValue > lastEncoderValue) {
-        rotateWords("right");
-      } else if (encoderValue < lastEncoderValue) {
-        rotateWords("left");
-      }
-      lastEncoderValue = encoderValue;
-    }
+    const message = event.data;
 
-    if (event.data.includes("Short press detected!")) {
+    if (message === "Short press detected!") {
       if (isInBuyState) {
-        window.location.href = "3a-date.html";
-        return;
+        // Aggiungi il fade out
+        const body = document.body;
+        body.style.transition = "opacity 2s";
+        body.style.opacity = 0;
+
+        // Reindirizza dopo che il fade out è completato
+        setTimeout(() => {
+          window.location.href = "3a-date.html";
+          offsetEncoder = lastEncoderValue - 10000;
+          auxBoolEncoder = true;
+          console.log("La mia stringa");
+        }, 2000);
+        return; // Aggiungiamo return per evitare l'esecuzione del codice successivo
       }
 
       const video = document.getElementById("deathVideo");
@@ -141,6 +146,32 @@ document.addEventListener("DOMContentLoaded", () => {
         },
         { once: true }
       ); // Assicura che l'evento venga gestito una sola volta
+    }
+
+    // if (message === "Buy pressed!") {
+    //   // Aggiungi il fade out
+    //   const body = document.body;
+    //   body.style.transition = "opacity 2s";
+    //   body.style.opacity = 0;
+
+    //   // Reindirizza dopo che il fade out è completato
+    //   setTimeout(() => {
+    //     window.location.href = "3a-date.html";
+    //   }, 2000);
+    // }
+
+    const encoderValue = parseInt(message.split(" ")[2]);
+    if (!isNaN(encoderValue)) {
+      if (auxBoolEncoder === true) {
+        encoderValue = encoderValue + offsetEncoder;
+        auxBoolEncoder = false;
+      }
+      if (encoderValue > lastEncoderValue) {
+        rotateWords("right");
+      } else if (encoderValue < lastEncoderValue) {
+        rotateWords("left");
+      }
+      lastEncoderValue = encoderValue;
     }
   };
 
