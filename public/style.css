@@ -1,6 +1,11 @@
 /* Importa le font */
 @import url('https://use.typekit.net/qbb0zyi.css');
 
+/* Nascondi il cursore in tutte le pagine */
+* {
+    cursor: none;
+}
+
 /* Applica la font a tutto il contenuto della pagina */
 body {
     margin: 0;
@@ -211,10 +216,10 @@ html {
 }
 
 .double-press,
-.press{
+.press {
     text-align: right;
     color: #969696;
-    font-size: 14px;
+    font-size: 18px;
     font-family: "mundial", sans-serif;
     font-weight: 100;
     line-height: 16px;
@@ -223,26 +228,30 @@ html {
 }
 
 .wear-headphones {
-    position: absolute;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
     text-align: right;
     color: #969696;
-    font-size: 14px;
+    font-size: 16px;
     font-family: "mundial", sans-serif;
     font-weight: 100;
     line-height: 16px;
     word-wrap: break-word;
+}
 
-    margin-top: 20vw;
+.headphones-text {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Spazio tra il testo e l'emoji */
+}
+
+.headphones-text span {
+    font-size: 30px;
+    margin-bottom: 0.5vw;
+     /* Dimensione più grande per l'emoji */
 }
 
 #recap-date-instructions {
     margin-top: 30vw;
 }
-
 
 
 .dot {
@@ -258,7 +267,7 @@ html {
 .to-simulate {
     text-align: right;
     color: #969696;
-    font-size: 14px;
+    font-size: 18px;
     font-family: "mundial", sans-serif;
     font-weight: 100;
     line-height: 16px;
@@ -398,11 +407,11 @@ html {
 .fade-in-out {
     animation: fadeInOut 2s ease-in-out 0s 1; /* Durata di 2 secondi, ripetuta 1 volta */
 }
-
+/* 
 .fade-out {
-    transition: opacity 3s ease-out;
+    transition: opacity 2s ease-out;
     opacity: 0;
-}
+} */
 
 /* page 4 */
 
@@ -899,7 +908,7 @@ margin-top: 5vw;
 
 .fade-in {
     opacity: 0;
-    transition: opacity 2s ease-in; 
+    transition: opacity 2s ease-in; /* Ridotto da 2s a 0.5s */
 }
 
 .fade-in.visible {

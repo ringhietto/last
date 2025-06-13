@@ -7,12 +7,22 @@ document.addEventListener("DOMContentLoaded", () => {
   let currentIndex = 15;
   let lastEncoderValue = 0;
 
-  // Controlla se è stato selezionato gennaio
-  const isJanuary = localStorage.getItem("selectedMonth") === "JANUARY";
+  // Controlla se è stato selezionato un mese della prima metà dell'anno
+  const firstHalfMonths = [
+    "JANUARY",
+    "FEBRUARY",
+    "MARCH",
+    "APRIL",
+    "MAY",
+    "JUNE",
+  ];
+  const isFirstHalf = firstHalfMonths.includes(
+    localStorage.getItem("selectedMonth")
+  );
 
-  // Nascondi 2025 se è stato selezionato gennaio
+  // Nascondi 2025 se è stato selezionato un mese della prima metà dell'anno
   const year2025 = document.getElementById("year20");
-  if (isJanuary && year2025) {
+  if (isFirstHalf && year2025) {
     year2025.style.display = "none";
   }
 

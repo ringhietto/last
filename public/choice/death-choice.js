@@ -127,7 +127,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // Imposta il video corretto
       const currentDeath = getCurrentDeath();
-      video.querySelector("source").src = `asset/videos/${currentDeath}.mov`;
+      video.querySelector("source").src = `asset/videos/${currentDeath}.mp`;
+      video.volume = 1.0; // Imposta il volume al massimo
       video.load();
 
       // Mostra e riproduci il video

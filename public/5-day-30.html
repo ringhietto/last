@@ -110,12 +110,14 @@
             
             days.forEach((day) => {
                 day.addEventListener("click", () => {
+                    
                     const selectedDay = day.textContent;
                     const selectedMonth = localStorage.getItem("selectedMonth");
                     localStorage.setItem("selectedDay", selectedDay);
                     
                     // Reindirizza in base al mese selezionato
-                    if (selectedMonth === "JANUARY") {
+                    const firstHalfMonths = ["JANUARY", "FEBRUARY", "MARCH", "APRIL", "MAY", "JUNE"];
+                    if (firstHalfMonths.includes(selectedMonth)) {
                         window.location.href = "6-year-january.html";
                     } else {
                         window.location.href = "6-year.html";

@@ -8,7 +8,6 @@ document.addEventListener("DOMContentLoaded", () => {
   let lastEncoderValue = 10000;
   let stopEncoder = false;
 
-
   function updateCenter() {
     const circleRect = dayCircle.getBoundingClientRect();
     centerX = circleRect.left + circleRect.width / 2;
@@ -91,11 +90,31 @@ document.addEventListener("DOMContentLoaded", () => {
     const selectedMonth = localStorage.getItem("selectedMonth");
 
     if (message === "Short press detected!") {
-      if (selectedMonth === "JANUARY") {
-        window.location.href = "6-year-january.html";
+      const firstHalfMonths = [
+        "JANUARY",
+        "FEBRUARY",
+        "MARCH",
+        "APRIL",
+        "MAY",
+        "JUNE",
+      ];
+      if (firstHalfMonths.includes(selectedMonth)) {
+        const body = document.body;
+        body.style.transition = "opacity 2s";
+        body.style.opacity = 0;
+
+        setTimeout(() => {
+          window.location.href = "6-year-january.html";
+        }, 2000);
         stopEncoder = true;
       } else {
-        window.location.href = "6-year.html";
+        const body = document.body;
+        body.style.transition = "opacity 2s";
+        body.style.opacity = 0;
+
+        setTimeout(() => {
+          window.location.href = "6-year.html";
+        }, 2000);
         stopEncoder = true;
       }
     } else if (message === "Double press detected!") {
@@ -111,8 +130,6 @@ document.addEventListener("DOMContentLoaded", () => {
         lastEncoderValue = encoderValue;
       }
     }
-
-    
   };
 
   socket.onerror = (error) => {

@@ -17,7 +17,14 @@ document.addEventListener("DOMContentLoaded", () => {
     const message = event.data;
 
     if (message === "Short press detected!") {
-      window.location.href = "7a-etherea.html"; // Cambiato da "8-scontrino.html"
+      // Aggiungi la dissolvenza in uscita
+      const body = document.body;
+      body.style.transition = "opacity 2s";
+      body.style.opacity = 0;
+
+      setTimeout(() => {
+        window.location.href = "7a-etherea.html";
+      }, 2000);
     }
 
     if (message === "Double press detected!") {

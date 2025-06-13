@@ -98,39 +98,47 @@ document.addEventListener("DOMContentLoaded", () => {
       stopEncoder = true;
       if (activeMonth) {
         const selectedMonth = activeMonth.textContent;
-        if (activeMonth.id === "month10" || activeMonth.id === "month22") {
-          window.location.href = "5-day-28.html";
-        } else if (
-          activeMonth.id === "month2" ||
-          activeMonth.id === "month5" ||
-          activeMonth.id === "month7" ||
-          activeMonth.id === "month12" ||
-          activeMonth.id === "month14" ||
-          activeMonth.id === "month17" ||
-          activeMonth.id === "month19" ||
-          activeMonth.id === "month24"
-        ) {
-          window.location.href = "5-day-30.html";
-          localStorage.setItem("selectedMonth", selectedMonth);
-        } else if (
-          activeMonth.id === "month1" ||
-          activeMonth.id === "month3" ||
-          activeMonth.id === "month4" ||
-          activeMonth.id === "month6" ||
-          activeMonth.id === "month8" ||
-          activeMonth.id === "month9" ||
-          activeMonth.id === "month11" ||
-          activeMonth.id === "month13" ||
-          activeMonth.id === "month15" ||
-          activeMonth.id === "month16" ||
-          activeMonth.id === "month18" ||
-          activeMonth.id === "month20" ||
-          activeMonth.id === "month21" ||
-          activeMonth.id === "month23"
-        ) {
-          window.location.href = "5-day-31.html";
-          localStorage.setItem("selectedMonth", selectedMonth);
-        }
+
+        // Aggiungi la dissolvenza in uscita
+        const body = document.body;
+        body.style.transition = "opacity 2s";
+        body.style.opacity = 0;
+
+        setTimeout(() => {
+          if (activeMonth.id === "month10" || activeMonth.id === "month22") {
+            window.location.href = "5-day-28.html";
+          } else if (
+            activeMonth.id === "month2" ||
+            activeMonth.id === "month5" ||
+            activeMonth.id === "month7" ||
+            activeMonth.id === "month12" ||
+            activeMonth.id === "month14" ||
+            activeMonth.id === "month17" ||
+            activeMonth.id === "month19" ||
+            activeMonth.id === "month24"
+          ) {
+            window.location.href = "5-day-30.html";
+            localStorage.setItem("selectedMonth", selectedMonth);
+          } else if (
+            activeMonth.id === "month1" ||
+            activeMonth.id === "month3" ||
+            activeMonth.id === "month4" ||
+            activeMonth.id === "month6" ||
+            activeMonth.id === "month8" ||
+            activeMonth.id === "month9" ||
+            activeMonth.id === "month11" ||
+            activeMonth.id === "month13" ||
+            activeMonth.id === "month15" ||
+            activeMonth.id === "month16" ||
+            activeMonth.id === "month18" ||
+            activeMonth.id === "month20" ||
+            activeMonth.id === "month21" ||
+            activeMonth.id === "month23"
+          ) {
+            window.location.href = "5-day-31.html";
+            localStorage.setItem("selectedMonth", selectedMonth);
+          }
+        }, 2000);
       }
     } else if (stopEncoder === false) {
       const encoderValue = parseInt(message.split(" ")[2]);

@@ -82,11 +82,31 @@ document.addEventListener("DOMContentLoaded", () => {
     const selectedMonth = localStorage.getItem("selectedMonth");
 
     if (message === "Short press detected!") {
-      if (selectedMonth === "JANUARY") {
-        window.location.href = "6-year-january.html";
+      const firstHalfMonths = [
+        "JANUARY",
+        "FEBRUARY",
+        "MARCH",
+        "APRIL",
+        "MAY",
+        "JUNE",
+      ];
+      if (firstHalfMonths.includes(selectedMonth)) {
+        const body = document.body;
+        body.style.transition = "opacity 2s";
+        body.style.opacity = 0;
+
+        setTimeout(() => {
+          window.location.href = "6-year-january.html";
+        }, 2000);
         stopEncoder = true;
       } else {
-        window.location.href = "6-year.html";
+        const body = document.body;
+        body.style.transition = "opacity 2s";
+        body.style.opacity = 0;
+
+        setTimeout(() => {
+          window.location.href = "6-year.html";
+        }, 2000);
         stopEncoder = true;
       }
     } else if (message === "Double press detected!") {

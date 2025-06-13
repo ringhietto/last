@@ -36,10 +36,10 @@ document.addEventListener("DOMContentLoaded", () => {
           onComplete: () => {
             setTimeout(() => {
               window.location.href = "8-scontrino.html";
-            }, 1000);
+            }, 300);
           },
         });
-      }, 1000);
+      }, 300);
     },
   });
 });

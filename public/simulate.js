@@ -72,7 +72,7 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
 
-      video.querySelector("source").src = `asset/videos/${currentDeath}.mov`;
+      video.querySelector("source").src = `asset/videos/${currentDeath}.mp4Z`;
       video.load();
 
       // Mostra il container e imposta l'opacità iniziale a 0

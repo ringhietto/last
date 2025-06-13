@@ -88,30 +88,34 @@ document.addEventListener("DOMContentLoaded", () => {
     const selectedMonth = localStorage.getItem("selectedMonth");
 
     if (message === "Short press detected!") {
-      if (selectedMonth === "JANUARY") {
-        window.location.href = "6-year-january.html";
-        stopEncoder = true;
-        print("stop encoder attivato");
-        print(stopEncoder);
-      } else {
-        window.location.href = "6-year.html";
-        stopEncoder = true;
-        print("stop encoder attivato");
-        print(stopEncoder);
-      }
-    } else if (stopEncoder === false) {
-      const encoderValue = parseInt(message.split(" ")[2]);
-      if (!isNaN(encoderValue)) {
-        if (encoderValue > lastEncoderValue) {
-          rotateDays("right");
-        } else if (encoderValue < lastEncoderValue) {
-          rotateDays("left");
-        }
-        lastEncoderValue = encoderValue;
-      }
-    }
+      const firstHalfMonths = [
+        "JANUARY",
+        "FEBRUARY",
+        "MARCH",
+        "APRIL",
+        "MAY",
+        "JUNE",
+      ];
+      if (firstHalfMonths.includes(selectedMonth)) {
+        const body = document.body;
+        body.style.transition = "opacity 2s";
+        body.style.opacity = 0;
 
-    if (message === "Double press detected!") {
+        setTimeout(() => {
+          window.location.href = "6-year-january.html";
+        }, 2000);
+        stopEncoder = true;
+      } else {
+        const body = document.body;
+        body.style.transition = "opacity 2s";
+        body.style.opacity = 0;
+
+        setTimeout(() => {
+          window.location.href = "6-year.html";
+        }, 2000);
+        stopEncoder = true;
+      }
+    } else if (message === "Double press detected!") {
       window.location.href = "4-month.html";
     } else if (stopEncoder === false) {
       const encoderValue = parseInt(message.split(" ")[2]);

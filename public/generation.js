@@ -35,7 +35,6 @@ function loadVip(vipType) {
   videoContainer.style.display = "none";
 
   // Mostra il video senza animazione
-  videoContainer.style.display = "block";
 
   // Animazione per le istruzioni
   setTimeout(() => {
@@ -54,31 +53,31 @@ function loadVip(vipType) {
   }, 1000);
 }
 
-function pulseInstructions() {
-  const dateInstructions = document.querySelector(".date-instructions");
+// function pulseInstructions() {
+//   const dateInstructions = document.querySelector(".date-instructions");
 
-  // Verifica che l'elemento esista
-  if (!dateInstructions) return;
+//   // Verifica che l'elemento esista
+//   if (!dateInstructions) return;
 
-  // Imposta l'opacità iniziale a 1
-  dateInstructions.style.opacity = "1";
+//   // Imposta l'opacità iniziale a 1
+//   dateInstructions.style.opacity = "1";
 
-  // Funzione per gestire la pulsazione
-  function pulse() {
-    // Fade out a 0 con ease
-    gsap.to(dateInstructions, {
-      opacity: 0,
-      duration: 2,
-      ease: "ease",
-      yoyo: true, // Fa tornare automaticamente al valore iniziale
-      repeat: -1, // Ripete all'infinito
-      repeatDelay: 0, // Nessuna pausa tra le ripetizioni
-    });
-  }
+//   // Funzione per gestire la pulsazione
+//   function pulse() {
+//     // Fade out a 0 con ease
+//     gsap.to(dateInstructions, {
+//       opacity: 0,
+//       duration: 2,
+//       ease: "ease",
+//       yoyo: true, // Fa tornare automaticamente al valore iniziale
+//       repeat: -1, // Ripete all'infinito
+//       repeatDelay: 0, // Nessuna pausa tra le ripetizioni
+//     });
+//   }
 
-  // Inizia la pulsazione dopo 5 secondi
-  setTimeout(pulse, 500);
-}
+//   // Inizia la pulsazione dopo 5 secondi
+//   setTimeout(pulse, 500);
+// }
 
 function pulseSimulateInstructions() {
   const simulateInstructions = document.querySelector(".instructions");
@@ -132,7 +131,7 @@ function pulseHeadphonesMessage() {
     [headphonesText, headphonesIcon].forEach((el) => {
       gsap.to(el, {
         opacity: 0,
-        duration: 2,
+        duration: 0.25,
         ease: "ease",
         yoyo: true,
         repeat: -1,
